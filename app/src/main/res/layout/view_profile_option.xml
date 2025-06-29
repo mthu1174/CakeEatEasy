@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:parentTag="android.widget.LinearLayout">
+
+    <ImageView
+        android:id="@+id/img_option_icon"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:background="@drawable/icon_circle_background"
+        android:backgroundTint="@color/white"
+        android:padding="6dp"
+        tools:src="@drawable/ic_notifications_outline"
+        app:tint="@color/home_pink" />
+
+    <TextView
+        android:id="@+id/txt_option_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginStart="16dp"
+        android:textColor="@color/home_pink"
+        android:textSize="16sp"
+        tools:text="Notifications" />
+
+    <ImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_chevron_right" />
+</merge>

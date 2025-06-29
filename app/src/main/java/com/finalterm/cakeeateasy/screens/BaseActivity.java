@@ -1,4 +1,4 @@
-package com.finalterm.cakeeateasy.screens;
+package com.finalterm.cakeeateasy.screens; // Thay bằng package của bạn
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,12 +8,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.finalterm.cakeeateasy.R;
+import com.finalterm.cakeeateasy.R; // Thay bằng package của bạn
+import com.finalterm.cakeeateasy.screens.dialogs.ChatDialogFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Arrays;
@@ -22,6 +22,8 @@ import java.util.List;
 public abstract class BaseActivity extends AppCompatActivity {
 
     private List<View> navItems;
+    // Biến cờ để ngăn hiệu ứng chạy khi app vừa khởi động
+    private boolean isFirstTime = true;
 
     public abstract int getNavItemIndex();
 
@@ -30,28 +32,34 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
 
-        // Đoạn code này để xử lý padding khi dùng EdgeToEdge
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.base_root_layout), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0);
             return insets;
         });
 
-        // Chỉ tìm view và gán sự kiện click một lần trong onCreate
         setupNavItems();
         setupNavClickListeners();
     }
 
-    // === THAY ĐỔI QUAN TRỌNG: Thêm onResume() ===
     @Override
     protected void onResume() {
         super.onResume();
-        // Cập nhật trạng thái UI mỗi khi Activity được hiển thị lại
+
+        // Chỉ áp dụng hiệu ứng chuyển cảnh sau lần khởi động đầu tiên
+        if (!isFirstTime) {
+            // Áp dụng hiệu ứng fade-in cho Activity vừa được đưa lên trên
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+        }
+        // Đánh dấu là đã qua lần khởi động đầu tiên
+        isFirstTime = false;
+
         updateNavState();
     }
 
     protected void setContentLayout(int layoutResID) {
         FrameLayout contentFrame = findViewById(R.id.content_frame);
+        contentFrame.removeAllViews();
         getLayoutInflater().inflate(layoutResID, contentFrame, true);
     }
 
@@ -69,22 +77,25 @@ public abstract class BaseActivity extends AppCompatActivity {
     private void setupNavClickListeners() {
         for (int i = 0; i < navItems.size(); i++) {
             final int index = i;
-            View item = navItems.get(i);
-            item.setOnClickListener(v -> {
-                if (index != getNavItemIndex()) {
-                    Class<?> targetActivityClass = getTargetActivity(index);
-                    if (targetActivityClass != null) {
-                        Intent intent = new Intent(this, targetActivityClass);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                        startActivity(intent);
-                        overridePendingTransition(0, 0);
-                    }
-                }
-            });
+            navItems.get(i).setOnClickListener(v -> navigateTo(index));
+        }
+        findViewById(R.id.fab_chat).setOnClickListener(v -> openChatDialog());
+    }
+
+    private void navigateTo(int index) {
+        if (index != getNavItemIndex()) {
+            Class<?> targetActivityClass = getTargetActivity(index);
+            if (targetActivityClass != null) {
+                Intent intent = new Intent(this, targetActivityClass);
+                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(intent);
+
+                // Vẫn giữ dòng này để xử lý cho lần đầu tiên một Activity được tạo
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            }
         }
     }
 
-    // === THAY ĐỔI QUAN TRỌNG: Tách logic cập nhật UI ra hàm riêng ===
     private void updateNavState() {
         if (navItems == null) return;
         for (int i = 0; i < navItems.size(); i++) {
@@ -95,14 +106,14 @@ public abstract class BaseActivity extends AppCompatActivity {
     private void setItemState(View item, int index, boolean isActive) {
         View activeStateLayout = item.findViewById(R.id.nav_item_active);
         ImageView inactiveIcon = item.findViewById(R.id.nav_item_inactive);
-        FloatingActionButton activeFab = item.findViewById(R.id.nav_item_active_fab);
-        TextView label = item.findViewById(R.id.nav_item_active_label);
+        FloatingActionButton activeFab = activeStateLayout.findViewById(R.id.nav_item_active_fab);
+        TextView label = activeStateLayout.findViewById(R.id.nav_item_active_label);
 
         NavItemInfo info = getNavItemInfo(index);
 
         activeFab.setImageResource(info.activeIconRes);
-        inactiveIcon.setImageResource(info.inactiveIconRes);
         label.setText(info.label);
+        inactiveIcon.setImageResource(info.inactiveIconRes);
 
         if (isActive) {
             activeStateLayout.setVisibility(View.VISIBLE);
@@ -111,6 +122,11 @@ public abstract class BaseActivity extends AppCompatActivity {
             activeStateLayout.setVisibility(View.INVISIBLE);
             inactiveIcon.setVisibility(View.VISIBLE);
         }
+    }
+
+    private void openChatDialog() {
+        ChatDialogFragment chatDialog = new ChatDialogFragment();
+        chatDialog.show(getSupportFragmentManager(), "ChatDialogFragment");
     }
 
     // Helper class để chứa thông tin item
@@ -138,15 +154,14 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
-    //  function để lấy class Activity mục tiêu
+    // "Bảng chỉ đường" để lấy class Activity mục tiêu
     private Class<?> getTargetActivity(int index) {
         switch (index) {
-            case 0: return MainActivity.class; // Hoặc HomeActivity.class
-            // TODO: Tạo và thay thế bằng các class Activity thực tế của bạn
-            // case 1: return OrderActivity.class;
+            case 0: return MainActivity.class;
+            //case 1: return OrderActivity.class; // Nhớ bỏ comment dòng này khi bạn tạo OrderActivity
             case 2: return FavouriteActivity.class;
             case 3: return NotificationActivity.class;
-            // case 4: return ProfileActivity.class;
+            case 4: return ProfileActivity.class;
             default: return null;
         }
     }

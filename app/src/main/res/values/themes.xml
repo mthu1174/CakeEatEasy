@@ -69,5 +69,36 @@
         <item name="colorControlNormal">#a1a1a1</item>
     </style>
 
+    <style name="AppTheme.FullScreenDialog" parent="Theme.Material3.Light.Dialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowBackground">@color/product_list_bg</item>
+        <item name="android:statusBarColor">@color/product_list_app_bar_bg</item>
+    </style>
+
+    <!--Profile-->
+    <style name="ProfileSectionTitle" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:textColor">@color/home_text_secondary</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <!--Edit Profile-->
+    <style name="EditProfileLabel" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:textColor">@color/home_text_secondary</item>
+    </style>
+    <style name="EditProfileEditText" parent="Widget.AppCompat.EditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/edit_text_background</item>
+        <item name="android:padding">14dp</item>
+        <item name="android:drawablePadding">8dp</item>
+    </style>
+
 
 </resources>
