@@ -1,0 +1,24 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Path 1: Vòng tròn của kính lúp -->
+    <!-- pathData này tương đương với vòng tròn bán kính 6, tâm ở (10, 10) -->
+    <path
+        android:strokeColor="#FF4C4C4C"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z"/>
+
+    <!-- Path 2: Tay cầm của kính lúp -->
+    <!-- pathData này vẽ một đường thẳng từ (16.5, 16.5) đến (21, 21) -->
+    <path
+        android:strokeColor="#FF343330"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M21 21L16.5 16.5"/>
+</vector>

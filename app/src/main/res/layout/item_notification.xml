@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:paddingHorizontal="16dp"
+    android:paddingVertical="12dp">
+
+    <!--
+        ImageView này sẽ có cả nền và icon được đặt từ code.
+        Nó được căn bên trái và ở giữa theo chiều dọc.
+    -->
+    <ImageView
+        android:id="@+id/img_notif_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:padding="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:src="@drawable/ic_discount"
+        tools:background="@drawable/icon_circle_background"
+        tools:backgroundTint="@color/notif_status_promo_bg"
+        tools:tint="@color/notif_status_promo" />
+
+    <!--
+        LinearLayout này nhóm toàn bộ phần text lại với nhau.
+    -->
+    <LinearLayout
+        android:id="@+id/layout_text_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/view_unread_dot"
+        app:layout_constraintStart_toEndOf="@id/img_notif_icon"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/txt_notif_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/notif_title_text"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:text="Get 5% Discount Code" />
+
+        <TextView
+            android:id="@+id/txt_notif_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textColor="@color/notif_subtitle_text"
+            android:textSize="14sp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            tools:text="Discount code for new users" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="end"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txt_notif_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/notif_time_text"
+                android:textSize="12sp"
+                tools:text="11:10" />
+
+            <TextView
+                android:id="@+id/txt_notif_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:textColor="@color/notif_time_text"
+                android:textSize="12sp"
+                tools:text="10/05/2024" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Chấm đỏ "chưa đọc" -->
+    <View
+        android:id="@+id/view_unread_dot"
+        android:layout_width="8dp"
+        android:layout_height="8dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/unread_dot"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/layout_text_container"
+        tools:visibility="visible"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

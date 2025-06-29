@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Drawable này có thể thay đổi màu sắc.
+    android:tint sẽ tô màu cho toàn bộ shape này.
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+
+    <!-- Màu mặc định, sẽ bị ghi đè bởi tint -->
+    <solid android:color="@android:color/darker_gray" />
+
+</shape>

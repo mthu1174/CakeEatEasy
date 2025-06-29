@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="160dp"
+        android:layout_height="90dp"
+        android:background="@drawable/coupon_grid_background"
+        android:elevation="2dp">
+
+    <LinearLayout
+        android:id="@+id/text_area"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/iv_voucher_icon"> <!-- LỖI ĐÃ SỬA: Thêm ràng buộc này -->
+
+        <TextView
+            android:id="@+id/tv_voucher_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            tools:text="New Member"
+            tools:textColor="@color/voucher_orange" />
+
+        <TextView
+            android:id="@+id/tv_voucher_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/voucher_text_secondary"
+            android:textSize="8sp"
+            android:layout_marginTop="4dp"
+            tools:text="10% off" />
+    </LinearLayout>
+
+    <!-- LỖI ĐÃ SỬA: Xóa các thẻ XML và comment thừa ở đây -->
+
+    <ImageView
+        android:id="@+id/iv_voucher_icon"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="20dp"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_gift"
+        tools:background="@drawable/icon_circle_background"
+        tools:backgroundTint="@color/voucher_icon_bg_orange"
+        tools:tint="@color/voucher_orange"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>

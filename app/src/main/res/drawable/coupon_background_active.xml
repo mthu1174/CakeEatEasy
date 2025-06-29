@@ -1,0 +1,24 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="360dp"
+    android:height="95dp"
+    android:viewportWidth="360"
+    android:viewportHeight="95">
+
+    <!-- Lớp bóng 1: Mờ hơn, lan tỏa hơn, dịch chuyển nhiều hơn -->
+    <!-- Dịch Y +5dp. Có thể dịch X một chút nếu muốn (ví dụ +0.5dp và -0.5dp cho start/end X) -->
+    <!-- PathData này là path gốc với Y+5. Giả sử path gốc bắt đầu M8,0 -->
+    <!-- Lớp bóng 2: Đậm hơn, gần coupon hơn, dịch chuyển ít hơn -->
+    <!-- Dịch Y +3dp. PathData này là path gốc với Y+3 -->
+<path
+android:fillColor="#66000000"
+    android:pathData="
+    M8,3 H352 A8,8 0 0,1 360,11 V34.155 A13.845,13.845 0 0,0 346.155,48 A13.845,13.845 0 0,0 360,61.845 V85 A8,8 0 0,1 352,93 H8 A8,8 0 0,1 0,85 V61.845 A13.845,13.845 0 0,0 13.845,48 A13.845,13.845 0 0,0 0,34.155 V11 A8,8 0 0,1 8,3 Z" />
+
+
+    <!-- Path cho coupon chính (vẽ sau cùng, đè lên phần bóng trùng lặp nếu có) -->
+    <!-- Path gốc, vẽ coupon ở phần trên của viewport (từ Y=0 đến Y=90) -->
+<path
+android:fillColor="@color/white"
+    android:pathData="
+    M8,0 H352 A8,8 0 0,1 360,8 V31.155 A13.845,13.845 0 0,0 346.155,45 A13.845,13.845 0 0,0 360,58.845 V82 A8,8 0 0,1 352,90 H8 A8,8 0 0,1 0,82 V58.845 A13.845,13.845 0 0,0 13.845,45 A13.845,13.845 0 0,0 0,31.155 V8 A8,8 0 0,1 8,0 Z" />
+    </vector>

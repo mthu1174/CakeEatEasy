@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    android:padding="16dp">
+
+    <!-- Title -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Address"
+        android:textSize="20sp"
+        android:textColor="@color/cakeiteasy_pink"
+        android:fontFamily="@font/bold"
+        android:layout_marginBottom="12dp"/>
+
+    <!-- Address Row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <!-- Custom RadioButton -->
+        <RadioButton
+            android:id="@+id/radioAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true" />
+
+        <!-- Name and phone -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Linh Nguyen"
+            android:textColor="#222222"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:fontFamily="@font/bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" (+84)881 234 567"
+            android:textColor="#B0B0B0"
+            android:textSize="16sp"
+            android:fontFamily="@font/regular"
+            android:layout_marginStart="4dp"/>
+
+        <!-- Edit button -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit"
+            android:textColor="@color/cakeiteasy_pink"
+            android:textSize="16sp"
+            android:layout_marginLeft="30dp"
+            android:fontFamily="@font/bold"
+            />
+    </LinearLayout>
+
+    <!-- Address detail -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="White House, District 1, USA"
+        android:textColor="#888888"
+        android:textSize="15sp"
+        android:fontFamily="@font/regular"
+        android:layout_marginTop="4dp"/>
+
+    <!-- Default label -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Default"
+        android:textColor="#DD5369"
+        android:textSize="14sp"
+        android:fontFamily="@font/bold"
+        android:background="@drawable/bg_default_border"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:layout_marginTop="8dp"/>
+</LinearLayout>

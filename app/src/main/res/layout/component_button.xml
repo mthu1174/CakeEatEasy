@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btn1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="25dp"
+        android:backgroundTint="#FBEAEC"
+        android:fontFamily="@font/bold"
+        android:text="Add to cart"
+        android:textColor="#DD5369"
+        android:textSize="18dp"
+        app:cornerRadius="0dp" />
+
+    <Button
+        android:id="@+id/btn2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="25dp"
+        android:backgroundTint="#F7D4D8"
+        android:fontFamily="@font/bold"
+        android:text="Add to cart"
+        android:textColor="#DD5369"
+        android:textSize="18dp"
+        app:cornerRadius="0dp" />
+
+    <Button
+        android:id="@+id/btn3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="25dp"
+        android:backgroundTint="#D9D9D9"
+        android:fontFamily="@font/bold"
+        android:text="Add to cart"
+        android:textColor="#4C4C4C"
+        android:textSize="18dp"
+        app:cornerRadius="0dp" />
+
+    <Button
+        android:id="@+id/btn4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="25dp"
+        android:backgroundTint="#DD5369"
+        android:fontFamily="@font/bold"
+        android:text="Buy now"
+        android:textColor="#FBEAEC"
+        android:textSize="18dp"
+        app:cornerRadius="0dp" />
+
+    <Button
+        android:id="@+id/btn5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="25dp"
+        android:backgroundTint="#E67F90"
+        android:fontFamily="@font/bold"
+        android:text="Buy now"
+        android:textColor="#FBEAEC"
+        android:textSize="18dp"
+        app:cornerRadius="0dp" />
+
+    <Button
+        android:id="@+id/btn6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="25dp"
+        android:backgroundTint="#D9D9D9"
+        android:fontFamily="@font/bold"
+        android:text="Buy now"
+        android:textColor="#4C4C4C"
+        android:textSize="18dp"
+        app:cornerRadius="0dp" />
+</LinearLayout>

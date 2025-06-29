@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Lớp nền tròn màu hồng nhạt -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#FFE0E5" />
+        </shape>
+    </item>
+    <!-- Lớp icon trái tim ở trên, có padding để nhỏ hơn -->
+    <item android:drawable="@drawable/ic_favorite_doutone"
+        android:top="6dp"
+        android:bottom="6dp"
+        android:left="6dp"
+        android:right="6dp"/>
+</layer-list>

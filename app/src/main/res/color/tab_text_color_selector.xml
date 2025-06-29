@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Màu khi tab được chọn -->
+    <item android:color="@color/tab_pink" android:state_selected="true"/>
+    <!-- Màu mặc định (khi không được chọn) -->
+    <item android:color="@color/tab_grey" android:state_selected="false"/>
+</selector>

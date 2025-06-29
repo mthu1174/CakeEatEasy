@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="177dp"
+    android:height="98dp"
+    android:viewportWidth="177"
+    android:viewportHeight="98">
+
+    <!-- LỚP BÓNG ĐỔ (vẽ trước) -->
+    <!-- pathData này là bản sao của path gốc, với:
+         - Tọa độ X được CỘNG thêm 1 (dịch phải).
+         - Tọa độ Y được CỘNG thêm 2 (dịch xuống).
+    -->
+    <path
+        android:fillColor="#33000000"
+        android:pathData="M166,3c4.42,0 8,3.58 8,8v22.8c-0.16,-0.03 -0.33,-0.04 -0.5,-0.04 -4.39,0 -7.95,6.2 -7.95,13.85 0,7.65 3.56,13.85 7.95,13.85 0.17,0 0.34,-0.01 0.5,-0.03V85c0,4.42 -3.58,8 -8,8H12c-4.42,0 -8,-3.58 -8,-8V61.46c4.4,0 7.95,-6.2 7.95,-13.85 0,-7.65 -3.56,-13.85 -7.95,-13.85V11c0,-4.42 3.58,-8 8,-8h154Z"/>
+
+    <!-- LỚP VOUCHER CHÍNH (vẽ sau, đè lên trên bóng) -->
+    <!-- pathData này là bản gốc, không thay đổi -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M165,1c4.42,0 8,3.58 8,8v22.8c-0.16,-0.03 -0.33,-0.04 -0.5,-0.04 -4.39,0 -7.95,6.2 -7.95,13.85 0,7.65 3.56,13.85 7.95,13.85 0.17,0 0.34,-0.01 0.5,-0.03V83c0,4.42 -3.58,8 -8,8H11c-4.42,0 -8,-3.58 -8,-8V59.46c4.4,0 7.95,-6.2 7.95,-13.85 0,-7.65 -3.56,-13.85 -7.95,-13.85V9c0,-4.42 3.58,-8 8,-8h154Z"/>
+
+</vector>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    THAY ĐỔI 1:
+    - Đổi layout gốc thành match_parent để nó vừa với chiều rộng của RecyclerView.
+    - Xóa chiều rộng cố định 360dp.
+    - Thêm marginBottom để tạo khoảng cách giữa các voucher.
+-->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coupon_item_root_wrapper"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+    <!--
+        THAY ĐỔI 2:
+        - Xóa `layout_marginBottom` ở đây vì đã đặt ở layout cha.
+        - `layout_width` là `0dp` (match_constraint) để nó lấp đầy layout cha.
+    -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/coupon_container"
+        android:layout_width="0dp"
+        android:layout_height="90dp"
+        android:background="@drawable/coupon_background_active"
+        android:paddingStart="24dp"
+        android:paddingTop="12dp"
+        android:paddingEnd="24dp"
+        android:paddingBottom="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Khu vực icon bánh -->
+        <LinearLayout
+            android:id="@+id/icon_area"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingEnd="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="RtlSymmetry">
+
+            <ImageView
+                android:id="@+id/iv_coupon_icon"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:scaleType="centerInside"
+                tools:src="@drawable/ic_cake_pink" />
+        </LinearLayout>
+
+        <!-- Đường kẻ đứt dọc -->
+        <View
+            android:id="@+id/dotted_line"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
+            android:background="@drawable/dotted_line_vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/icon_area"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Khu vực text -->
+        <LinearLayout
+            android:id="@+id/text_area"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="6dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/rb_coupon_select"
+            app:layout_constraintStart_toEndOf="@id/dotted_line"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_coupon_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textColor="@color/coupon_pink_text"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:text="Save 10% on orders over 800k" />
+
+            <TextView
+                android:id="@+id/tv_coupon_validity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:textColor="@color/coupon_grey_text"
+                android:textSize="12sp"
+                tools:text="Valid until 01/02/2026" />
+        </LinearLayout>
+
+        <!-- RadioButton -->
+        <RadioButton
+            android:id="@+id/rb_coupon_select"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@drawable/custom_radio_button"
+            android:checked="false"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

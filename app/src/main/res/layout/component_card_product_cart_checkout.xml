@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#FAFAFA"
+    android:padding="16dp">
+    <!-- [Checkout] Card sản phẩm -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="8dp"
+        android:layout_marginTop="32dp"
+        android:background="#FBEAEC">
+        <!-- Checkbox -->
+        <CheckBox
+            android:id="@+id/checkBox1"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!-- Product Image -->
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@mipmap/product01"
+            android:scaleType="centerCrop"
+            android:layout_marginEnd="12dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"/>
+
+        <!-- Product Info -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Orchid Divine"
+                android:textColor="#E85C7A"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:fontFamily="@font/bold"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="2dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="500.000 đ"
+                    android:textColor="#222222"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/semibold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10% off"
+                    android:textColor="#E3171A"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/bold"
+                    android:background="#FDE8E8"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:layout_marginStart="8dp"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="550.000 đ"
+                android:textColor="#222222"
+                android:textSize="14sp"
+                android:fontFamily="@font/regular"
+                android:background="@drawable/striketext"
+                android:layout_marginTop="5dp"/>
+            <!-- Quantity Controls -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="80dp">
+
+                <ImageButton
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@mipmap/ic_decrease_pinkbg"
+                    android:background="#FBEAEC"/>
+
+                <TextView
+                    android:layout_width="32dp"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    android:textColor="#222222"
+                    android:textSize="18sp"
+                    android:gravity="center"
+                    android:fontFamily="@font/semibold"/>
+
+                <ImageButton
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:background="#FBEAEC"
+                    android:src="@mipmap/ic_increase_quantity" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <!-- [Checkout] Card sản phẩm -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="8dp"
+        android:layout_marginTop="32dp"
+        android:background="#FBEAEC">
+
+        <!-- Product Image -->
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@mipmap/product01"
+            android:scaleType="centerCrop"
+            android:layout_marginEnd="12dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"/>
+
+        <!-- Product Info -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Orchid Divine"
+                android:textColor="#E85C7A"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:fontFamily="@font/bold"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="2dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="500.000 đ"
+                    android:textColor="#222222"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/semibold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10% off"
+                    android:textColor="#E3171A"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/bold"
+                    android:background="#FDE8E8"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:layout_marginStart="8dp"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="550.000 đ"
+                android:textColor="#222222"
+                android:textSize="14sp"
+                android:fontFamily="@font/regular"
+                android:background="@drawable/striketext"
+                android:layout_marginTop="5dp"/>
+        </LinearLayout>
+
+        <!-- Quantity Text -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="x1"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:fontFamily="@font/semibold"
+            android:layout_marginStart="8dp"/>
+    </LinearLayout>
+
+</LinearLayout>

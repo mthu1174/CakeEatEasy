@@ -5,15 +5,114 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@color/home_background"
+    tools:context=".screens.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:clipChildren="false">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="100dp"
+            android:clipChildren="false">
 
+            <!-- Top Bar -->
+<!--            <RelativeLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:padding="@dimen/home_padding_horizontal"-->
+<!--                android:layout_marginTop="16dp">-->
+<!--                <ImageView-->
+<!--                    android:id="@+id/iv_menu"-->
+<!--                    android:layout_width="28dp"-->
+<!--                    android:layout_height="28dp"-->
+<!--                    android:src="@drawable/ic_menu"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:layout_alignParentStart="true"/>-->
+<!--                <TextView-->
+<!--                    android:id="@+id/tv_welcome"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Welcome back, Linh!"-->
+<!--                    android:textColor="@color/home_pink"-->
+<!--                    android:textSize="18sp"-->
+<!--                    android:layout_centerInParent="true"/>-->
+<!--                <ImageView-->
+<!--                    android:id="@+id/iv_search"-->
+<!--                    android:layout_width="28dp"-->
+<!--                    android:layout_height="28dp"-->
+<!--                    android:src="@drawable/ic_search"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:layout_alignParentEnd="true"/>-->
+<!--            </RelativeLayout>-->
+
+            <!-- Banner -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                app:cardCornerRadius="20dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="@dimen/home_padding_horizontal">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/banner_fresh_cake"
+                    android:scaleType="centerCrop"
+                    app:strokeWidth="0dp"/>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Collection Section -->
+            <TextView
+                style="@style/HomeSectionTitle"
+                android:text="Collection"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_collections"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:clipToPadding="false"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/home_padding_horizontal"
+                tools:listitem="@layout/item_category"/>
+
+            <!-- Today Promo Section -->
+            <TextView
+                style="@style/HomeSectionTitle"
+                android:text="Today Promo"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_promo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:clipToPadding="false"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/home_padding_horizontal"
+                tools:listitem="@layout/item_promo_product"/>
+
+            <!-- Hot Voucher Section -->
+            <TextView
+                style="@style/HomeSectionTitle"
+                android:text="Hot voucher"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_vouchers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:nestedScrollingEnabled="false"
+                android:clipToPadding="false"
+                android:paddingHorizontal="12dp"
+
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                tools:spanCount="2"
+                tools:listitem="@layout/item_grid_voucher"
+                tools:itemCount="4"/>
+
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

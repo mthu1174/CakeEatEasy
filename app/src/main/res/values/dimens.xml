@@ -1,0 +1,17 @@
+<resources>
+    <dimen name="text_medium">14sp</dimen>
+    <dimen name="text_small">12sp</dimen>
+    <dimen name="voucher_card_padding">16dp</dimen>
+    <dimen name="voucher_corner_radius">8dp</dimen>
+
+    <dimen name="bottom_nav_bar_height">72dp</dimen>
+    <!-- Chiều cao của TOÀN BỘ container, bao gồm cả không gian cho FAB nổi lên -->
+    <dimen name="bottom_nav_container_height">92dp</dimen>
+    <dimen name="bottom_nav_corner_radius">24dp</dimen>
+
+    <!--Homepage-->
+    <dimen name="home_padding_horizontal">16dp</dimen>
+    <dimen name="home_section_margin_top">24dp</dimen>
+    <dimen name="home_card_corner_radius">16dp</dimen>
+
+</resources>

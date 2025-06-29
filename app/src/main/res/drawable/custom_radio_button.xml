@@ -1,0 +1,26 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="true">
+        <layer-list>
+            <item>
+                <shape android:shape="oval">
+                    <solid android:color="@color/coupon_pink_text" /> <!-- Màu khi được chọn -->
+                    <size android:width="20dp" android:height="20dp" />
+                    <stroke android:width="2dp" android:color="@color/coupon_pink_text" />
+                </shape>
+            </item>
+            <item android:gravity="center">
+                <shape android:shape="oval">
+                    <solid android:color="@color/white" /> <!-- Chấm trắng ở giữa -->
+                    <size android:width="8dp" android:height="8dp" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+    <item android:state_checked="false">
+        <shape android:shape="oval">
+            <solid android:color="@android:color/transparent" />
+            <size android:width="20dp" android:height="20dp" />
+            <stroke android:width="2dp" android:color="@color/coupon_grey_text" /> <!-- Màu viền khi không được chọn -->
+        </shape>
+    </item>
+</selector>

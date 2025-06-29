@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- FrameLayout là tốt nhất để xếp chồng các khối trạng thái lên nhau -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+    <!-- ==== KHỐI 1: TRẠNG THÁI INACTIVE ==== -->
+    <!-- Chỉ là một ImageView đơn giản, căn giữa. -->
+    <ImageView
+        android:id="@+id/nav_item_inactive"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_gravity="center"
+        app:tint="@color/nav_icon_inactive"
+        tools:src="@drawable/ic_home_outline"
+        android:visibility="invisible"/> <!-- Mặc định hiển thị -->
+
+
+    <!-- ==== KHỐI 2: TRẠNG THÁI ACTIVE ==== -->
+    <!-- Một LinearLayout chứa cả FAB và Text. Toàn bộ khối này sẽ được ẩn/hiện. -->
+    <LinearLayout
+        android:id="@+id/nav_item_active"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|top"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:visibility="invisible"
+        tools:visibility="visible">
+
+    <!-- FAB được đẩy lên trên để tạo hiệu ứng nổi -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/nav_item_active_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-24dp"
+        app:backgroundTint="@color/nav_pink"
+        app:borderWidth="0dp"
+        app:elevation="4dp"
+        app:fabCustomSize="56dp"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.App.Circle"
+        app:tint="@color/white"
+        tools:src="@drawable/ic_home_filled"/>
+
+    <!-- Text label nằm ngay bên dưới FAB -->
+    <TextView
+        android:id="@+id/nav_item_active_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/nav_pink"
+        android:textSize="12sp"
+        tools:text="Home"/>
+
+</LinearLayout>
+
+    </FrameLayout>
