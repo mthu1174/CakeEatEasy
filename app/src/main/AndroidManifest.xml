@@ -13,7 +13,31 @@
         android:theme="@style/Theme.CakeEatEasy"
         tools:targetApi="31">
         <activity
-            android:name=".screens.ForgotPasswordActivity"
+            android:name=".screens.HistoryOrdersActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.OnGoingOrderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.OrderTrackingDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.OrderTrackingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.EditAddressActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.AddressActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.CheckoutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.CartActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".screens.VoucherActivity"
@@ -28,7 +52,7 @@
             android:name=".screens.BaseActivity"
             android:exported="false" />
         <activity
-            android:name=".screens.LoginActivity"
+            android:name=".screens.ProductDetailsActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
