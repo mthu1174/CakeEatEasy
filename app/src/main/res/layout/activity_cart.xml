@@ -37,28 +37,15 @@
             android:gravity="center"
             android:fontFamily="@font/semibold" />
 
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+
             <ImageView
-                android:id="@+id/btn_cart"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:src="@drawable/ic_cart_2"
-                android:contentDescription="Cart"
+            android:id="@+id/btn_chat"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_chat_2"
+            android:contentDescription="Cart"
                 app:tint="@color/white" />
-            <TextView
-                android:id="@+id/cart_badge"
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:layout_gravity="end|top"
-                android:background="@drawable/badge_background"
-                android:textColor="@android:color/white"
-                android:textSize="12sp"
-                android:gravity="center"
-                android:visibility="gone"
-                android:text="0"/>
-        </FrameLayout>
+
     </LinearLayout>
 
     <!-- Cart Items List -->

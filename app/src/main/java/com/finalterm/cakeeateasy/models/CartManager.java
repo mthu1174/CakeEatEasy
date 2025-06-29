@@ -7,6 +7,8 @@ public class CartManager {
     private static CartManager instance;
     private final List<CartItem> cartItems = new ArrayList<>();
     private int voucherAmount = 0;
+    public String deliveryTime = "18:00";
+    public String voucherCode = "";
 
     private CartManager() {}
 

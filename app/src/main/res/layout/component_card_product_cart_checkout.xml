@@ -147,13 +147,13 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/edt_name_product_checkout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Orchid Divine"
+                android:fontFamily="@font/bold"
                 android:textColor="#E85C7A"
-                android:textStyle="bold"
                 android:textSize="18sp"
-                android:fontFamily="@font/bold"/>
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -163,15 +163,16 @@
                 android:layout_marginTop="2dp">
 
                 <TextView
+                    android:id="@+id/current_price_checkout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="500.000 đ"
                     android:textColor="#222222"
                     android:textStyle="bold"
                     android:textSize="18sp"
                     android:fontFamily="@font/semibold"/>
 
                 <TextView
+                    android:id="@+id/edt_discount_percent_checkout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="10% off"
@@ -187,9 +188,9 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/edt_first_price_checkout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="550.000 đ"
                 android:textColor="#222222"
                 android:textSize="14sp"
                 android:fontFamily="@font/regular"
