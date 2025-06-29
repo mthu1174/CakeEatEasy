@@ -25,7 +25,6 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:scaleType="centerCrop"
-                android:src="@mipmap/product01"
                 android:layout_marginBottom="12dp"
                 app:shapeAppearanceOverlay="@style/ShapeAppearance.App.Round"/>
 
@@ -105,7 +104,6 @@
                     android:id="@+id/btnAddToCartSquare"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:src="@mipmap/ic_cart_64"
                     android:background="@color/white"
                     android:layout_marginEnd="1dp"
                     android:contentDescription="Click this to add your product into your cart!"/>
@@ -115,8 +113,7 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:contentDescription="Click this to add the product into your wishlist!"
-                    android:background="@color/white"
-                    android:src="@mipmap/ic_favourite_64" />
+                    android:background="@color/white" />
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -141,7 +138,6 @@
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:scaleType="centerCrop"
-                android:src="@mipmap/product01"
                 android:layout_marginEnd="16dp"/>
 
             <LinearLayout
@@ -227,7 +223,6 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:background="@color/white"
-                    android:src="@mipmap/ic_cart_64"
                     android:layout_marginBottom="8dp"
                     android:contentDescription="Click this to add your product into your cart!"/>
 
@@ -236,7 +231,6 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:background="@color/white"
-                    android:src="@mipmap/ic_favourite_64"
                     android:contentDescription="Click this to add the product into your wishlist!"/>
             </LinearLayout>
         </LinearLayout>

@@ -14,4 +14,8 @@
     <dimen name="home_section_margin_top">24dp</dimen>
     <dimen name="home_card_corner_radius">16dp</dimen>
 
+    <!--Product-->
+    <dimen name="product_card_gap">4dp</dimen>
+
+
 </resources>

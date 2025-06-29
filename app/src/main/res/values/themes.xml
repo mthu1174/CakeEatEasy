@@ -51,6 +51,8 @@
         <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
     </style>
+
+    <!--Style cho CardImageCorners-->
     <style name="ShapeAppearance.App.CardImageCorners" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSizeTopRight">12dp</item>
@@ -58,5 +60,14 @@
         <item name="cornerSizeBottomRight">12dp</item>
         <item name="cornerSizeBottomLeft">12dp</item>
     </style>
+
+    <!--RatingBar-->
+    <style name="RatingBarTheme" parent="Theme.AppCompat">
+        <!-- Màu của sao đã được chọn (vàng) -->
+        <item name="colorControlActivated">#FFC107</item>
+        <!-- Màu của sao chưa được chọn (xám) -->
+        <item name="colorControlNormal">#a1a1a1</item>
+    </style>
+
 
 </resources>

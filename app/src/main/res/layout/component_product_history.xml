@@ -93,7 +93,6 @@
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:scaleType="centerCrop"
-                        android:src="@mipmap/product01"
                         android:layout_gravity="start"
                         android:background="@drawable/image_border"/>
 
@@ -130,7 +129,6 @@
                         android:layout_height="30dp"
                         android:paddingBottom="10dp"
                         android:layout_marginStart="8dp"
-                        android:src="@mipmap/ic_next_2"
                         app:tint="@color/cakeiteasy_pink" />
                 </LinearLayout>
             </LinearLayout>
@@ -258,7 +256,6 @@
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:scaleType="centerCrop"
-                        android:src="@mipmap/product01"
                         android:layout_gravity="start"
                         android:background="@drawable/image_border"/>
 
@@ -295,7 +292,6 @@
                         android:layout_height="30dp"
                         android:paddingBottom="10dp"
                         android:layout_marginStart="8dp"
-                        android:src="@mipmap/ic_next_2"
                         app:tint="@color/cakeiteasy_pink" />
                 </LinearLayout>
             </LinearLayout>

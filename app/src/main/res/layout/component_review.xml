@@ -42,24 +42,19 @@
                 android:layout_marginBottom="8dp">
                 <ImageView
                     android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@mipmap/ic_star" />
+                    android:layout_height="24dp" />
                 <ImageView
                     android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@mipmap/ic_star"/>
+                    android:layout_height="24dp" />
                 <ImageView
                     android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@mipmap/ic_star"/>
+                    android:layout_height="24dp" />
                 <ImageView
                     android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@mipmap/ic_star"/>
+                    android:layout_height="24dp" />
                 <ImageView
                     android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@mipmap/ic_star"/>
+                    android:layout_height="24dp" />
             </LinearLayout>
 
             <!-- Review Title -->
@@ -94,7 +89,6 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@mipmap/ic_avatar"
                     android:scaleType="centerCrop" />
 
                 <TextView

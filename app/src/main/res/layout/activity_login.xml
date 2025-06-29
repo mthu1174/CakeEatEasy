@@ -14,8 +14,9 @@
     <ImageView
         android:id="@+id/img_login_logo"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        app:srcCompat="@mipmap/ic_logo" />
+        android:layout_height="50dp"/>
+<!--        app:srcCompat="@mipmap/ic_logo"-->
+
 
     <!-- Title -->
     <TextView
@@ -153,8 +154,8 @@
         android:textColor="#FBEAEC"
         android:textSize="16dp"
         app:cornerRadius="8dp"
-        app:icon="@mipmap/ic_google"
         app:iconGravity="textStart" />
+<!--    app:icon="@mipmap/ic_google"-->
 
     <!-- Continue With Facebook Button -->
     <Button
@@ -170,8 +171,8 @@
         android:textColor="#FBEAEC"
         android:textSize="16dp"
         app:cornerRadius="8dp"
-        app:icon="@mipmap/ic_facebook"
         app:iconGravity="textStart" />
+<!--    app:icon="@mipmap/ic_facebook"-->
 
     <!-- Sign Up Link -->
     <LinearLayout

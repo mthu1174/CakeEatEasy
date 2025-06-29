@@ -73,6 +73,11 @@
     <color name="notif_status_promo_bg">#FFF4E5</color>
     <color name="notif_unread_dot">#E3171A</color>
 
+    <!--ProductPage-->
+    <color name="product_list_app_bar_bg">#DD5369</color>
+    <color name="product_list_app_bar_text">#FFFFFF</color>
+    <color name="product_list_bg">#FEF5F6</color>
+
 
 
 

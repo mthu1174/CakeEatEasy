@@ -144,7 +144,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             case 0: return MainActivity.class; // Hoặc HomeActivity.class
             // TODO: Tạo và thay thế bằng các class Activity thực tế của bạn
             // case 1: return OrderActivity.class;
-            // case 2: return FavouriteActivity.class;
+            case 2: return FavouriteActivity.class;
             case 3: return NotificationActivity.class;
             // case 4: return ProfileActivity.class;
             default: return null;

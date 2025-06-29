@@ -22,7 +22,6 @@
         <ImageButton
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:src="@mipmap/ic_decrease_quantity"
             android:background="@color/white"/>
 
         <TextView
@@ -37,8 +36,7 @@
         <ImageButton
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:background="@color/white"
-            android:src="@mipmap/ic_increase_quantity" />
+            android:background="@color/white" />
     </LinearLayout>
 
     <!-- Custom RadioButton -->

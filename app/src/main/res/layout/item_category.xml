@@ -21,6 +21,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Birthday"
-        android:textColor="@color/home_text_secondary"
+        android:textColor="@color/home_text_primary"
         android:textSize="14sp" />
 </LinearLayout>
