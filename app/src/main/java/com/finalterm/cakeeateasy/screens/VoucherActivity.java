@@ -1,5 +1,6 @@
 package com.finalterm.cakeeateasy.screens;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,6 +28,23 @@ public class VoucherActivity extends AppCompatActivity { // Hoặc BaseActivity 
         initViews();
         loadData();
         setupRecyclerViews();
+
+        // Handle voucher selection
+        availableAdapter.setOnVoucherClickListener(voucher -> {
+            Intent resultIntent = new Intent();
+            resultIntent.putExtra("voucher_amount", voucher.getDiscountAmount());
+            resultIntent.putExtra("voucher_code", voucher.getVoucherCode());
+            setResult(RESULT_OK, resultIntent);
+            finish();
+        });
+
+        unavailableAdapter.setOnVoucherClickListener(voucher -> {
+            Intent resultIntent = new Intent();
+            resultIntent.putExtra("voucher_amount", voucher.getDiscountAmount());
+            resultIntent.putExtra("voucher_code", voucher.getVoucherCode());
+            setResult(RESULT_OK, resultIntent);
+            finish();
+        });
     }
 
     private void initViews() {
@@ -40,12 +58,12 @@ public class VoucherActivity extends AppCompatActivity { // Hoặc BaseActivity 
         unavailableList = new ArrayList<>();
 
         // Dữ liệu giả
-        availableList.add(new SelectableVoucher("Save 10% on orders over 1000k", "Valid until 01/08/2026", R.drawable.ic_cake_pink, true));
-        availableList.add(new SelectableVoucher("Save 5% on orders over 800k", "Valid until 01/08/2026", R.drawable.ic_cake_pink, true));
-        availableList.add(new SelectableVoucher("Freeship on orders over 500k", "Valid until 01/08/2026", R.drawable.ic_ship, true));
+        availableList.add(new SelectableVoucher("Save 10% on orders over 1000k", "Valid until 01/08/2026", R.drawable.ic_cake_pink, true, "SAVE10", 100000));
+        availableList.add(new SelectableVoucher("Save 5% on orders over 800k", "Valid until 01/08/2026", R.drawable.ic_cake_pink, true, "SAVE5", 50000));
+        availableList.add(new SelectableVoucher("Freeship on orders over 500k", "Valid until 01/08/2026", R.drawable.ic_ship, true, "FREESHIP", 30000));
 
-        unavailableList.add(new SelectableVoucher("Save 15% on orders over 1500k", "Valid until 01/08/2026", R.drawable.ic_cake_grey, false));
-        unavailableList.add(new SelectableVoucher("Save 20% on orders over 2000k", "Valid until 01/08/2026", R.drawable.ic_cake_grey, false));
+        unavailableList.add(new SelectableVoucher("Save 15% on orders over 1500k", "Valid until 01/08/2026", R.drawable.ic_cake_grey, false, "SAVE15", 150000));
+        unavailableList.add(new SelectableVoucher("Save 20% on orders over 2000k", "Valid until 01/08/2026", R.drawable.ic_cake_grey, false, "SAVE20", 200000));
     }
 
     private void setupRecyclerViews() {

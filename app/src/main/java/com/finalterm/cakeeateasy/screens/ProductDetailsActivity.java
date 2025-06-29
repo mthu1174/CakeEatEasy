@@ -131,6 +131,19 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
         // Add to cart: increment cart count and show badge (Toast for demo)
         btnAddCart.setOnClickListener(v -> {
+            // Add product to cart
+            int imageResId = R.drawable.product01; // Use a real image if available
+            com.finalterm.cakeeateasy.models.CartManager.getInstance().addToCart(
+                new com.finalterm.cakeeateasy.models.CartItem(
+                    product.getProductID(),
+                    product.getProductName(),
+                    String.format("%.0f đ", product.getProductCurrentPrice()),
+                    String.format("%.0f%% off", product.getDiscountPercent()),
+                    imageResId,
+                    quantity
+                )
+            );
+            // Update badge as before
             cartCount += quantity;
             updateCartBadge();
             if (cartToast != null) cartToast.cancel();

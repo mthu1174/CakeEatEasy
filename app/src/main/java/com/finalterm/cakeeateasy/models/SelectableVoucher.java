@@ -6,14 +6,18 @@ public class SelectableVoucher {
     private int iconRes;
     private boolean isAvailable;
     private boolean isSelected; // Để quản lý trạng thái của RadioButton
+    private String voucherCode;
+    private int discountAmount;
 
     // Constructor, Getters và Setters...
-    public SelectableVoucher(String title, String validity, int iconRes, boolean isAvailable) {
+    public SelectableVoucher(String title, String validity, int iconRes, boolean isAvailable, String voucherCode, int discountAmount) {
         this.title = title;
         this.validity = validity;
         this.iconRes = iconRes;
         this.isAvailable = isAvailable;
         this.isSelected = false; // Mặc định không được chọn
+        this.voucherCode = voucherCode;
+        this.discountAmount = discountAmount;
     }
 
     public String getTitle() {
@@ -54,6 +58,22 @@ public class SelectableVoucher {
 
     public void setSelected(boolean selected) {
         isSelected = selected;
+    }
+
+    public String getVoucherCode() {
+        return voucherCode;
+    }
+
+    public void setVoucherCode(String voucherCode) {
+        this.voucherCode = voucherCode;
+    }
+
+    public int getDiscountAmount() {
+        return discountAmount;
+    }
+
+    public void setDiscountAmount(int discountAmount) {
+        this.discountAmount = discountAmount;
     }
     // ... thêm các hàm get/set ...
 }
