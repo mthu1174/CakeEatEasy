@@ -99,8 +99,8 @@
                 <ImageButton
                     android:layout_width="36dp"
                     android:layout_height="36dp"
-                    android:src="@drawable/ic_decrease_pinkbg"
-                    android:background="#FBEAEC"/>
+                    android:background="#FBEAEC"
+                    android:src="@drawable/ic_decrease_quantity_1" />
 
                 <TextView
                     android:layout_width="32dp"
@@ -115,7 +115,7 @@
                     android:layout_width="36dp"
                     android:layout_height="36dp"
                     android:background="#FBEAEC"
-                    android:src="@drawable/ic_increase_quantity" />
+                    android:src="@drawable/ic_increase_quantity_1" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
