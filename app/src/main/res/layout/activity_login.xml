@@ -95,6 +95,19 @@
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!--Checkbox RememberLogin-->
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/holo_blue_dark"
+        android:text="Remember account?"
+        android:fontFamily="@font/semibold"/>
+
+
     <!-- Forgot Password Link -->
     <TextView
         android:id="@+id/txt_login_forgot_password"
@@ -104,7 +117,7 @@
         android:layout_marginTop="10dp"
         android:background="?attr/selectableItemBackground"
         android:clickable="true"
-        android:fontFamily="@font/semibold"
+        android:fontFamily="@font/semibolditalic"
         android:text="@string/title_login_forgot_password"
         android:textColor="@android:color/holo_blue_dark"
         android:textSize="16sp" />
@@ -208,4 +221,5 @@
             android:textSize="16sp" />
 
     </LinearLayout>
+
 </LinearLayout>
