@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".screens.CheckoutActivity">
+
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Header Bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:orientation="horizontal"
+            android:background="@color/cakeiteasy_pink"
+            android:gravity="center_vertical"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:elevation="4dp">
+
+            <ImageView
+                android:id="@+id/btn_back"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_back_2"
+                android:contentDescription="Back" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Checkout"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:fontFamily="@font/semibold" />
+            <ImageView
+                android:id="@+id/btn_chat"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_chat_2"
+                android:contentDescription="Cart"
+                app:tint="@color/white" />
+        </LinearLayout>
+
+        <!-- Address Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:background="#F8F8F8"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_location_address"
+                app:tint="@color/cakeiteasy_pink" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="8dp">
+
+                <TextView
+                    android:id="@+id/edt_address_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#222222"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/bold" />
+
+                <TextView
+                    android:id="@+id/edt_address_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#222222"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/semibold" />
+
+                <TextView
+                    android:id="@+id/edt_address_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#888888"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/regular" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/btn_edit_address"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_chevron_right"
+                android:contentDescription="Edit Address"
+                app:tint="#888888" />
+        </LinearLayout>
+
+        <!-- Product List (replace RecyclerView with LinearLayout) -->
+        <LinearLayout
+            android:id="@+id/layout_checkout_items"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <!-- Example Product Item Template (repeat for each product in code) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="12dp"
+                android:gravity="center_vertical">
+
+                <!-- Product Image Placeholder -->
+                <ImageView
+                    android:id="@+id/img_product_checkout"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/placeholder_cake_promo" />
+
+                <!-- Product Info -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="12dp">
+
+                    <EditText
+                        android:id="@+id/edt_name_product_checkout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/bold"
+                        android:textColor="#E85C7A"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:background="@android:color/transparent"
+                        android:focusable="false"
+                        android:cursorVisible="false" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="2dp">
+
+                        <EditText
+                            android:id="@+id/current_price_checkout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#222222"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/semibold"
+                            android:background="@android:color/transparent"
+                            android:focusable="false"
+                            android:cursorVisible="false"/>
+
+                        <EditText
+                            android:id="@+id/edt_discount_percent_checkout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#E3171A"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/bold"
+                            android:background="#FDE8E8"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:paddingTop="2dp"
+                            android:paddingBottom="2dp"
+                            android:layout_marginStart="8dp"
+                            android:focusable="false"
+                            android:cursorVisible="false"/>
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/edt_first_price_checkout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#222222"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/regular"
+                        android:background="@drawable/striketext"
+                        android:layout_marginTop="5dp"
+                        android:focusable="false"
+                        android:cursorVisible="false"/>
+                </LinearLayout>
+
+                <!-- Quantity Text -->
+                <EditText
+                    android:id="@+id/edt_quantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/semibold"
+                    android:layout_marginStart="8dp"
+                    android:focusable="false"
+                    android:cursorVisible="false"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Time Delivery & Voucher & Note -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#F8F8F8">
+
+            <!-- Time Delivery -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_order_outline"
+                    app:tint="@color/cakeiteasy_pink" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Time delivery"
+                    android:textColor="#222222"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/semibold"
+                    android:layout_marginStart="8dp" />
+                <TextView
+                    android:id="@+id/txt_time_delivery"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="#888888"
+                    android:textSize="15sp"
+                    android:gravity="end"
+                    android:fontFamily="@font/regular" />
+                <ImageButton
+                    android:id="@+id/btn_time_picker"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_chevron_right"
+                    android:contentDescription="Pick time"
+                    app:tint="#888888" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E0E0E0" />
+
+            <!-- Voucher -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_voucher_ticket"
+                    app:tint="@color/cakeiteasy_pink" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Voucher"
+                    android:textColor="#222222"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/semibold"
+                    android:layout_marginStart="8dp" />
+                <TextView
+                    android:id="@+id/txt_voucher"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="#888888"
+                    android:textSize="15sp"
+                    android:gravity="end"
+                    android:fontFamily="@font/regular" />
+                <ImageButton
+                    android:id="@+id/btn_voucher_picker"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_chevron_right"
+                    android:contentDescription="Pick voucher"
+                    app:tint="#888888" />
+            </LinearLayout>
+
+            <!-- Note -->
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Note"
+                android:textSize="15dp"
+                android:paddingLeft="16dp"
+                android:fontFamily="@font/semibold"/>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/emailInputLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:textColorHint="@color/black">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/regular" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <!-- Payment Method -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Payment method"
+                android:textColor="#222222"
+                android:textSize="15sp"
+                android:fontFamily="@font/semibold"
+                android:layout_marginBottom="8dp" />
+
+            <RadioGroup
+                android:id="@+id/rg_payment_method"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="8dp">
+                    <RadioButton
+                        android:id="@+id/bank_account"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bank account"
+                        android:textColor="#222222"
+                        android:fontFamily="@font/semibold" />
+
+                    <ImageView
+                        android:paddingLeft="5dp"
+                        android:id="@+id/imageView2"
+                        android:layout_width="48dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"
+                        app:srcCompat="@drawable/ic_wallet" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="8dp">
+                    <RadioButton
+                        android:id="@+id/rb_visa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Visa"
+                        android:textColor="#222222"
+                        android:fontFamily="@font/semibold" />
+                    <ImageView
+                        android:paddingLeft="5dp"
+                        android:id="@+id/imageView3"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"
+                        app:srcCompat="@drawable/ic_visa" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="8dp">
+                    <RadioButton
+                        android:id="@+id/rb_momo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Momo"
+                        android:textColor="#222222"
+                        android:fontFamily="@font/semibold" />
+                    <ImageView
+                        android:paddingLeft="5dp"
+                        android:id="@+id/imageView4"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"
+                        app:srcCompat="@drawable/ic_momo" />
+                </LinearLayout>
+
+            </RadioGroup>
+        </LinearLayout>
+
+        <!-- Payment Summary -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="#F8F8F8">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Payment Summary"
+                android:textColor="#222222"
+                android:textSize="15sp"
+                android:fontFamily="@font/semibold"
+                android:layout_marginBottom="8dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Order Total"
+                    android:fontFamily="@font/semibold"
+                    android:textColor="#888888"
+                    android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/edt_order_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#222222"
+                    android:fontFamily="@font/semibold"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Items Discount"
+                    android:fontFamily="@font/semibold"
+                    android:textColor="#888888"
+                    android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/edt_items_discount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/semibold"
+                    android:textColor="#DD5369"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Coupon Discount"
+                    android:fontFamily="@font/semibold"
+                    android:textColor="#888888"
+                    android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/txt_coupon_discount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/semibold"
+                    android:textColor="#DD5369"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Shipping"
+                    android:fontFamily="@font/semibold"
+                    android:textColor="#888888"
+                    android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/txt_shipping"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Free"
+                    android:fontFamily="@font/semibold"
+                    android:textColor="#222222"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="#E0E0E0"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:backgroundTint="@color/cakeiteasy_pink"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Total"
+                    android:textColor="#222222"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/bold" />
+                <TextView
+                    android:id="@+id/edt_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/cakeiteasy_pink"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Checkout Button -->
+        <Button
+            android:id="@+id/btn_checkout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:backgroundTint="#DD5369"
+            android:fontFamily="@font/bold"
+            android:text="Checkout"
+            android:textColor="#FBEAEC"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+</ScrollView>
