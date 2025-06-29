@@ -25,7 +25,7 @@
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@mipmap/product01"
+            android:src="@drawable/product01"
             android:scaleType="centerCrop"
             android:layout_marginEnd="12dp"
             android:layout_marginTop="4dp"
@@ -99,7 +99,7 @@
                 <ImageButton
                     android:layout_width="36dp"
                     android:layout_height="36dp"
-                    android:src="@mipmap/ic_decrease_pinkbg"
+                    android:src="@drawable/ic_decrease_pinkbg"
                     android:background="#FBEAEC"/>
 
                 <TextView
@@ -115,7 +115,7 @@
                     android:layout_width="36dp"
                     android:layout_height="36dp"
                     android:background="#FBEAEC"
-                    android:src="@mipmap/ic_increase_quantity" />
+                    android:src="@drawable/ic_increase_quantity" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -133,7 +133,7 @@
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@mipmap/product01"
+            android:src="@drawable/product01"
             android:scaleType="centerCrop"
             android:layout_marginEnd="12dp"
             android:layout_marginTop="4dp"
