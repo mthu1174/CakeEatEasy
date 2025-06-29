@@ -11,4 +11,15 @@
     <string name="title_continue_facebook">Continue with Facebook</string>
     <string name="title_not_have_account">Don\'t have an account?</string>
     <string name="title_signup">Sign up</string>
+    <string name="title_signup_title">Sign up</string>
+    <string name="title_signup_title_2">Create an account to continue!</string>
+    <string name="title_already_have_account">Already have an account?</string>
+    <string name="title_create_new_account">Create an account to continue!</string>
+    <string name="title_fullname">Full name</string>
+    <string name="title_email">Email</string>
+    <string name="title_dob">Date of Birth</string>
+    <string name="title_phone_number">Phone number</string>
+    <string name="title_password">Password</string>
+    <string name="title_confirm_password">Confirm Password</string>
+    <string name="title_have_account">Already have an account?</string>
 </resources>

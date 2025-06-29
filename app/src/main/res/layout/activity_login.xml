@@ -15,7 +15,7 @@
         android:id="@+id/img_login_logo"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        app:srcCompat="@mipmap/ic_logo" />
+        app:srcCompat="@drawable/ic_logo" />
 
     <!-- Title -->
     <TextView
@@ -153,7 +153,7 @@
         android:textColor="#FBEAEC"
         android:textSize="16dp"
         app:cornerRadius="8dp"
-        app:icon="@mipmap/ic_google"
+        app:icon="@drawable/ic_google"
         app:iconGravity="textStart" />
 
     <!-- Continue With Facebook Button -->
@@ -170,7 +170,7 @@
         android:textColor="#FBEAEC"
         android:textSize="16dp"
         app:cornerRadius="8dp"
-        app:icon="@mipmap/ic_facebook"
+        app:icon="@drawable/ic_facebook"
         app:iconGravity="textStart" />
 
     <!-- Sign Up Link -->
