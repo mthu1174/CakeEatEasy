@@ -25,10 +25,19 @@ public class VoucherGridAdapter extends RecyclerView.Adapter<VoucherGridAdapter.
 
     private Context context;
     private List<Voucher> voucherList;
+    private OnVoucherClickListener listener;
+
+    public interface OnVoucherClickListener {
+        void onVoucherClick(Voucher voucher);
+    }
 
     public VoucherGridAdapter(Context context, List<Voucher> voucherList) {
         this.context = context;
         this.voucherList = voucherList;
+    }
+
+    public void setOnVoucherClickListener(OnVoucherClickListener listener) {
+        this.listener = listener;
     }
 
     @NonNull
@@ -66,6 +75,13 @@ public class VoucherGridAdapter extends RecyclerView.Adapter<VoucherGridAdapter.
         holder.ivIcon.setImageResource(voucher.getIconRes());
         ColorStateList iconColor = ColorStateList.valueOf(ContextCompat.getColor(context, voucher.getTitleAndIconColorRes()));
         ImageViewCompat.setImageTintList(holder.ivIcon, iconColor);
+
+        // Add click listener
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onVoucherClick(voucher);
+            }
+        });
     }
     @Override
     public int getItemCount() {

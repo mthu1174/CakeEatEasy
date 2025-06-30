@@ -23,10 +23,19 @@ public class SelectableVoucherAdapter extends RecyclerView.Adapter<SelectableVou
     private Context context;
     private List<SelectableVoucher> voucherList;
     private int lastSelectedPosition = -1; // Vị trí của item được chọn cuối cùng
+    private OnVoucherClickListener listener;
+
+    public interface OnVoucherClickListener {
+        void onVoucherClick(SelectableVoucher voucher);
+    }
 
     public SelectableVoucherAdapter(Context context, List<SelectableVoucher> voucherList) {
         this.context = context;
         this.voucherList = voucherList;
+    }
+
+    public void setOnVoucherClickListener(OnVoucherClickListener listener) {
+        this.listener = listener;
     }
 
     @NonNull
@@ -58,6 +67,13 @@ public class SelectableVoucherAdapter extends RecyclerView.Adapter<SelectableVou
 
         // Chỉ cho phép chọn nếu voucher có sẵn
         holder.rbSelect.setEnabled(voucher.isAvailable());
+
+        // Add click listener to itemView
+        holder.itemView.setOnClickListener(v -> {
+            if (voucher.isAvailable() && listener != null) {
+                listener.onVoucherClick(voucher);
+            }
+        });
     }
 
     @Override
@@ -91,7 +107,10 @@ public class SelectableVoucherAdapter extends RecyclerView.Adapter<SelectableVou
                 voucherList.get(lastSelectedPosition).setSelected(true);
                 notifyItemChanged(lastSelectedPosition);
 
-                // TODO: Thông báo cho Activity biết voucher nào đã được chọn
+                // Notify activity when voucher is selected
+                if (listener != null) {
+                    listener.onVoucherClick(voucherList.get(lastSelectedPosition));
+                }
             });
         }
     }

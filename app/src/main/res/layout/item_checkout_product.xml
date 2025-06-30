@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    android:gravity="center_vertical">
+
+    <!-- Product Image Placeholder -->
+    <ImageView
+        android:id="@+id/img_product_checkout"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/placeholder_cake_promo" />
+
+    <!-- Product Info -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginStart="12dp">
+
+        <EditText
+            android:id="@+id/edt_name_product_checkout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/bold"
+            android:textColor="#E85C7A"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:background="@android:color/transparent"
+            android:focusable="false"
+            android:cursorVisible="false" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="2dp">
+
+            <EditText
+                android:id="@+id/current_price_checkout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#222222"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:fontFamily="@font/semibold"
+                android:background="@android:color/transparent"
+                android:focusable="false"
+                android:cursorVisible="false"/>
+
+            <EditText
+                android:id="@+id/edt_discount_percent_checkout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#E3171A"
+                android:textSize="14sp"
+                android:fontFamily="@font/bold"
+                android:background="#FDE8E8"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:layout_marginStart="8dp"
+                android:focusable="false"
+                android:cursorVisible="false"/>
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/edt_first_price_checkout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#222222"
+            android:textSize="14sp"
+            android:fontFamily="@font/regular"
+            android:background="@drawable/striketext"
+            android:layout_marginTop="5dp"
+            android:focusable="false"
+            android:cursorVisible="false"/>
+    </LinearLayout>
+
+    <!-- Quantity Text -->
+    <EditText
+        android:id="@+id/edt_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:fontFamily="@font/semibold"
+        android:layout_marginStart="8dp"
+        android:focusable="false"
+        android:cursorVisible="false"/>
+</LinearLayout> 

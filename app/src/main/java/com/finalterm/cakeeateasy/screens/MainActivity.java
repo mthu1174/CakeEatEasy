@@ -137,10 +137,10 @@ public class MainActivity extends com.finalterm.cakeeateasy.screens.BaseActivity
 
         // Dữ liệu voucher
         voucherList = new ArrayList<>();
-        voucherList.add(new Voucher("New Member", "10% off", R.color.voucher_orange, R.color.voucher_icon_bg_orange, R.drawable.ic_gift));
-        voucherList.add(new Voucher("Freeshipping", "Order 500k+", R.color.voucher_green, R.color.voucher_icon_bg_green, R.drawable.ic_shopping_cart));
-        voucherList.add(new Voucher("Happy Valentine", "10% off", R.color.home_pink, R.color.voucher_icon_bg_pink, R.drawable.ic_favorite_doutone));
-        voucherList.add(new Voucher("Holiday day!", "Buy 1 get 1", R.color.voucher_orange, R.color.voucher_icon_bg_orange, R.drawable.ic_sun));
+        voucherList.add(new Voucher("New Member", "10% off", R.color.voucher_orange, R.color.voucher_icon_bg_orange, R.drawable.ic_gift, "NEWMEMBER", 100000));
+        voucherList.add(new Voucher("Freeshipping", "Order 500k+", R.color.voucher_green, R.color.voucher_icon_bg_green, R.drawable.ic_shopping_cart, "FREESHIP", 30000));
+        voucherList.add(new Voucher("Happy Valentine", "10% off", R.color.home_pink, R.color.voucher_icon_bg_pink, R.drawable.ic_favorite_doutone, "VALENTINE", 100000));
+        voucherList.add(new Voucher("Holiday day!", "Buy 1 get 1", R.color.voucher_orange, R.color.voucher_icon_bg_orange, R.drawable.ic_sun, "HOLIDAY", 200000));
     }
 
     private void setupRecyclerViews() {
