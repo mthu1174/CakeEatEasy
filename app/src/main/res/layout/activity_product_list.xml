@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/product_list_bg"
+    android:background="@color/app_pink_background"
     tools:context=".screens.ProductListActivity">
 
     <!-- 1. App Bar tùy chỉnh -->

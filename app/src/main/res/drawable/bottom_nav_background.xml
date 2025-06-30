@@ -2,6 +2,6 @@
 <!-- Đây là file nền trắng đơn giản, chỉ có bo góc -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
-    <solid android:color="@color/nav_background" />
+    <solid android:color="@color/white" />
     <corners android:radius="@dimen/bottom_nav_corner_radius" />
 </shape>

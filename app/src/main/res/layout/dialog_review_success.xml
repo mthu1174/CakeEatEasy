@@ -14,15 +14,14 @@
         android:layout_height="wrap_content">
 
         <TextView
+            style="@style/TextAppearance.App.Heading2"
             android:id="@+id/txt_dialog_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_alignParentStart="true"
             android:text="Thanks for rating your meal"
-            android:textColor="@color/home_text_primary"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textColor="@color/text_dark" />
 
         <ImageView
             android:id="@+id/btn_close_dialog"
@@ -41,17 +40,16 @@
         android:src="@drawable/ic_two_heart" />
 
     <TextView
+        style="@style/TextAppearance.App.Body2.Bold"
         android:id="@+id/txt_dialog_message_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="24dp"
-        android:text="Thank you for rating your meal!"
-        android:textColor="@color/home_text_primary"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        android:text="Thank you for rating your meal!" />
 
     <TextView
+        style="@style/TextAppearance.App.Body2"
         android:id="@+id/txt_dialog_message_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -59,8 +57,7 @@
         android:layout_marginTop="8dp"
         android:gravity="center"
         android:text="We appreciate your time and hope\nto serve you again soon!"
-        android:textColor="@color/home_text_secondary"
-        android:textSize="14sp" />
+        android:textColor="@color/text_light" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_dialog_ok"
@@ -71,6 +68,7 @@
         android:text="OK"
         android:textAllCaps="true"
         android:textColor="@color/white"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:fontFamily="@font/semibold"/>
 
 </LinearLayout>

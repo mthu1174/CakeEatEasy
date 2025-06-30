@@ -78,6 +78,56 @@
     <color name="product_list_app_bar_text">#FFFFFF</color>
     <color name="product_list_bg">#FEF5F6</color>
 
+    <!-- ============== CORE COLORS ============== -->
+
+    <!-- ============== TEXT COLORS ============== -->
+    <color name="text_dark">#1A1A1A</color>
+    <color name="text_normal">#4D4D4D</color>
+    <color name="text_light">#808080</color>
+    <color name="text_muted">#B3B3B3</color>
+
+    <!-- ============== BACKGROUND COLORS ============== -->
+    <color name="background_canvas">#F7F7F7</color>
+    <color name="background_primary">#FFFFFF</color>
+
+    <!-- ============== BORDER COLOR ============== -->
+    <color name="border_primary">#D9D9D9</color>
+
+    <!-- ============== STATUS COLORS ============== -->
+    <!-- Blue -->
+    <color name="status_blue_main">#0033C9</color>
+    <color name="status_blue_border">#FFFFFF</color>
+    <color name="status_blue_bg">#FFFFFF</color>
+
+    <!-- Red (tôi đã dùng tên "error" để dễ nhận biết) -->
+    <color name="status_error_main">#E3173C</color>
+    <color name="status_error_border">#F9C7D0</color>
+    <color name="status_error_bg">#FDE8EC</color>
+
+    <!-- Green (tên "success") -->
+    <color name="status_success_main">#00CF6A</color>
+    <color name="status_success_border">#C2FFE1</color>
+    <color name="status_success_bg">#E5FFF3</color>
+
+    <!-- Orange (tên "warning") -->
+    <color name="status_warning_main">#FF8D00</color>
+    <color name="status_warning_border">#FFE4C2</color>
+    <color name="status_warning_bg">#FFF4E5</color>
+
+    <!-- ============== MAIN COLORS (màu nhấn) ============== -->
+    <color name="accent_main">#0033C9</color>
+    <color name="accent_border">#DEC5FC</color>
+    <color name="accent_bg">#F1E7FE</color>
+
+
+    <!-- ============== MÀU HỒNG ============== -->
+    <color name="app_pink">#DD5369</color>
+    <color name="app_pink_border">#F5CCD2</color>
+    <color name="app_pink_background">#FBEAEC</color>
+
+
+
+
 
 
 

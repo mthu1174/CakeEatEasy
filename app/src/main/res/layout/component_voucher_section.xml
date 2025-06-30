@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Voucher"
-        android:textColor="@color/voucher_text_primary"
+        android:textColor="@color/text_dark"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -36,16 +36,16 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/voucher_pink" />
+            app:tint="@color/app_pink" />
 
         <TextView
+            style="@style/TextAppearance.App.Body2"
             android:id="@+id/tv_voucher_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="Voucher"
-            android:textColor="@color/voucher_text_primary"
-            android:textSize="16sp"
+            android:textColor="@color/text_dark"
             app:layout_constraintBottom_toBottomOf="@id/iv_voucher_icon"
             app:layout_constraintStart_toEndOf="@id/iv_voucher_icon"
             app:layout_constraintTop_toTopOf="@id/iv_voucher_icon" />
@@ -58,16 +58,16 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/voucher_text_secondary" />
+            app:tint="@color/text_light" />
 
         <TextView
+            style="@style/TextAppearance.App.Body3"
             android:id="@+id/tv_select_code_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
             android:text="Select or enter code"
-            android:textColor="@color/voucher_text_secondary"
-            android:textSize="16sp"
+            android:textColor="@color/text_light"
             app:layout_constraintBottom_toBottomOf="@id/iv_chevron_icon"
             app:layout_constraintEnd_toStartOf="@id/iv_chevron_icon"
             app:layout_constraintTop_toTopOf="@id/iv_chevron_icon" />
@@ -90,6 +90,7 @@
         android:orientation="horizontal">
 
         <EditText
+            style="@style/TextAppearance.App.InputPlaceholder"
             android:id="@+id/et_voucher_code"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -98,8 +99,7 @@
             android:hint="Enter your code"
             android:inputType="textCapCharacters"
             android:padding="14dp"
-            android:textColorHint="@color/voucher_text_secondary"
-            android:textSize="16sp"
+            android:textColorHint="@color/text_light"
             tools:ignore="Autofill" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -112,9 +112,9 @@
             android:paddingHorizontal="20dp"
             android:text="Apply"
             android:textAllCaps="false"
-            android:textColor="@color/voucher_background"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textColor="@color/white"
+            android:fontFamily="@font/semibold"
+            android:textSize="14dp"/>
 
     </LinearLayout>
 

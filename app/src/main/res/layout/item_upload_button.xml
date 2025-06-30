@@ -11,6 +11,7 @@
         android:layout_height="24dp"
         android:src="@drawable/ic_camera"/>
     <TextView
+        style="@style/TextAppearance.App.Body3"
         android:id="@+id/txt_upload_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

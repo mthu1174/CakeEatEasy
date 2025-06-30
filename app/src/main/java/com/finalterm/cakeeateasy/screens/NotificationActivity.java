@@ -37,7 +37,7 @@ public class NotificationActivity extends com.finalterm.cakeeateasy.screens.Base
         rvNotifications.setAdapter(adapter);
 
         // Xử lý nút back trên toolbar
-        findViewById(R.id.toolbar_notification).setOnClickListener(v -> onBackPressed());
+//        findViewById(R.id.toolbar_notification).setOnClickListener(v -> onBackPressed());
     }
 
     // Trong NotificationActivity.java

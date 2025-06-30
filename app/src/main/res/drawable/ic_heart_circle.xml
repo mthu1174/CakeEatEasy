@@ -3,7 +3,7 @@
     <!-- Lớp nền tròn màu hồng nhạt -->
     <item>
         <shape android:shape="oval">
-            <solid android:color="#FFE0E5" />
+            <solid android:color="@color/app_pink_background" />
         </shape>
     </item>
     <!-- Lớp icon trái tim ở trên, có padding để nhỏ hơn -->

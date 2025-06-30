@@ -43,26 +43,23 @@
                 android:padding="4dp">
 
                 <TextView
+                    style="@style/TextAppearance.App.Body2.Bold"
                     android:id="@+id/tvProductNameSquare"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="@font/bold"
                     android:text="Orchid Divine"
-                    android:textColor="#E85C7A"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:textColor="@color/app_pink" />
 
                 <TextView
+                    style="@style/TextAppearance.App.Body3"
                     android:id="@+id/tvProductDescSquare"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:fontFamily="@font/regular"
                     android:text="Vani &amp; Strawberry"
-                    android:textColor="#888888"
-                    android:textSize="12sp" />
+                    android:textColor="@color/text_normal" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -71,41 +68,37 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        style="@style/TextAppearance.App.Body2.Bold"
                         android:id="@+id/tvProductPriceSquare"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/semibold"
                         android:text="500.000 đ"
-                        android:textColor="#222222"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
+                        android:textColor="@color/text_dark" />
 
                     <TextView
+                        style="@style/TextAppearance.App.Body3"
                         android:id="@+id/tvProductDiscountSquare"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:background="#FDE8E8"
-                        android:fontFamily="@font/bold"
-                        android:paddingLeft="4dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@color/app_pink_background"
+                        android:paddingLeft="2dp"
                         android:paddingTop="2dp"
-                        android:paddingRight="4dp"
+                        android:paddingRight="2dp"
                         android:paddingBottom="2dp"
                         android:text="10% off"
-                        android:textColor="#E3171A"
-                        android:textSize="10sp" />
+                        android:textColor="@color/status_error_main"/>
                 </LinearLayout>
 
                 <TextView
+                    style="@style/TextAppearance.App.Body3"
                     android:id="@+id/tvProductOldPriceSquare"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="4dp"
-                    android:fontFamily="@font/regular"
                     android:text="550.000 đ"
-                    android:textColor="@color/black"
-                    android:textSize="12sp" />
+                    android:textColor="@color/text_normal"/>
                 <!-- Xóa background gạch ngang ở đây, sẽ xử lý trong code Java cho chính xác -->
 
             </LinearLayout>

@@ -22,7 +22,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:fontFamily="@font/regular"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -36,7 +37,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#CCFFFFFF"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:fontFamily="@font/medium"/>
 
             <ImageView
                 android:id="@+id/img_message_status"
@@ -44,7 +46,7 @@
                 android:layout_height="16dp"
                 android:layout_marginStart="4dp"
                 android:src="@drawable/ic_checkmark_delivered"
-                app:tint="#CCFFFFFF" /> <!-- Dòng này bây giờ sẽ hợp lệ -->
+                app:tint="#CCFFFFFF" />
 
         </LinearLayout>
     </LinearLayout>

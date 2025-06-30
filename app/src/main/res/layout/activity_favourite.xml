@@ -6,14 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/product_list_bg"
+    android:background="@color/app_pink_background"
     tools:context=".screens.FavouriteActivity">
 
     <!-- 1. App Bar tùy chỉnh -->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/product_list_app_bar_bg"
+        android:background="@color/app_pink"
         app:elevation="0dp">
 
         <com.google.android.material.appbar.MaterialToolbar

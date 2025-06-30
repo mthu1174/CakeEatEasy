@@ -16,26 +16,26 @@
         android:background="@color/notif_app_bar_bg"
         app:elevation="0dp">
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar_notification"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:title="Notification"
-            app:titleCentered="true"
-            app:titleTextColor="@color/notif_app_bar_text"
-            app:navigationIcon="@drawable/ic_chevron_left"
-            app:navigationIconTint="@color/notif_app_bar_text">
+<!--        <com.google.android.material.appbar.MaterialToolbar-->
+<!--            android:id="@+id/toolbar_notification"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="?attr/actionBarSize"-->
+<!--            app:title="Notification"-->
+<!--            app:titleCentered="true"-->
+<!--            app:titleTextColor="@color/notif_app_bar_text"-->
+<!--            app:navigationIcon="@drawable/ic_chevron_left"-->
+<!--            app:navigationIconTint="@color/notif_app_bar_text">-->
 
-            <ImageView
-                android:id="@+id/img_cart_appbar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_shopping_cart"
-                app:tint="@color/notif_app_bar_text"
-                android:layout_gravity="end"
-                android:layout_marginEnd="16dp"
-                android:contentDescription="Cart" />
-        </com.google.android.material.appbar.MaterialToolbar>
+<!--            <ImageView-->
+<!--                android:id="@+id/img_cart_appbar"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:src="@drawable/ic_shopping_cart"-->
+<!--                app:tint="@color/notif_app_bar_text"-->
+<!--                android:layout_gravity="end"-->
+<!--                android:layout_marginEnd="16dp"-->
+<!--                android:contentDescription="Cart" />-->
+<!--        </com.google.android.material.appbar.MaterialToolbar>-->
     </com.google.android.material.appbar.AppBarLayout>
 
     <!-- 2. Thanh Search -->
@@ -58,10 +58,10 @@
             android:hint="Search"
             android:paddingHorizontal="16dp"
             android:paddingVertical="10dp"
-            android:textColorHint="@color/notif_search_hint"
-            android:textSize="16sp"
+            android:textColorHint="@color/text_light"
+            android:textSize="14sp"
             android:inputType="text"
-            android:autofillHints="name" />
+            android:autofillHints="name"/>
 
         <ImageView
             android:id="@+id/img_filter"
@@ -79,7 +79,7 @@
         android:id="@+id/rv_notifications"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/notif_bg"
+        android:background="@color/background_canvas"
         android:clipToPadding="false"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_notification"

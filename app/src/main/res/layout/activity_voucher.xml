@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FFF5F6"
+    android:background="@color/app_pink_background"
     tools:context="screens.VoucherActivity">
 
     <!-- Tạm thời bỏ qua App Bar -->
@@ -55,6 +55,7 @@
 
             <!-- 2. Danh sách Voucher có thể sử dụng -->
             <TextView
+                style="@style/TextAppearance.App.Heading2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="36dp"
@@ -74,6 +75,7 @@
 
             <!-- 3. Danh sách Voucher không thể sử dụng -->
             <TextView
+                style="@style/TextAppearance.App.Heading2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="36dp"

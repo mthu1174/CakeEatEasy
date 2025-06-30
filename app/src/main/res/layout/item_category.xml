@@ -16,11 +16,11 @@
         app:shapeAppearanceOverlay="@style/ShapeAppearance.App.CardImageCorners" />
 
     <TextView
+        style="@style/TextAppearance.App.Body3.Medium"
         android:id="@+id/tv_category_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Birthday"
-        android:textColor="@color/home_text_primary"
-        android:textSize="14sp" />
+        android:textColor="@color/text_normal" />
 </LinearLayout>

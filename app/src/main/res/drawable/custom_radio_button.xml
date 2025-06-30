@@ -3,9 +3,9 @@
         <layer-list>
             <item>
                 <shape android:shape="oval">
-                    <solid android:color="@color/coupon_pink_text" /> <!-- Màu khi được chọn -->
+                    <solid android:color="@color/app_pink" /> <!-- Màu khi được chọn -->
                     <size android:width="20dp" android:height="20dp" />
-                    <stroke android:width="2dp" android:color="@color/coupon_pink_text" />
+                    <stroke android:width="2dp" android:color="@color/app_pink" />
                 </shape>
             </item>
             <item android:gravity="center">
@@ -20,7 +20,7 @@
         <shape android:shape="oval">
             <solid android:color="@android:color/transparent" />
             <size android:width="20dp" android:height="20dp" />
-            <stroke android:width="2dp" android:color="@color/coupon_grey_text" /> <!-- Màu viền khi không được chọn -->
+            <stroke android:width="2dp" android:color="@color/text_muted" /> <!-- Màu viền khi không được chọn -->
         </shape>
     </item>
 </selector>

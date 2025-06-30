@@ -17,15 +17,17 @@
             android:id="@+id/txt_message_body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/home_text_primary"
-            android:textSize="16sp" />
+            android:textColor="@color/text_dark"
+            android:textSize="16sp"
+            android:fontFamily="@font/regular"/>
         <TextView
             android:id="@+id/txt_message_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_marginTop="4dp"
-            android:textColor="@color/home_text_secondary"
-            android:textSize="12sp" />
+            android:textColor="@color/text_muted"
+            android:textSize="12sp"
+            android:fontFamily="@font/medium"/>
     </LinearLayout>
 </RelativeLayout>

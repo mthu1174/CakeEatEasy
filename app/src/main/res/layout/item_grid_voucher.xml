@@ -26,21 +26,23 @@
 
         <TextView
             android:id="@+id/tv_voucher_title"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:textSize="12sp"
+            android:textSize="9sp"
             tools:text="New Member"
-            tools:textColor="@color/voucher_orange" />
+            tools:textColor="@color/status_warning_main"
+            android:fontFamily="@font/medium"/>
 
         <TextView
             android:id="@+id/tv_voucher_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/voucher_text_secondary"
-            android:textSize="8sp"
+            android:textColor="@color/text_muted"
+            android:textSize="9sp"
             android:layout_marginTop="4dp"
-            tools:text="10% off" />
+            tools:text="10% off"
+            android:fontFamily="@font/medium"/>
     </LinearLayout>
 
     <!-- LỖI ĐÃ SỬA: Xóa các thẻ XML và comment thừa ở đây -->
@@ -56,8 +58,8 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@drawable/ic_gift"
         tools:background="@drawable/icon_circle_background"
-        tools:backgroundTint="@color/voucher_icon_bg_orange"
-        tools:tint="@color/voucher_orange"/>
+        tools:backgroundTint="@color/status_warning_bg"
+        tools:tint="@color/status_warning_main"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

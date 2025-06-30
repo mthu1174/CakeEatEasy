@@ -4,7 +4,7 @@
     android:viewportWidth="360"
     android:viewportHeight="90">
     <path
-        android:fillColor="@color/coupon_grey_text"
+        android:fillColor="#C4C4C4"
         android:pathData="
           M8,0
           H352

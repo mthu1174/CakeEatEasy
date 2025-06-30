@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/home_background"
+    android:background="@color/app_pink_background"
     tools:context=".screens.MainActivity">
 
     <ScrollView
@@ -68,8 +68,11 @@
 
             <!-- Collection Section -->
             <TextView
-                style="@style/HomeSectionTitle"
-                android:text="Collection"/>
+                style="@style/TextAppearance.App.Heading2"
+                android:text="Collection"
+                android:textColor="@color/app_pink"
+                android:layout_marginTop="@dimen/home_section_margin_top"
+                android:layout_marginStart="@dimen/home_padding_horizontal"/>/>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_collections"
                 android:layout_width="match_parent"
@@ -82,8 +85,11 @@
 
             <!-- Today Promo Section -->
             <TextView
-                style="@style/HomeSectionTitle"
-                android:text="Today Promo"/>
+                style="@style/TextAppearance.App.Heading2"
+                android:text="Today Promo"
+                android:textColor="@color/app_pink"
+                android:layout_marginTop="@dimen/home_section_margin_top"
+                android:layout_marginStart="@dimen/home_padding_horizontal"/>/>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_promo"
                 android:layout_width="match_parent"
@@ -96,8 +102,12 @@
 
             <!-- Hot Voucher Section -->
             <TextView
-                style="@style/HomeSectionTitle"
-                android:text="Hot voucher"/>
+                style="@style/TextAppearance.App.Heading2"
+                android:text="Hot Voucher"
+                android:textColor="@color/app_pink"
+                android:layout_marginTop="@dimen/home_section_margin_top"
+                android:layout_marginStart="@dimen/home_padding_horizontal"/>
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_vouchers"

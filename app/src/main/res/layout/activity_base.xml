@@ -34,7 +34,7 @@
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="84dp"
             android:contentDescription="Open Chat"
-            app:backgroundTint="@color/home_pink"
+            app:backgroundTint="@color/app_pink"
             app:elevation="6dp"
             app:fabCustomSize="40dp"
             app:maxImageSize="24dp"

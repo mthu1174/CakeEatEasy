@@ -45,7 +45,7 @@
                     android:scaleType="centerCrop"
                     android:src="@drawable/placeholder_cake_promo"
                     app:shapeAppearanceOverlay="@style/ShapeAppearance.App.Circle"
-                    app:strokeColor="@color/home_pink"
+                    app:strokeColor="@color/app_pink"
                     app:strokeWidth="2dp" />
                 <ImageView
                     android:id="@+id/btn_change_avatar"
@@ -53,9 +53,10 @@
                     android:layout_height="32dp"
                     android:layout_gravity="bottom|end"
                     android:background="@drawable/icon_circle_background"
+                    android:backgroundTint="@color/app_pink_background"
                     android:padding="6dp"
                     android:src="@drawable/ic_camera"
-                    app:tint="@color/home_pink"/>
+                    app:tint="@color/app_pink"/>
             </FrameLayout>
 
             <!-- 3. Các ô nhập liệu -->
@@ -64,7 +65,7 @@
             <EditText
                 android:id="@+id/edt_full_name"
                 style="@style/EditProfileEditText"
-                android:hint="Lois Becket"
+                android:hint="Nha Linh Nguyen"
                 android:inputType="textPersonName"/>
 
             <!-- Date of birth -->
@@ -75,7 +76,7 @@
                 android:drawableStart="@drawable/ic_calendar"
                 android:focusable="false"
                 android:clickable="true"
-                android:hint="18/03/2024"/>
+                android:hint="dd/mm/yyyy"/>
 
             <!-- Phone Number -->
             <TextView style="@style/EditProfileLabel" android:text="Phone Number"/>
@@ -92,13 +93,15 @@
                     app:ccp_showFlag="true"
                     app:ccp_showNameCode="false"
                     app:ccp_showFullName="false"
-                    app:ccp_arrowSize="20sp"/>
+                    app:ccp_arrowSize="20dp" />
                 <View
+                    style="@style/EditProfileEditText"
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
                     android:background="#E0E0E0"
                     android:layout_marginVertical="8dp"/>
                 <EditText
+                    style="@style/EditProfileEditText"
                     android:id="@+id/edt_phone_number"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -106,7 +109,7 @@
                     android:background="@null"
                     android:paddingHorizontal="16dp"
                     android:inputType="phone"
-                    android:hint="(454) 726-0592"/>
+                    android:hint="(xxx) xxxxxxxx"/>
             </LinearLayout>
 
         </LinearLayout>
