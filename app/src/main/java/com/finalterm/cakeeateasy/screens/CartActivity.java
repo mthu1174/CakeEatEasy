@@ -24,6 +24,7 @@ import com.finalterm.cakeeateasy.models.CartManager;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import java.util.List;
+import android.widget.ImageView;
 
 public class CartActivity extends AppCompatActivity {
 
@@ -32,6 +33,7 @@ public class CartActivity extends AppCompatActivity {
     private CartAdapter cartAdapter;
     private CheckBox checkboxSelectAll;
     private EditText edtTotal, edtVoucherMinusAmount;
+    private TextView txtVoucher;
     private List<CartItem> cartItems;
 
     @Override
@@ -51,6 +53,14 @@ public class CartActivity extends AppCompatActivity {
         rvCartItems.setLayoutManager(new LinearLayoutManager(this));
         rvCartItems.setAdapter(cartAdapter);
 
+        // Back button navigation to ProductDetailsActivity
+        ImageView btnBack = findViewById(R.id.btn_back);
+        btnBack.setOnClickListener(v -> {
+            Intent intent = new Intent(this, ProductDetailsActivity.class);
+            startActivity(intent);
+            finish();
+        });
+
         checkboxSelectAll = findViewById(R.id.checkbox_select_all);
         checkboxSelectAll.setOnCheckedChangeListener((buttonView, isChecked) -> {
             for (CartItem item : cartItems) item.setSelected(isChecked);
@@ -60,6 +70,13 @@ public class CartActivity extends AppCompatActivity {
 
         ImageButton btnTimePicker = findViewById(R.id.btn_time_picker);
         TextView txtTimeDelivery = findViewById(R.id.txt_time_delivery);
+        
+        // Initialize delivery time display
+        String deliveryTime = CartManager.getInstance().getDeliveryTime();
+        if (!deliveryTime.equals("18:00")) {
+            txtTimeDelivery.setText(deliveryTime);
+        }
+        
         btnTimePicker.setOnClickListener(v -> showDateTimePicker(txtTimeDelivery));
 
         ImageButton btnVoucherPicker = findViewById(R.id.btn_voucher_picker);
@@ -70,11 +87,39 @@ public class CartActivity extends AppCompatActivity {
 
         Button btnCheckout = findViewById(R.id.btn_checkout);
         btnCheckout.setOnClickListener(v -> {
-            startActivity(new Intent(this, CheckoutActivity.class));
+            // Get selected items
+            List<CartItem> selectedItems = getSelectedItems();
+            if (selectedItems.isEmpty()) {
+                // Show a message if no items are selected
+                android.widget.Toast.makeText(this, "Please select at least one item", android.widget.Toast.LENGTH_SHORT).show();
+                return;
+            }
+            
+            // Navigate to checkout with selected items
+            Intent intent = new Intent(this, CheckoutActivity.class);
+            intent.putExtra("from_cart_selection", true);
+            intent.putExtra("selected_items_count", selectedItems.size());
+            
+            // Pass selected items as serializable data
+            intent.putExtra("selected_items", new java.util.ArrayList<>(selectedItems));
+            startActivity(intent);
         });
 
         edtTotal = findViewById(R.id.edt_total);
         edtVoucherMinusAmount = findViewById(R.id.edt_voucher_minus_amount);
+        txtVoucher = findViewById(R.id.txt_voucher);
+
+        // Initialize voucher display
+        String voucherCode = CartManager.getInstance().getVoucherCode();
+        if (!voucherCode.isEmpty()) {
+            txtVoucher.setText(voucherCode);
+        }
+        
+        // Initialize voucher amount display
+        int voucherAmount = CartManager.getInstance().getVoucherAmount();
+        if (voucherAmount > 0) {
+            edtVoucherMinusAmount.setText(String.format("-%,d đ", voucherAmount));
+        }
 
         updateTotals();
     }
@@ -87,8 +132,9 @@ public class CartActivity extends AppCompatActivity {
             TimePickerDialog timePickerDialog = new TimePickerDialog(this, (view1, hourOfDay, minute) -> {
                 date.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 date.set(Calendar.MINUTE, minute);
-                String formatted = String.format("%02d:%02d:%04d %02d:%02d", dayOfMonth, month+1, year, hourOfDay, minute);
+                String formatted = String.format("%02d/%02d/%04d %02d:%02d", dayOfMonth, month+1, year, hourOfDay, minute);
                 target.setText(formatted);
+                CartManager.getInstance().setDeliveryTime(formatted);
             }, currentDate.get(Calendar.HOUR_OF_DAY), currentDate.get(Calendar.MINUTE), true);
             timePickerDialog.show();
         }, currentDate.get(Calendar.YEAR), currentDate.get(Calendar.MONTH), currentDate.get(Calendar.DATE));
@@ -105,8 +151,28 @@ public class CartActivity extends AppCompatActivity {
             }
         }
         int voucher = CartManager.getInstance().getVoucherAmount();
-        edtTotal.setText(String.format("%,d đ", sum - voucher));
-        edtVoucherMinusAmount.setText(String.format("-%,d", voucher));
+        String voucherType = CartManager.getInstance().getVoucherType();
+        
+        // Calculate shipping fee
+        int shippingFee = 35000; // Default shipping fee
+        if ("FREESHIP".equals(voucherType)) {
+            shippingFee = 0;
+        }
+        
+        int total = sum - voucher + shippingFee;
+        edtTotal.setText(String.format("%,d đ", total));
+        edtVoucherMinusAmount.setText(String.format("-%,d đ", voucher));
+        txtVoucher.setText(CartManager.getInstance().getVoucherCode());
+    }
+
+    private List<CartItem> getSelectedItems() {
+        List<CartItem> selectedItems = new java.util.ArrayList<>();
+        for (CartItem item : cartItems) {
+            if (item.isSelected()) {
+                selectedItems.add(item);
+            }
+        }
+        return selectedItems;
     }
 
     @Override
@@ -115,8 +181,12 @@ public class CartActivity extends AppCompatActivity {
         if (requestCode == VOUCHER_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
             int voucherAmount = data.getIntExtra("voucher_amount", 0);
             String voucherCode = data.getStringExtra("voucher_code");
+            String voucherType = data.getStringExtra("voucher_type");
             CartManager.getInstance().setVoucherAmount(voucherAmount);
-            edtVoucherMinusAmount.setText(voucherCode);
+            CartManager.getInstance().setVoucherCode(voucherCode);
+            CartManager.getInstance().setVoucherType(voucherType);
+            edtVoucherMinusAmount.setText(String.format("-%,d đ", voucherAmount));
+            txtVoucher.setText(voucherCode);
             updateTotals();
         }
     }

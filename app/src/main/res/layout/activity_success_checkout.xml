@@ -8,4 +8,99 @@
     android:orientation="vertical"
     tools:context=".screens.SuccessCheckoutActivity">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="16dp">
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_succefully_login" />
+        <!-- Optionally, add confetti effect here if you have a drawable or animation -->
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tv_thank_you"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thank you!"
+        android:textColor="#DD5369"
+        android:fontFamily="@font/bold"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"/>
+
+
+    <TextView
+        android:id="@+id/txt_thank_you_invoice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your Order will be delivered with invoice"
+        android:textColor="@color/coupon_grey_text"
+        android:fontFamily="@font/semibold"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/tv_invoice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="#123456"
+        android:textColor="@color/cakeiteasy_pink"
+        android:fontFamily="@font/semibold"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:background="@drawable/bg_invoice_border"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:focusable="false"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:longClickable="false"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/txt_thank_you_invoice_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="You can track the delivery in the order section."
+        android:textColor="@color/coupon_grey_text"
+        android:fontFamily="@font/semibold"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:textSize="18sp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"/>
+
+
+    <Button
+        android:id="@+id/btn_continue_shopping"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="25dp"
+        android:backgroundTint="#DD5369"
+        android:fontFamily="@font/bold"
+        android:text="Continue to shopping"
+        android:textColor="#FBEAEC"
+        android:textSize="18dp"
+        app:cornerRadius="0dp" />
 </LinearLayout>

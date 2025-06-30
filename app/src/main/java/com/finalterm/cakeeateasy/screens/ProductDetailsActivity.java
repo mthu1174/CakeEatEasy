@@ -19,6 +19,8 @@ import com.finalterm.cakeeateasy.R;
 import com.finalterm.cakeeateasy.connectors.ProductDetailsConnector;
 import com.finalterm.cakeeateasy.models.ProductDetails;
 
+import java.util.List;
+
 public class ProductDetailsActivity extends AppCompatActivity {
     private EditText edtProductNameTitle, edtProductCategory, edtProductName, edtProductDescription,
             edtProductCurrentPrice, edtProductOldPrice, edtDiscountPercent, edtQuantityPicker,
@@ -29,7 +31,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private Button btnAddCart, btnBuyNow;
     private int quantity = 1;
     private int productId = 1; // Default, can be replaced by intent extra
-    private static int cartCount = 0;
     private Toast cartToast;
     private TextView cartBadge;
 
@@ -144,29 +145,35 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 )
             );
             // Update badge as before
-            cartCount += quantity;
             updateCartBadge();
             if (cartToast != null) cartToast.cancel();
-            cartToast = Toast.makeText(this, "Cart: " + cartCount, Toast.LENGTH_SHORT);
+            cartToast = Toast.makeText(this, "Cart: " + com.finalterm.cakeeateasy.models.CartManager.getInstance().getCartCount(), Toast.LENGTH_SHORT);
             cartToast.show();
         });
 
         // Buy now: send all info to CheckoutActivity
         btnBuyNow.setOnClickListener(v -> {
+            // Create a temporary cart item for buy now (don't add to actual cart)
+            int imageResId = R.drawable.product01; // Use a real image if available
+            com.finalterm.cakeeateasy.models.CartItem buyNowItem = 
+                new com.finalterm.cakeeateasy.models.CartItem(
+                    product.getProductID(),
+                    product.getProductName(),
+                    String.format("%.0f đ", product.getProductCurrentPrice()),
+                    String.format("%.0f%% off", product.getDiscountPercent()),
+                    imageResId,
+                    quantity
+                );
+            
+            // Navigate to checkout with only this item
             Intent intent = new Intent(ProductDetailsActivity.this, CheckoutActivity.class);
-            intent.putExtra("ProductID", productId);
-            intent.putExtra("ProductNameTitle", edtProductNameTitle.getText().toString());
-            intent.putExtra("ProductCategory", edtProductCategory.getText().toString());
-            intent.putExtra("ProductName", edtProductName.getText().toString());
-            intent.putExtra("ProductDescription", edtProductDescription.getText().toString());
-            intent.putExtra("ProductCurrentPrice", edtProductCurrentPrice.getText().toString());
-            intent.putExtra("ProductOldPrice", edtProductOldPrice.getText().toString());
-            intent.putExtra("DiscountPercent", edtDiscountPercent.getText().toString());
-            intent.putExtra("Quantity", quantity);
-            intent.putExtra("SizeContent", edtSizeContent.getText().toString());
-            intent.putExtra("UsageInstruction", edtUsageInstruction.getText().toString());
-            intent.putExtra("IncludedAccessories", edtIncludedAccessories.getText().toString());
-            // Add more fields as needed
+            intent.putExtra("from_buy_now", true);
+            
+            // Pass the single item as a list
+            List<com.finalterm.cakeeateasy.models.CartItem> buyNowItems = new java.util.ArrayList<>();
+            buyNowItems.add(buyNowItem);
+            intent.putExtra("selected_items", (java.util.ArrayList<com.finalterm.cakeeateasy.models.CartItem>) buyNowItems);
+            
             startActivity(intent);
         });
 
@@ -176,12 +183,18 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
     private void updateCartBadge() {
         if (cartBadge != null) {
-            if (cartCount > 0) {
-                cartBadge.setText(String.valueOf(cartCount));
+            if (com.finalterm.cakeeateasy.models.CartManager.getInstance().getCartCount() > 0) {
+                cartBadge.setText(String.valueOf(com.finalterm.cakeeateasy.models.CartManager.getInstance().getCartCount()));
                 cartBadge.setVisibility(View.VISIBLE);
             } else {
                 cartBadge.setVisibility(View.GONE);
             }
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateCartBadge();
     }
 }

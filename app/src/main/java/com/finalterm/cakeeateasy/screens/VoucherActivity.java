@@ -34,6 +34,7 @@ public class VoucherActivity extends AppCompatActivity { // Hoặc BaseActivity 
             Intent resultIntent = new Intent();
             resultIntent.putExtra("voucher_amount", voucher.getDiscountAmount());
             resultIntent.putExtra("voucher_code", voucher.getVoucherCode());
+            resultIntent.putExtra("voucher_type", voucher.getVoucherCode());
             setResult(RESULT_OK, resultIntent);
             finish();
         });
@@ -42,6 +43,7 @@ public class VoucherActivity extends AppCompatActivity { // Hoặc BaseActivity 
             Intent resultIntent = new Intent();
             resultIntent.putExtra("voucher_amount", voucher.getDiscountAmount());
             resultIntent.putExtra("voucher_code", voucher.getVoucherCode());
+            resultIntent.putExtra("voucher_type", voucher.getVoucherCode());
             setResult(RESULT_OK, resultIntent);
             finish();
         });

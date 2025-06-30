@@ -568,5 +568,29 @@
             android:textColor="#FBEAEC"
             android:textSize="18sp" />
 
+        <!-- Invoice -->
+        <TextView
+            android:id="@+id/tv_invoice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="#123456"
+            android:textColor="@color/cakeiteasy_pink"
+            android:fontFamily="@font/semibold"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:background="@drawable/bg_invoice_border"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:focusable="false"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:longClickable="false"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"/>
+
     </LinearLayout>
 </ScrollView>

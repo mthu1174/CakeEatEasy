@@ -40,6 +40,10 @@ public class CheckoutActivity extends AppCompatActivity {
     private int voucherAmount = 0;
     private String voucherCode = "";
     private String deliveryTime = "";
+    private boolean fromCartSelection = false;
+    private boolean fromBuyNow = false;
+    private List<CartItem> originalCartItems = new java.util.ArrayList<>();
+    private int shippingFee = 35000; // Default shipping fee
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +70,25 @@ public class CheckoutActivity extends AppCompatActivity {
         edtTotal = findViewById(R.id.edt_total);
 
         // Load cart items
-        cartItems = CartManager.getInstance().getCartItems();
+        fromCartSelection = getIntent().getBooleanExtra("from_cart_selection", false);
+        fromBuyNow = getIntent().getBooleanExtra("from_buy_now", false);
+        
+        if (fromCartSelection || fromBuyNow) {
+            // Get selected items from intent (for cart selection) or buy now items
+            List<CartItem> selectedItems = (List<CartItem>) getIntent().getSerializableExtra("selected_items");
+            if (selectedItems != null) {
+                cartItems = selectedItems;
+            }
+            // Save original cart items to restore later if needed (only for cart selection)
+            if (fromCartSelection) {
+                originalCartItems.clear();
+                originalCartItems.addAll(CartManager.getInstance().getCartItems());
+            }
+        } else {
+            // For regular checkout (not from cart selection or buy now), use all cart items
+            cartItems = CartManager.getInstance().getCartItems();
+        }
+        
         displayCartItems();
 
         // Load address (stub, you can load from user profile or intent)
@@ -74,14 +96,20 @@ public class CheckoutActivity extends AppCompatActivity {
         edtAddressPhone.setText("(+84)381 234 567");
         edtAddressDetail.setText("White House, District 1, USA");
 
-        // Always get delivery time and voucher from CartManager (or static fields)
-        // For demo, let's assume CartManager has getDeliveryTime() and getVoucherCode().
-        // If not, you can add them, or use static fields.
-        // For now, use static fields in CheckoutActivity for demo:
-        deliveryTime = CartManager.getInstance().deliveryTime != null ? CartManager.getInstance().deliveryTime : "18:00";
+        // Get delivery time and voucher from CartManager
+        deliveryTime = CartManager.getInstance().getDeliveryTime();
         txtTimeDelivery.setText(deliveryTime);
         voucherAmount = CartManager.getInstance().getVoucherAmount();
-        voucherCode = CartManager.getInstance().voucherCode != null ? CartManager.getInstance().voucherCode : "";
+        voucherCode = CartManager.getInstance().getVoucherCode();
+        String voucherType = CartManager.getInstance().getVoucherType();
+        
+        // Set shipping fee based on voucher type
+        if ("FREESHIP".equals(voucherType)) {
+            shippingFee = 0;
+        } else {
+            shippingFee = 35000; // Default shipping fee
+        }
+        
         txtVoucher.setText(voucherCode.isEmpty() ? "Select or enter code" : voucherCode);
 
         // Payment method: only one can be selected (RadioGroup handles this), but if nested, enforce in code
@@ -109,7 +137,13 @@ public class CheckoutActivity extends AppCompatActivity {
         updatePaymentSummary();
 
         // Navigation
-        btnBack.setOnClickListener(v -> finish());
+        btnBack.setOnClickListener(v -> {
+            if (fromCartSelection) {
+                // Restore original cart items before going back
+                CartManager.getInstance().restoreOriginalCart(originalCartItems);
+            }
+            finish();
+        });
         btnEditAddress.setOnClickListener(v -> {
             Intent intent = new Intent(this, EditAddressActivity.class);
             startActivityForResult(intent, EDIT_ADDRESS_REQUEST_CODE);
@@ -127,7 +161,17 @@ public class CheckoutActivity extends AppCompatActivity {
         // Checkout
         btnCheckout.setOnClickListener(v -> {
             // You can add order saving logic here
-            CartManager.getInstance().clearCart();
+            if (fromCartSelection) {
+                // For cart selection checkout, remove only the selected items from the cart
+                CartManager.getInstance().removeItems(cartItems);
+            } else if (fromBuyNow) {
+                // For Buy Now checkout, don't modify the cart at all
+                // The cart remains unchanged since we didn't add the item to it
+            } else {
+                // For regular checkout, clear the entire cart
+                CartManager.getInstance().clearCart();
+            }
+            
             Intent intent = new Intent(this, SuccessCheckoutActivity.class);
             startActivity(intent);
             finish();
@@ -181,6 +225,8 @@ public class CheckoutActivity extends AppCompatActivity {
                 String formatted = String.format("%02d/%02d/%04d %02d:%02d", dayOfMonth, month+1, year, hourOfDay, minute);
                 deliveryTime = formatted;
                 txtTimeDelivery.setText(formatted);
+                // Save to CartManager
+                CartManager.getInstance().setDeliveryTime(formatted);
             }, currentDate.get(Calendar.HOUR_OF_DAY), currentDate.get(Calendar.MINUTE), true);
             timePickerDialog.show();
         }, currentDate.get(Calendar.YEAR), currentDate.get(Calendar.MONTH), currentDate.get(Calendar.DATE));
@@ -213,8 +259,15 @@ public class CheckoutActivity extends AppCompatActivity {
         edtOrderTotal.setText(String.format("%,d đ", orderTotal));
         edtItemsDiscount.setText(String.format("-%,d đ", itemsDiscount));
         txtCouponDiscount.setText(String.format("-%,d đ", voucherAmount));
-        txtShipping.setText("Free");
-        int total = orderTotal - itemsDiscount - voucherAmount;
+        
+        // Display shipping fee
+        if (shippingFee == 0) {
+            txtShipping.setText("Free");
+        } else {
+            txtShipping.setText(String.format("%,d đ", shippingFee));
+        }
+        
+        int total = orderTotal - itemsDiscount - voucherAmount + shippingFee;
         edtTotal.setText(String.format("%,d đ", total));
     }
 
@@ -224,8 +277,19 @@ public class CheckoutActivity extends AppCompatActivity {
         if (requestCode == VOUCHER_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
             voucherAmount = data.getIntExtra("voucher_amount", 0);
             voucherCode = data.getStringExtra("voucher_code");
+            String voucherType = data.getStringExtra("voucher_type");
             txtVoucher.setText(voucherCode);
             CartManager.getInstance().setVoucherAmount(voucherAmount);
+            CartManager.getInstance().setVoucherCode(voucherCode);
+            CartManager.getInstance().setVoucherType(voucherType);
+            
+            // Update shipping fee based on voucher type
+            if ("FREESHIP".equals(voucherType)) {
+                shippingFee = 0;
+            } else {
+                shippingFee = 35000; // Default shipping fee
+            }
+            
             updatePaymentSummary();
         } else if (requestCode == EDIT_ADDRESS_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
             // Update address info if needed
@@ -236,5 +300,15 @@ public class CheckoutActivity extends AppCompatActivity {
             if (phone != null) edtAddressPhone.setText(phone);
             if (detail != null) edtAddressDetail.setText(detail);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (fromCartSelection) {
+            // Restore original cart items before going back
+            CartManager.getInstance().restoreOriginalCart(originalCartItems);
+        }
+        // For Buy Now, no need to restore anything since we didn't modify the cart
+        super.onBackPressed();
     }
 }

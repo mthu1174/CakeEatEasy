@@ -1,6 +1,8 @@
 package com.finalterm.cakeeateasy.models;
 
-public class CartItem {
+import java.io.Serializable;
+
+public class CartItem implements Serializable {
     private int productId;
     private String name;
     private String price;
