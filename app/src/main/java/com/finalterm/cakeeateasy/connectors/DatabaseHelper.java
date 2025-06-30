@@ -31,6 +31,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_CUSTOMER_PHONE = "CustomerPhoneNumber";
     public static final String COLUMN_CUSTOMER_DOB = "CustomerDOB";
 
+    // --- ORDERS TABLE ---
+    public static final String TABLE_ORDERS = "orders";
+    public static final String COLUMN_INVOICE_ID = "invoice_id";
+    public static final String COLUMN_ORDER_CUSTOMER_NAME = "customer_name";
+    public static final String COLUMN_ORDER_DATE = "order_date";
+    public static final String COLUMN_TOTAL_AMOUNT = "total_amount";
+    public static final String COLUMN_ORDER_STATUS = "status";
+
     private Context context;
     private SQLiteDatabase database;
 
@@ -198,5 +206,34 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_CUSTOMER_DOB, customer.getCustomerDOB());
         
         return database.insert(TABLE_CUSTOMER, null, values);
+    }
+
+    /**
+     * Create orders table if it doesn't exist
+     */
+    public void createOrdersTableIfNotExists() {
+        openDatabase();
+        String CREATE_ORDERS_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_ORDERS + " ("
+                + COLUMN_INVOICE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + COLUMN_ORDER_CUSTOMER_NAME + " TEXT NOT NULL,"
+                + COLUMN_ORDER_DATE + " TEXT NOT NULL,"
+                + COLUMN_TOTAL_AMOUNT + " REAL NOT NULL,"
+                + COLUMN_ORDER_STATUS + " TEXT NOT NULL"
+                + ");";
+        database.execSQL(CREATE_ORDERS_TABLE);
+    }
+
+    /**
+     * Insert a new order and return the invoice_id
+     */
+    public long insertOrder(String customerName, String orderDate, double totalAmount, String status) {
+        createOrdersTableIfNotExists();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_ORDER_CUSTOMER_NAME, customerName);
+        values.put(COLUMN_ORDER_DATE, orderDate);
+        values.put(COLUMN_TOTAL_AMOUNT, totalAmount);
+        values.put(COLUMN_ORDER_STATUS, status);
+        long invoiceId = database.insert(TABLE_ORDERS, null, values);
+        return invoiceId;
     }
 } 
