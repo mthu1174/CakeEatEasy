@@ -297,4 +297,25 @@
         <item name="android:textAppearance">@style/TextAppearance.App.Body3</item>
     </style>
 
+    <!-- Style cơ bản cho các nút -->
+    <style name="Widget.App.Button.Base" parent="Widget.AppCompat.Button">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textAppearance">@style/TextAppearance.App.Body1.Bold</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!-- Style cho nút chính (nền hồng, chữ trắng) -->
+    <style name="Widget.App.Button" parent="Widget.App.Button.Base">
+        <item name="android:background">@drawable/button_background_pink</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/semibold</item>
+        <item name="android:textSize">14dp</item>
+    </style>
+
+    <!-- Style cho nút viền (nền nhạt, chữ hồng) -->
+    <style name="Widget.App.Button.Outlined" parent="Widget.App.Button.Base">
+        <item name="android:background">@drawable/button_outlined_background</item>
+        <item name="android:textColor">@color/app_pink</item>
+    </style>
+
 </resources>

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -20,6 +21,7 @@ import com.finalterm.cakeeateasy.adapters.BannerAdapter;
 import com.finalterm.cakeeateasy.adapters.CategoryAdapter;
 import com.finalterm.cakeeateasy.adapters.PromoProductAdapter;
 import com.finalterm.cakeeateasy.adapters.VoucherGridAdapter;
+import com.finalterm.cakeeateasy.db.DatabaseHelper;
 import com.finalterm.cakeeateasy.models.BannerItem;
 import com.finalterm.cakeeateasy.models.Category;
 import com.finalterm.cakeeateasy.models.Product;
@@ -29,10 +31,9 @@ import com.finalterm.cakeeateasy.screens.dialogs.FilterFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-// 1. IMPLEMENTS INTERFACE: Khai báo rằng MainActivity sẽ "lắng nghe" sự kiện từ CategoryAdapter
 public class MainActivity extends com.finalterm.cakeeateasy.screens.BaseActivity implements CategoryAdapter.OnCategoryClickListener {
 
-    // === KHAI BÁO BIẾN (không đổi) ===
+    // === KHAI BÁO BIẾN ===
     private TextView txtWelcomeUser;
     private ViewPager2 viewPagerBanner;
     private LinearLayout layoutDotsIndicator;
@@ -52,6 +53,9 @@ public class MainActivity extends com.finalterm.cakeeateasy.screens.BaseActivity
     private final Handler slideHandler = new Handler(Looper.getMainLooper());
     private Runnable slideRunnable;
 
+    // Biến cho Database Helper
+    private DatabaseHelper dbHelper;
+
     @Override
     public int getNavItemIndex() {
         return 0; // Index của item Home trong Bottom Navigation
@@ -62,8 +66,11 @@ public class MainActivity extends com.finalterm.cakeeateasy.screens.BaseActivity
         super.onCreate(savedInstanceState);
         setContentLayout(R.layout.activity_main);
 
+        // Khởi tạo DatabaseHelper ngay từ đầu
+        dbHelper = new DatabaseHelper(this);
+
         initViews();
-        loadData();
+        loadDataFromSources(); // Đổi tên hàm để phản ánh đúng logic
         setupRecyclerViews();
         setupBannerSlider();
         setupFilterButton();
@@ -79,30 +86,56 @@ public class MainActivity extends com.finalterm.cakeeateasy.screens.BaseActivity
         imgFilterIcon = findViewById(R.id.img_filter_icon);
     }
 
-    private void loadData() {
-        // Nạp dữ liệu cho banner (không đổi)
+    /**
+     * Hàm chính để nạp dữ liệu.
+     * Sẽ kiểm tra và nạp dữ liệu ban đầu cho Category vào DB nếu cần.
+     * Sau đó load tất cả dữ liệu cần thiết cho màn hình.
+     */
+    private void loadDataFromSources() {
+        // 1. Xử lý dữ liệu cho Category từ Database
+        if (dbHelper.getCategoriesCount() == 0) {
+            Log.d("MainActivity_DB", "Database is empty. Seeding initial data for Categories.");
+            seedInitialCategories();
+        } else {
+            Log.d("MainActivity_DB", "Database already has data for Categories. Skipping seeding.");
+        }
+        // Luôn load dữ liệu category từ DB
+        categoryList = dbHelper.getAllCategories();
+
+        // 2. Nạp dữ liệu cứng cho các phần còn lại (Banner, Promo, Voucher)
+        loadHardcodedData();
+    }
+
+    /**
+     * Hàm này chỉ chứa dữ liệu ban đầu để thêm vào DB một lần duy nhất.
+     */
+    private void seedInitialCategories() {
+        dbHelper.addCategory(new Category("Birthday", R.drawable.placeholder_cake_promo));
+        dbHelper.addCategory(new Category("Wedding", R.drawable.placeholder_cake_promo));
+        dbHelper.addCategory(new Category("Vanilla", R.drawable.placeholder_cake_promo));
+        dbHelper.addCategory(new Category("Fruit", R.drawable.placeholder_cake_promo));
+        dbHelper.addCategory(new Category("Chocolate", R.drawable.placeholder_cake_promo));
+    }
+
+    /**
+     * Hàm này nạp các dữ liệu không lưu trong DB (hoặc chưa cần lưu).
+     */
+    private void loadHardcodedData() {
+        txtWelcomeUser.setText("Nha Linh!");
+
+        // Dữ liệu cho banner
         bannerItemList = new ArrayList<>();
         bannerItemList.add(new BannerItem(R.drawable.banner_fresh_cake, "Fresh Cake", "Buy now!"));
         bannerItemList.add(new BannerItem(R.drawable.banner_promo, "Special Promo", "View All"));
         bannerItemList.add(new BannerItem(R.drawable.banner_new_arrivals, "New Arrivals", "Discover"));
 
-        txtWelcomeUser.setText("Nha Linh!");
-
-        // Dữ liệu cho các danh mục (không đổi)
-        categoryList = new ArrayList<>();
-        // Sử dụng constructor mới của Category, nó sẽ tự tạo ID
-        categoryList.add(new Category("Birthday", R.drawable.placeholder_cake_promo));
-        categoryList.add(new Category("Wedding", R.drawable.placeholder_cake_promo));
-        categoryList.add(new Category("Vanilla", R.drawable.placeholder_cake_promo));
-        categoryList.add(new Category("Fruit", R.drawable.placeholder_cake_promo));
-
-        // Dữ liệu promo (không đổi)
+        // Dữ liệu promo
         promoProductList = new ArrayList<>();
         promoProductList.add(new Product("Orchid Divine", "Vani & Strawberry", "500.000 đ", "550.000 đ", "10% off", R.drawable.placeholder_cake_promo));
         promoProductList.add(new Product("Karl", "Vani & Yogurt", "500.000 đ", "550.000 đ", "10% off", R.drawable.placeholder_cake_promo));
         promoProductList.add(new Product("Orchid Divine", "Vani & Strawberry", "500.000 đ", "550.000 đ", "10% off", R.drawable.placeholder_cake_promo));
 
-        // Dữ liệu voucher (không đổi)
+        // Dữ liệu voucher
         voucherList = new ArrayList<>();
         voucherList.add(new Voucher("New Member", "10% off", R.color.voucher_orange, R.color.voucher_icon_bg_orange, R.drawable.ic_gift));
         voucherList.add(new Voucher("Freeshipping", "Order 500k+", R.color.voucher_green, R.color.voucher_icon_bg_green, R.drawable.ic_shopping_cart));
@@ -111,14 +144,17 @@ public class MainActivity extends com.finalterm.cakeeateasy.screens.BaseActivity
     }
 
     private void setupRecyclerViews() {
-        // --- Thiết lập RecyclerView cho Collections (DANH MỤC) ---
+        // Khởi tạo các list để tránh NullPointerException nếu DB trống
+        if (categoryList == null) categoryList = new ArrayList<>();
+        if (promoProductList == null) promoProductList = new ArrayList<>();
+        if (voucherList == null) voucherList = new ArrayList<>();
+
+        // Thiết lập RecyclerView cho Collections (DANH MỤC)
         rvCollections.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        // 2. CẬP NHẬT CONSTRUCTOR: Truyền 'this' vào làm listener
-        // 'this' ở đây chính là MainActivity, vì nó đã implement OnCategoryClickListener
         categoryAdapter = new CategoryAdapter(this, categoryList, this);
         rvCollections.setAdapter(categoryAdapter);
 
-        // --- Thiết lập các RecyclerView khác (không đổi) ---
+        // Thiết lập các RecyclerView khác
         rvPromo.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         promoAdapter = new PromoProductAdapter(this, promoProductList);
         rvPromo.setAdapter(promoAdapter);
@@ -128,8 +164,16 @@ public class MainActivity extends com.finalterm.cakeeateasy.screens.BaseActivity
         rvVouchers.setAdapter(voucherAdapter);
     }
 
+    @Override
+    public void onCategoryClick(Category category) {
+        Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
+        intent.putExtra(CategoryActivity.EXTRA_CATEGORY_NAME, category.getName());
+        startActivity(intent);
+    }
+
     // --- CÁC HÀM KHÁC KHÔNG THAY ĐỔI ---
     private void setupBannerSlider() {
+        if (bannerItemList == null) bannerItemList = new ArrayList<>();
         bannerAdapter = new BannerAdapter(bannerItemList);
         viewPagerBanner.setAdapter(bannerAdapter);
         viewPagerBanner.setOffscreenPageLimit(3);
@@ -166,6 +210,7 @@ public class MainActivity extends com.finalterm.cakeeateasy.screens.BaseActivity
     }
 
     private void setupDotIndicator() {
+        if (bannerAdapter == null || bannerAdapter.getItemCount() == 0) return;
         layoutDotsIndicator.removeAllViews();
         ImageView[] dots = new ImageView[bannerAdapter.getItemCount()];
         for (int i = 0; i < dots.length; i++) {
@@ -180,6 +225,7 @@ public class MainActivity extends com.finalterm.cakeeateasy.screens.BaseActivity
     }
 
     private void updateDotIndicator(int index) {
+        if (bannerAdapter == null || bannerAdapter.getItemCount() == 0) return;
         for (int i = 0; i < layoutDotsIndicator.getChildCount(); i++) {
             ImageView dot = (ImageView) layoutDotsIndicator.getChildAt(i);
             if (i == index) {
@@ -204,24 +250,5 @@ public class MainActivity extends com.finalterm.cakeeateasy.screens.BaseActivity
         if (slideRunnable != null) {
             slideHandler.postDelayed(slideRunnable, 3000);
         }
-    }
-
-    // 3. THÊM HÀM onCategoryClick(): Đây là nơi xử lý logic khi một category được click
-    @Override
-    public void onCategoryClick(Category category) {
-        // Khi người dùng click vào một item trong CategoryAdapter, hàm này sẽ được gọi.
-
-        // a. Tạo một Intent để mở CategoryActivity
-        Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
-
-        // b. Đính kèm dữ liệu vào Intent.
-        // Chúng ta sẽ truyền tên của category để màn hình sau biết cần hiển thị gì.
-        intent.putExtra(CategoryActivity.EXTRA_CATEGORY_NAME, category.getName());
-
-        // Nếu muốn, bạn cũng có thể truyền cả đối tượng Category vì nó đã là Parcelable
-        // intent.putExtra("extra_category_object", category);
-
-        // c. Khởi động Activity mới
-        startActivity(intent);
     }
 }

@@ -158,7 +158,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     private Class<?> getTargetActivity(int index) {
         switch (index) {
             case 0: return MainActivity.class;
-            //case 1: return OrderActivity.class; // Nhớ bỏ comment dòng này khi bạn tạo OrderActivity
+            case 1: return OrderActivity.class; // Nhớ bỏ comment dòng này khi bạn tạo OrderActivity
             case 2: return FavouriteActivity.class;
             case 3: return NotificationActivity.class;
             case 4: return ProfileActivity.class;
