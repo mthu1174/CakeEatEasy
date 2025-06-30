@@ -63,9 +63,6 @@ public class LoginActivity extends AppCompatActivity {
         // Setup click listeners
         setupClickListeners();
         
-        // Initialize database
-        initializeDatabase();
-        
         // Load saved credentials if remember is checked
         loadSavedCredentials();
     }
@@ -130,15 +127,6 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(LoginActivity.this, "Facebook login feature coming soon!", Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-    /**
-     * Initialize database by copying from assets if needed
-     */
-    private void initializeDatabase() {
-        if (!databaseHelper.checkDatabase()) {
-            databaseHelper.copyDatabase();
-        }
     }
 
     /**
@@ -244,8 +232,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (databaseHelper != null) {
-            databaseHelper.closeDatabase();
-        }
+        // The DatabaseHelper now manages its own connection lifecycle.
+        // No need to close it manually.
     }
 }

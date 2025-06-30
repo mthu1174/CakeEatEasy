@@ -32,12 +32,13 @@ android {
 }
 
 dependencies {
-
+    implementation("com.google.android.gms:play-services-maps:18.2.0")
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation(libs.billing)
+    implementation(libs.play.services.maps)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

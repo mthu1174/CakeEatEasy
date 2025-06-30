@@ -50,6 +50,12 @@ public class CartManager {
         }
     }
 
+    public void setVoucher(String code, int amount, String type) {
+        this.voucherCode = code;
+        this.voucherAmount = amount;
+        this.voucherType = type;
+    }
+
     public void setVoucherAmount(int amount) {
         voucherAmount = amount;
     }

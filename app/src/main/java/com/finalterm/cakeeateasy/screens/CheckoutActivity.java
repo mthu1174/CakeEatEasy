@@ -19,9 +19,12 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.finalterm.cakeeateasy.R;
+import com.finalterm.cakeeateasy.connectors.DatabaseHelper;
+import com.finalterm.cakeeateasy.models.Address;
 import com.finalterm.cakeeateasy.models.CartItem;
 import com.finalterm.cakeeateasy.models.CartManager;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -44,11 +47,15 @@ public class CheckoutActivity extends AppCompatActivity {
     private boolean fromBuyNow = false;
     private List<CartItem> originalCartItems = new java.util.ArrayList<>();
     private int shippingFee = 35000; // Default shipping fee
+    private DatabaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkout);
+
+        // Init DB Helper
+        dbHelper = new DatabaseHelper(this);
 
         // Find views
         layoutCheckoutItems = findViewById(R.id.layout_checkout_items);
@@ -72,29 +79,13 @@ public class CheckoutActivity extends AppCompatActivity {
         // Load cart items
         fromCartSelection = getIntent().getBooleanExtra("from_cart_selection", false);
         fromBuyNow = getIntent().getBooleanExtra("from_buy_now", false);
-        
-        if (fromCartSelection || fromBuyNow) {
-            // Get selected items from intent (for cart selection) or buy now items
-            List<CartItem> selectedItems = (List<CartItem>) getIntent().getSerializableExtra("selected_items");
-            if (selectedItems != null) {
-                cartItems = selectedItems;
-            }
-            // Save original cart items to restore later if needed (only for cart selection)
-            if (fromCartSelection) {
-                originalCartItems.clear();
-                originalCartItems.addAll(CartManager.getInstance().getCartItems());
-            }
-        } else {
-            // For regular checkout (not from cart selection or buy now), use all cart items
-            cartItems = CartManager.getInstance().getCartItems();
-        }
-        
+
+        setCartItemsFromIntent();
+
         displayCartItems();
 
-        // Load address (stub, you can load from user profile or intent)
-        edtAddressName.setText("Linh Nha Nguyen");
-        edtAddressPhone.setText("(+84)381 234 567");
-        edtAddressDetail.setText("White House, District 1, USA");
+        // Load default address
+        loadDefaultAddress();
 
         // Get delivery time and voucher from CartManager
         deliveryTime = CartManager.getInstance().getDeliveryTime();
@@ -145,7 +136,7 @@ public class CheckoutActivity extends AppCompatActivity {
             finish();
         });
         btnEditAddress.setOnClickListener(v -> {
-            Intent intent = new Intent(this, EditAddressActivity.class);
+            Intent intent = new Intent(this, AddressActivity.class);
             startActivityForResult(intent, EDIT_ADDRESS_REQUEST_CODE);
         });
 
@@ -176,6 +167,25 @@ public class CheckoutActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         });
+    }
+
+    @SuppressWarnings("unchecked")
+    private void setCartItemsFromIntent() {
+        if (fromCartSelection || fromBuyNow) {
+            // Get selected items from intent (for cart selection) or buy now items
+            List<CartItem> selectedItems = (List<CartItem>) getIntent().getSerializableExtra("selected_items");
+            if (selectedItems != null) {
+                cartItems = selectedItems;
+            }
+            // Save original cart items to restore later if needed (only for cart selection)
+            if (fromCartSelection) {
+                originalCartItems.clear();
+                originalCartItems.addAll(CartManager.getInstance().getCartItems());
+            }
+        } else {
+            // For regular checkout (not from cart selection or buy now), use all cart items
+            cartItems = CartManager.getInstance().getCartItems();
+        }
     }
 
     private void displayCartItems() {
@@ -271,34 +281,49 @@ public class CheckoutActivity extends AppCompatActivity {
         edtTotal.setText(String.format("%,d đ", total));
     }
 
+    private void loadDefaultAddress() {
+        ArrayList<Address> addresses = dbHelper.getAllAddresses();
+        Address defaultAddress = null;
+        if (!addresses.isEmpty()) {
+            // The list is sorted by default, so the first one is the default.
+            defaultAddress = addresses.get(0);
+        }
+
+        if (defaultAddress != null) {
+            edtAddressName.setText(defaultAddress.getName());
+            edtAddressPhone.setText(defaultAddress.getPhone());
+            edtAddressDetail.setText(defaultAddress.getAddressLine());
+        } else {
+            edtAddressName.setText("No address set");
+            edtAddressPhone.setText("");
+            edtAddressDetail.setText("Please add a delivery address.");
+        }
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == VOUCHER_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
-            voucherAmount = data.getIntExtra("voucher_amount", 0);
             voucherCode = data.getStringExtra("voucher_code");
+            voucherAmount = data.getIntExtra("voucher_amount", 0);
             String voucherType = data.getStringExtra("voucher_type");
-            txtVoucher.setText(voucherCode);
-            CartManager.getInstance().setVoucherAmount(voucherAmount);
-            CartManager.getInstance().setVoucherCode(voucherCode);
-            CartManager.getInstance().setVoucherType(voucherType);
-            
-            // Update shipping fee based on voucher type
+
             if ("FREESHIP".equals(voucherType)) {
                 shippingFee = 0;
             } else {
-                shippingFee = 35000; // Default shipping fee
+                shippingFee = 35000;
             }
-            
+
+            txtVoucher.setText(voucherCode);
+            CartManager.getInstance().setVoucher(voucherCode, voucherAmount, voucherType);
             updatePaymentSummary();
         } else if (requestCode == EDIT_ADDRESS_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
-            // Update address info if needed
-            String name = data.getStringExtra("address_name");
-            String phone = data.getStringExtra("address_phone");
-            String detail = data.getStringExtra("address_detail");
-            if (name != null) edtAddressName.setText(name);
-            if (phone != null) edtAddressPhone.setText(phone);
-            if (detail != null) edtAddressDetail.setText(detail);
+            Address selectedAddress = (Address) data.getSerializableExtra("selected_address");
+            if (selectedAddress != null) {
+                edtAddressName.setText(selectedAddress.getName());
+                edtAddressPhone.setText(selectedAddress.getPhone());
+                edtAddressDetail.setText(selectedAddress.getAddressLine());
+            }
         }
     }
 

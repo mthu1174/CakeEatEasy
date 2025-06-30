@@ -573,7 +573,6 @@
             android:id="@+id/tv_invoice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="#123456"
             android:textColor="@color/cakeiteasy_pink"
             android:fontFamily="@font/semibold"
             android:textStyle="bold"

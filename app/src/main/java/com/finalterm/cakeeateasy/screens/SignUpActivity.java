@@ -52,9 +52,6 @@ public class SignUpActivity extends AppCompatActivity {
         
         // Setup click listeners
         setupClickListeners();
-        
-        // Initialize database
-        initializeDatabase();
     }
 
     /**
@@ -100,15 +97,6 @@ public class SignUpActivity extends AppCompatActivity {
                 finish(); // Go back to login activity
             }
         });
-    }
-
-    /**
-     * Initialize database by copying from assets if needed
-     */
-    private void initializeDatabase() {
-        if (!databaseHelper.checkDatabase()) {
-            databaseHelper.copyDatabase();
-        }
     }
 
     /**
@@ -256,8 +244,7 @@ public class SignUpActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (databaseHelper != null) {
-            databaseHelper.closeDatabase();
-        }
+        // The DatabaseHelper now manages its own connection lifecycle.
+        // No need to close it manually.
     }
 }
