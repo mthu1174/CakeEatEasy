@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    tools:context=".screens.CartActivity">
+
+    <!-- Header Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:background="@color/cakeiteasy_pink"
+        android:gravity="center_vertical"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:elevation="4dp">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_back_2"
+            android:contentDescription="Back" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Cart"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:fontFamily="@font/semibold" />
+
+
+            <ImageView
+            android:id="@+id/btn_chat"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_chat_2"
+            android:contentDescription="Cart"
+                app:tint="@color/white" />
+
+    </LinearLayout>
+
+    <!-- Cart Items List -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_cart_items"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:clipToPadding="false" />
+
+    <!-- Time Delivery & Voucher -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#F8F8F8">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_order_outline"
+                app:tint="@color/cakeiteasy_pink" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time delivery"
+                android:textColor="#222222"
+                android:textSize="15sp"
+                android:fontFamily="@font/semibold"
+                android:layout_marginStart="8dp" />
+            <TextView
+                android:id="@+id/txt_time_delivery"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Schedule date and time"
+                android:textColor="#888888"
+                android:textSize="15sp"
+                android:gravity="end"
+                android:fontFamily="@font/regular" />
+            <ImageButton
+                android:id="@+id/btn_time_picker"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_chevron_right"
+                android:contentDescription="Pick time"
+                app:tint="#888888" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E0E0E0" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_voucher_ticket"
+                app:tint="@color/cakeiteasy_pink" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Voucher"
+                android:textColor="#222222"
+                android:textSize="15sp"
+                android:fontFamily="@font/semibold"
+                android:layout_marginStart="8dp" />
+            <TextView
+                android:id="@+id/txt_voucher"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Select or enter code"
+                android:textColor="#888888"
+                android:textSize="15sp"
+                android:gravity="end"
+                android:fontFamily="@font/regular" />
+            <ImageButton
+                android:id="@+id/btn_voucher_picker"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_chevron_right"
+                android:contentDescription="Pick voucher"
+                app:tint="#888888" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Bottom Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:orientation="horizontal"
+        android:background="#FFF"
+        android:gravity="center_vertical"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:elevation="8dp">
+
+        <CheckBox
+            android:id="@+id/checkbox_select_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/cakeiteasy_pink"
+            android:text="Select all"
+            android:textColor="#888888"
+            android:textSize="14sp"
+            android:fontFamily="@font/regular" />
+
+        <TextView
+            android:id="@+id/txt_total"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Total:"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:fontFamily="@font/bold"
+            android:layout_marginEnd="3dp"
+            android:gravity="end" />
+
+        <EditText
+            android:id="@+id/edt_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="10dp"
+            android:textColor="@color/cakeiteasy_pink"
+            android:textSize="16sp"
+            android:fontFamily="@font/bold"
+            android:background="@android:color/transparent"
+            android:focusable="false"
+            android:cursorVisible="false"
+            android:inputType="none"
+            android:gravity="end"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:id="@+id/txt_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save:"
+            android:textColor="#888888"
+            android:textSize="12sp"
+            android:fontFamily="@font/semibold"
+            android:layout_marginEnd="3dp"
+            android:gravity="end" />
+
+        <EditText
+            android:id="@+id/edt_voucher_minus_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/cakeiteasy_pink"
+            android:textSize="15sp"
+            android:fontFamily="@font/bold"
+            android:background="@android:color/transparent"
+            android:focusable="false"
+            android:cursorVisible="false"
+            android:inputType="none"
+            android:gravity="end"
+            android:layout_marginEnd="8dp" />
+    </LinearLayout>
+
+    <!-- Checkout Button -->
+    <Button
+        android:id="@+id/btn_checkout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="25dp"
+        android:backgroundTint="#DD5369"
+        android:fontFamily="@font/bold"
+        android:text="Checkout"
+        android:textColor="#FBEAEC"
+        android:textSize="18dp"
+        app:cornerRadius="0dp" />
+
+</LinearLayout>

@@ -1,89 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:background="@android:color/white"
-    android:padding="16dp">
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:paddingTop="16dp">
 
-    <!-- Title -->
+    <RadioButton
+        android:id="@+id/rb_address"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:button="@drawable/custom_radio_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_name"
+        app:layout_constraintBottom_toBottomOf="@id/tv_name"/>
+
     <TextView
+        android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Address"
-        android:textSize="20sp"
-        android:textColor="@color/cakeiteasy_pink"
-        android:fontFamily="@font/bold"
-        android:layout_marginBottom="12dp"/>
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/semibold"
+        tools:text="Linh Nha Nguyen"
+        android:textColor="#191919"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@id/rb_address"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Address Row -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
-
-        <!-- Custom RadioButton -->
-        <RadioButton
-            android:id="@+id/radioAddress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true" />
-
-        <!-- Name and phone -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Linh Nguyen"
-            android:textColor="#222222"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:fontFamily="@font/bold"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" (+84)881 234 567"
-            android:textColor="#B0B0B0"
-            android:textSize="16sp"
-            android:fontFamily="@font/regular"
-            android:layout_marginStart="4dp"/>
-
-        <!-- Edit button -->
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Edit"
-            android:textColor="@color/cakeiteasy_pink"
-            android:textSize="16sp"
-            android:layout_marginLeft="30dp"
-            android:fontFamily="@font/bold"
-            />
-    </LinearLayout>
-
-    <!-- Address detail -->
     <TextView
+        android:id="@+id/tv_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="White House, District 1, USA"
-        android:textColor="#888888"
-        android:textSize="15sp"
+        android:layout_marginStart="8dp"
         android:fontFamily="@font/regular"
-        android:layout_marginTop="4dp"/>
+        tools:text="(+84)881 234 567"
+        android:textColor="#808080"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/tv_name"
+        app:layout_constraintStart_toEndOf="@id/tv_name"
+        app:layout_constraintTop_toTopOf="@id/tv_name" />
 
-    <!-- Default label -->
     <TextView
+        android:id="@+id/tv_address_line"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/regular"
+        tools:text="White House, District 1, USA"
+        android:textColor="#808080"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/tv_edit"
+        app:layout_constraintStart_toStartOf="@id/tv_name"
+        app:layout_constraintTop_toBottomOf="@id/tv_name" />
+
+    <TextView
+        android:id="@+id/tv_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Default"
-        android:textColor="#DD5369"
+        android:fontFamily="@font/semibold"
+        android:text="Edit"
+        android:textColor="#191919"
         android:textSize="14sp"
-        android:fontFamily="@font/bold"
-        android:background="@drawable/bg_default_border"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:paddingTop="4dp"
-        android:paddingBottom="4dp"
-        android:layout_marginTop="8dp"/>
-</LinearLayout>
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?attr/selectableItemBackground"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_name"
+        app:layout_constraintBottom_toBottomOf="@id/tv_name" />
+
+    <TextView
+        android:id="@+id/tv_default_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/default_tag_background"
+        android:fontFamily="@font/semibold"
+        android:paddingStart="8dp"
+        android:paddingTop="2dp"
+        android:paddingEnd="8dp"
+        android:paddingBottom="2dp"
+        android:text="Default"
+        android:textColor="@color/cakeiteasy_pink"
+        android:textSize="12sp"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="@id/tv_address_line"
+        app:layout_constraintTop_toBottomOf="@id/tv_address_line"
+        tools:visibility="visible" />
+
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="#D9D9D9"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_default_tag" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
