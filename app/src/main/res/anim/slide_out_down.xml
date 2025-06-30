@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Animation để di chuyển một view từ vị trí hiện tại xuống dưới đáy màn hình.
+    Dùng để ẩn Fragment khi bấm nút Back.
+-->
+<translate xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fromYDelta="0"
+    android:toYDelta="100%p"
+    android:duration="300"
+    android:interpolator="@android:anim/accelerate_interpolator"/>

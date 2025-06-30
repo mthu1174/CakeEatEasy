@@ -24,7 +24,6 @@
         <item name="textAppearanceLabelSmall">@style/TextAppearance.App.InputLabel</item>
 
         <!-- B. TÙY CHỈNH MÀU SẮC CHỦ ĐẠO (Tùy chọn) -->
-        <!-- Bạn có thể bỏ comment và thay đổi các màu này nếu muốn -->
         <!--
         <item name="colorPrimary">@color/app_pink</item>
         <item name="colorOnPrimary">@color/white</item>
@@ -250,6 +249,52 @@
         <item name="android:drawablePadding">8dp</item>
         <item name="android:textAppearance">?attr/textAppearanceBodySmall</item> <!-- Dùng theme attribute -->
         <item name="android:textColor">@color/text_normal</item>
+    </style>
+
+    <style name="Widget.App.DotIndicator" parent="Widget.Material3.TabLayout">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+
+        <!-- 1. Dùng InsetDrawable để tạo khoảng cách -->
+        <item name="tabBackground">@drawable/tab_indicator_inset</item>
+
+        <!-- 2. Chuyển sang chế độ scrollable để tab không bị kéo giãn -->
+        <item name="tabMode">scrollable</item>
+
+        <!-- 3. Dọn dẹp các thuộc tính không cần thiết -->
+        <item name="tabIndicatorHeight">0dp</item>
+        <item name="tabRippleColor">@null</item>
+    </style>
+
+
+    <!-- ========================================================================= -->
+    <!-- 4. STYLE BỔ SUNG CHO MÀN HÌNH FILTER                                     -->
+    <!-- ========================================================================= -->
+
+    <!-- Style cho các Chip trong màn hình Filter -->
+    <style name="Widget.App.FilterChip" parent="Widget.MaterialComponents.Chip.Filter">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <!-- Bỏ icon dấu tick khi được chọn -->
+        <item name="checkedIconVisible">true</item>
+        <!-- Bỏ viền của chip -->
+        <item name="chipStrokeWidth">0dp</item>
+        <!-- Bo tròn góc -->
+        <item name="chipCornerRadius">8dp</item>
+        <!-- Canh lề và font chữ (tùy chỉnh nếu cần) -->
+        <item name="chipMinHeight">40dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.App.Body2.Medium</item>
+        <item name="chipBackgroundColor">@drawable/chip_background_selector</item>
+        <item name="android:textColor">@drawable/chip_text_color_selector</item>
+    </style>
+
+    <!-- Style cho các mốc giá dưới thanh trượt -->
+    <style name="Widget.App.PriceMilestone" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <!-- Dùng màu text_light cho đỡ rối mắt -->
+        <item name="android:textColor">@color/text_light</item>
+        <item name="android:textAppearance">@style/TextAppearance.App.Body3</item>
     </style>
 
 </resources>
