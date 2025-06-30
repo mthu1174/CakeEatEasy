@@ -110,9 +110,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 app:chipSpacingHorizontal="8dp"
-                app:singleSelection="true"
-                app:chipBackgroundColor="@drawable/chip_background_selector"
-                app:chipTextColor="@drawable/chip_text_color_selector">
+                app:singleSelection="true">
 
                 <com.google.android.material.chip.Chip
                     style="@style/Widget.App.FilterChip"
@@ -144,9 +142,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 app:chipSpacingHorizontal="8dp"
-                app:singleSelection="true"
-                app:chipBackgroundColor="@drawable/chip_background_selector"
-                app:chipTextColor="@drawable/chip_text_color_selector">
+                app:singleSelection="true">
 
                 <com.google.android.material.chip.Chip
                     style="@style/Widget.App.FilterChip"
