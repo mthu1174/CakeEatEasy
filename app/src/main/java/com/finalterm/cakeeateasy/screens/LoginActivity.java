@@ -81,7 +81,7 @@ public class LoginActivity extends AppCompatActivity {
         btnContinueFacebook = findViewById(R.id.btn_continue_facebook);
         txtForgotPassword = findViewById(R.id.txt_login_forgot_password);
         txtSignup = findViewById(R.id.txt_signup);
-        checkBoxRemember = findViewById(R.id.checkBox);
+        checkBoxRemember=findViewById(R.id.checkBox);
     }
 
     /**
