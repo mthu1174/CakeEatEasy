@@ -9,24 +9,41 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 import com.finalterm.cakeeateasy.R;
 import com.finalterm.cakeeateasy.models.Product;
+
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 public class ProductGridAdapter extends RecyclerView.Adapter<ProductGridAdapter.ProductViewHolder> {
 
     private Context context;
     private List<Product> productList;
+    private OnProductClickListener listener; // Biến để lưu trữ "người lắng nghe"
 
-    public ProductGridAdapter(Context context, List<Product> productList) {
+    /**
+     * Interface để định nghĩa một "hợp đồng" cho sự kiện click.
+     * Activity nào sử dụng adapter này sẽ phải implement interface này để nhận sự kiện.
+     */
+    public interface OnProductClickListener {
+        void onProductClick(Product product);
+    }
+
+    /**
+     * Constructor đã được cập nhật để nhận vào một listener.
+     */
+    public ProductGridAdapter(Context context, List<Product> productList, OnProductClickListener listener) {
         this.context = context;
         this.productList = productList;
+        this.listener = listener;
     }
 
     @NonNull
     @Override
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // Tham chiếu đến layout item mới của chúng ta
         View view = LayoutInflater.from(context).inflate(R.layout.item_product_grid, parent, false);
         return new ProductViewHolder(view);
     }
@@ -35,33 +52,36 @@ public class ProductGridAdapter extends RecyclerView.Adapter<ProductGridAdapter.
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         Product product = productList.get(position);
 
-        // Gán dữ liệu vào các View
-        holder.imgProductImage.setImageResource(product.getImageRes());
+        // Load ảnh từ URL bằng Glide
+        Glide.with(context)
+                .load(product.getImageUrl())
+                .placeholder(R.drawable.placeholder_cake_promo)
+                .error(R.drawable.placeholder_cake_promo)
+                .into(holder.imgProductImage);
+
+        // Gán dữ liệu vào các TextView
         holder.txtProductName.setText(product.getName());
         holder.txtProductDesc.setText(product.getDescription());
-        holder.txtProductPrice.setText(product.getPrice());
 
-        // Xử lý hiển thị phần giảm giá và giá cũ
-        // Nếu không có giảm giá (discount is null hoặc rỗng), ẩn các view liên quan
-        if (product.getDiscount() != null && !product.getDiscount().isEmpty()) {
-            holder.txtProductDiscount.setText(product.getDiscount());
-            holder.txtProductOldPrice.setText(product.getOldPrice());
+        // Định dạng giá tiền
+        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
+        holder.txtProductPrice.setText(currencyFormat.format(product.getPrice()));
 
-            // Gạch ngang giá cũ
-            holder.txtProductOldPrice.setPaintFlags(holder.txtProductOldPrice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-
-            // Hiển thị các view này
-            holder.txtProductDiscount.setVisibility(View.VISIBLE);
+        // Xử lý hiển thị giá gốc và gạch ngang
+        if (product.getOriginalPrice() > 0 && product.getOriginalPrice() > product.getPrice()) {
             holder.txtProductOldPrice.setVisibility(View.VISIBLE);
+            holder.txtProductOldPrice.setText(currencyFormat.format(product.getOriginalPrice()));
+            holder.txtProductOldPrice.setPaintFlags(holder.txtProductOldPrice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         } else {
-            // Nếu không có giảm giá, ẩn các view này đi
-            holder.txtProductDiscount.setVisibility(View.GONE);
             holder.txtProductOldPrice.setVisibility(View.GONE);
         }
 
-        // TODO: Thêm sự kiện onClick cho các nút nếu cần
-        // holder.btnAddToCart.setOnClickListener(...);
-        // holder.btnFavorite.setOnClickListener(...);
+        // === THÊM SỰ KIỆN CLICK CHO TOÀN BỘ ITEM VIEW ===
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onProductClick(product);
+            }
+        });
     }
 
     @Override
@@ -70,22 +90,21 @@ public class ProductGridAdapter extends RecyclerView.Adapter<ProductGridAdapter.
     }
 
     public static class ProductViewHolder extends RecyclerView.ViewHolder {
-        // Khai báo các View với quy ước đặt tên mới
         ImageView imgProductImage;
-        TextView txtProductName, txtProductDesc, txtProductPrice, txtProductDiscount, txtProductOldPrice;
-        ImageView btnAddToCart, btnFavorite;
+        TextView txtProductName, txtProductDesc, txtProductPrice, txtProductOldPrice;
+        // Các nút bấm như Add to Cart, Favorite có thể được thêm vào đây nếu cần
+        // ImageView btnAddToCart, btnFavorite;
 
         public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
-            // Tham chiếu đến các View bằng ID
+            // Đảm bảo các ID này khớp chính xác với file layout item_product_grid.xml
             imgProductImage = itemView.findViewById(R.id.imgProductSquare);
             txtProductName = itemView.findViewById(R.id.tvProductNameSquare);
-            txtProductDesc = itemView.findViewById(R.id.tvProductDescSquare);
+            txtProductDesc = itemView.findViewById(R.id.tvProductCateSquare);
             txtProductPrice = itemView.findViewById(R.id.tvProductPriceSquare);
-            txtProductDiscount = itemView.findViewById(R.id.tvProductDiscountSquare);
             txtProductOldPrice = itemView.findViewById(R.id.tvProductOldPriceSquare);
-            btnAddToCart = itemView.findViewById(R.id.btnAddToCartSquare);
-            btnFavorite = itemView.findViewById(R.id.btnFavoriteSquare);
+            // btnAddToCart = itemView.findViewById(R.id.btn_add_to_cart);
+            // btnFavorite = itemView.findViewById(R.id.btn_favorite);
         }
     }
 }

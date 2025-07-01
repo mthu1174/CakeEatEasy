@@ -14,7 +14,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/product_list_app_bar_bg"
+        android:background="@color/app_pink"
         app:navigationIcon="@drawable/ic_chevron_left"
         app:navigationIconTint="@color/white"
         app:title="Edit profile"
@@ -24,7 +24,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,7 +37,8 @@
             <!-- 2. Ảnh đại diện và nút sửa -->
             <FrameLayout
                 android:layout_width="120dp"
-                android:layout_height="120dp">
+                android:layout_height="120dp"
+                android:layout_marginBottom="24dp">
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/img_avatar_edit"
                     android:layout_width="120dp"
@@ -60,6 +62,7 @@
             </FrameLayout>
 
             <!-- 3. Các ô nhập liệu -->
+
             <!-- Full name -->
             <TextView style="@style/EditProfileLabel" android:text="Full name"/>
             <EditText
@@ -67,6 +70,28 @@
                 style="@style/EditProfileEditText"
                 android:hint="Nha Linh Nguyen"
                 android:inputType="textPersonName"/>
+
+            <!-- Email (Không cho sửa) -->
+            <TextView style="@style/EditProfileLabel" android:text="Email"/>
+            <TextView
+                android:id="@+id/txt_email"
+                style="@style/EditProfileEditText"
+                android:backgroundTint="@color/text_muted"
+                android:focusable="false"
+                android:clickable="false"
+                android:padding="16dp"
+                tools:text="linhnhanguyen@gmail.com"/>
+
+            <!-- Username (Không cho sửa) -->
+            <TextView style="@style/EditProfileLabel" android:text="Username"/>
+            <TextView
+                android:id="@+id/txt_username"
+                style="@style/EditProfileEditText"
+                android:backgroundTint="@color/text_muted"
+                android:focusable="false"
+                android:clickable="false"
+                android:padding="16dp"
+                tools:text="linhnhanguyen" />
 
             <!-- Date of birth -->
             <TextView style="@style/EditProfileLabel" android:text="Date of birth"/>
@@ -85,7 +110,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:background="@drawable/edit_text_background">
-                <!-- Country Code Picker (Thư viện ngoài) -->
                 <com.hbb20.CountryCodePicker
                     android:id="@+id/ccp"
                     android:layout_width="wrap_content"
@@ -95,7 +119,6 @@
                     app:ccp_showFullName="false"
                     app:ccp_arrowSize="20dp" />
                 <View
-                    style="@style/EditProfileEditText"
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
                     android:background="#E0E0E0"
@@ -108,9 +131,18 @@
                     android:layout_weight="1"
                     android:background="@null"
                     android:paddingHorizontal="16dp"
-                    android:inputType="phone"
-                    android:hint="(xxx) xxxxxxxx"/>
+                    android:inputType="phone"/>
             </LinearLayout>
+
+            <!-- Address -->
+            <TextView style="@style/EditProfileLabel" android:text="Address"/>
+            <EditText
+                android:id="@+id/edt_address_detail"
+                style="@style/EditProfileEditText"
+                android:inputType="textPostalAddress"
+                android:minHeight="80dp"
+                android:gravity="top"
+                android:hint="Your full address"/>
 
         </LinearLayout>
     </ScrollView>
@@ -118,11 +150,9 @@
     <!-- Nút Save Changes -->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_save_changes"
+        style="@style/Widget.App.Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:background="@drawable/logout_button_background"
-        android:text="Save Changes"
-        android:textColor="@color/white"
-        android:textAllCaps="false"/>
+        android:text="Save Changes" />
 </LinearLayout>

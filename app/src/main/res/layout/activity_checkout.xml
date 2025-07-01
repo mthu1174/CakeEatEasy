@@ -330,6 +330,7 @@
         </LinearLayout>
 
         <!-- Payment Method -->
+        <!-- Payment Method (ĐÃ SỬA LẠI) -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -350,71 +351,46 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginStart="8dp">
-                    <RadioButton
-                        android:id="@+id/bank_account"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Bank account"
-                        android:textColor="#222222"
-                        android:fontFamily="@font/semibold" />
 
-                    <ImageView
-                        android:paddingLeft="5dp"
-                        android:id="@+id/imageView2"
-                        android:layout_width="48dp"
-                        android:layout_height="32dp"
-                        android:layout_weight="1"
-                        android:layout_gravity="center_vertical"
-                        app:srcCompat="@drawable/ic_wallet" />
-                </LinearLayout>
+                <!-- Bỏ LinearLayout, dùng drawableEnd để thêm icon -->
+                <RadioButton
+                    android:id="@+id/bank_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Bank account"
+                    android:checked="true"
+                    android:textColor="#222222"
+                    android:fontFamily="@font/semibold"
+                    android:drawableEnd="@drawable/ic_wallet"
+                    android:drawablePadding="8dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                <!-- Tương tự cho Visa -->
+                <RadioButton
+                    android:id="@+id/rb_visa"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginStart="8dp">
-                    <RadioButton
-                        android:id="@+id/rb_visa"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Visa"
-                        android:textColor="#222222"
-                        android:fontFamily="@font/semibold" />
-                    <ImageView
-                        android:paddingLeft="5dp"
-                        android:id="@+id/imageView3"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:layout_weight="1"
-                        android:layout_gravity="center_vertical"
-                        app:srcCompat="@drawable/ic_visa" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:text="Visa"
+                    android:textColor="#222222"
+                    android:fontFamily="@font/semibold"
+                    android:drawableEnd="@drawable/ic_visa"
+                    android:drawablePadding="8dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
+
+                <!-- Tương tự cho Momo -->
+                <RadioButton
+                    android:id="@+id/rb_momo"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginStart="8dp">
-                    <RadioButton
-                        android:id="@+id/rb_momo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Momo"
-                        android:textColor="#222222"
-                        android:fontFamily="@font/semibold" />
-                    <ImageView
-                        android:paddingLeft="5dp"
-                        android:id="@+id/imageView4"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:layout_weight="1"
-                        android:layout_gravity="center_vertical"
-                        app:srcCompat="@drawable/ic_momo" />
-                </LinearLayout>
+                    android:text="Momo"
+                    android:textColor="#222222"
+                    android:fontFamily="@font/semibold"
+                    android:drawableEnd="@drawable/ic_momo"
+                    android:drawablePadding="8dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
 
             </RadioGroup>
         </LinearLayout>

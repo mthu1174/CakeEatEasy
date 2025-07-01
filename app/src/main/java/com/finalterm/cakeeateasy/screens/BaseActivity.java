@@ -1,4 +1,4 @@
-package com.finalterm.cakeeateasy.screens; // Thay bằng package của bạn
+package com.finalterm.cakeeateasy.screens;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,20 +11,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
-import com.finalterm.cakeeateasy.R; // Thay bằng package của bạn
+import com.finalterm.cakeeateasy.R;
 import com.finalterm.cakeeateasy.screens.dialogs.ChatDialogFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import java.util.Arrays;
 import java.util.List;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
     private List<View> navItems;
-    // Biến cờ để ngăn hiệu ứng chạy khi app vừa khởi động
     private boolean isFirstTime = true;
 
+    // Các Activity con sẽ phải implement phương thức này để cho biết nó là item nào trên thanh nav
     public abstract int getNavItemIndex();
 
     @Override
@@ -45,18 +43,14 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
-        // Chỉ áp dụng hiệu ứng chuyển cảnh sau lần khởi động đầu tiên
         if (!isFirstTime) {
-            // Áp dụng hiệu ứng fade-in cho Activity vừa được đưa lên trên
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         }
-        // Đánh dấu là đã qua lần khởi động đầu tiên
         isFirstTime = false;
-
         updateNavState();
     }
 
+    // Phương thức để các Activity con "bơm" layout của mình vào
     protected void setContentLayout(int layoutResID) {
         FrameLayout contentFrame = findViewById(R.id.content_frame);
         contentFrame.removeAllViews();
@@ -89,8 +83,6 @@ public abstract class BaseActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, targetActivityClass);
                 intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
-
-                // Vẫn giữ dòng này để xử lý cho lần đầu tiên một Activity được tạo
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             }
         }
@@ -108,20 +100,14 @@ public abstract class BaseActivity extends AppCompatActivity {
         ImageView inactiveIcon = item.findViewById(R.id.nav_item_inactive);
         FloatingActionButton activeFab = activeStateLayout.findViewById(R.id.nav_item_active_fab);
         TextView label = activeStateLayout.findViewById(R.id.nav_item_active_label);
-
         NavItemInfo info = getNavItemInfo(index);
 
         activeFab.setImageResource(info.activeIconRes);
         label.setText(info.label);
         inactiveIcon.setImageResource(info.inactiveIconRes);
 
-        if (isActive) {
-            activeStateLayout.setVisibility(View.VISIBLE);
-            inactiveIcon.setVisibility(View.INVISIBLE);
-        } else {
-            activeStateLayout.setVisibility(View.INVISIBLE);
-            inactiveIcon.setVisibility(View.VISIBLE);
-        }
+        activeStateLayout.setVisibility(isActive ? View.VISIBLE : View.INVISIBLE);
+        inactiveIcon.setVisibility(isActive ? View.INVISIBLE : View.VISIBLE);
     }
 
     private void openChatDialog() {
@@ -129,10 +115,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         chatDialog.show(getSupportFragmentManager(), "ChatDialogFragment");
     }
 
-    // Helper class để chứa thông tin item
     private static class NavItemInfo {
-        final int inactiveIconRes;
-        final int activeIconRes;
+        final int inactiveIconRes, activeIconRes;
         final String label;
 
         NavItemInfo(int inactiveIconRes, int activeIconRes, String label) {
@@ -142,7 +126,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
-    // Phương thức để lấy thông tin item
     private NavItemInfo getNavItemInfo(int index) {
         switch (index) {
             case 0: return new NavItemInfo(R.drawable.ic_home_outline, R.drawable.ic_home_filled, "Home");
@@ -154,11 +137,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
-    // "Bảng chỉ đường" để lấy class Activity mục tiêu
     private Class<?> getTargetActivity(int index) {
         switch (index) {
             case 0: return MainActivity.class;
-            case 1: return OrderActivity.class; // Nhớ bỏ comment dòng này khi bạn tạo OrderActivity
+            case 1: return OrderActivity.class;
             case 2: return FavouriteActivity.class;
             case 3: return NotificationActivity.class;
             case 4: return ProfileActivity.class;

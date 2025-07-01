@@ -9,45 +9,63 @@
     android:background="@color/app_pink_background"
     tools:context=".screens.ProductListActivity">
 
-    <!-- 1. App Bar tùy chỉnh -->
+    <!-- 1. App Bar tùy chỉnh (Giữ nguyên) -->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/product_list_app_bar_bg"
         app:elevation="0dp">
 
-<!--        <com.google.android.material.appbar.MaterialToolbar-->
-<!--            android:id="@+id/toolbar"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="?attr/actionBarSize"-->
-<!--            app:title="Vanilla"-->
-<!--            app:titleCentered="true"-->
-<!--            app:titleTextColor="@color/product_list_app_bar_text"-->
-<!--            app:navigationIcon="@drawable/ic_chevron_left"-->
-<!--            app:navigationIconTint="@color/product_list_app_bar_text">-->
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="Vanilla"
+            app:titleCentered="true"
+            app:titleTextColor="@color/product_list_app_bar_text"
+            app:navigationIcon="@drawable/ic_chevron_left"
+            app:navigationIconTint="@color/product_list_app_bar_text">
 
-<!--            <ImageView-->
-<!--                android:id="@+id/img_cart"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:src="@drawable/ic_shopping_cart"-->
-<!--                app:tint="@color/product_list_app_bar_text"-->
-<!--                android:layout_gravity="end"-->
-<!--                android:layout_marginEnd="16dp"-->
-<!--                android:contentDescription="Cart" />-->
-<!--        </com.google.android.material.appbar.MaterialToolbar>-->
+            <ImageView
+                android:id="@+id/img_cart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_shopping_cart"
+                app:tint="@color/product_list_app_bar_text"
+                android:layout_gravity="end"
+                android:layout_marginEnd="16dp"
+                android:contentDescription="Cart" />
+        </com.google.android.material.appbar.MaterialToolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- 2. Danh sách sản phẩm dạng lưới -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_products"
+    <!-- SỬ DỤNG FRAMELAYOUT ĐỂ CHỨA CẢ DANH SÁCH VÀ THÔNG BÁO RỖNG -->
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:padding="@dimen/product_card_gap"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="2"
-        tools:listitem="@layout/item_product_grid"
-        tools:itemCount="6"/>
+        android:layout_height="match_parent">
 
+        <!-- 2. Danh sách sản phẩm dạng lưới -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_products"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:padding="@dimen/product_card_gap"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="2"
+            tools:listitem="@layout/item_product_grid"
+            tools:itemCount="6"/>
+
+        <!-- 3. THÊM TEXTVIEW CHO TRẠNG THÁI RỖNG -->
+        <TextView
+            android:id="@+id/txt_empty_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Không có sản phẩm nào."
+            android:textColor="@color/text_light"
+            android:textSize="16sp"
+            android:visibility="gone"
+            tools:visibility="visible"/>
+
+    </FrameLayout>
 </LinearLayout>

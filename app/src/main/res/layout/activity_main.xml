@@ -38,7 +38,7 @@
                 android:id="@+id/txt_welcome_user"
                 style="@style/TextAppearance.App.Heading1"
                 android:layout_marginHorizontal="@dimen/home_padding_horizontal"
-                tools:text="Nha Linh!" />
+                tools:text="Mai Thu!" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_search"
@@ -137,13 +137,46 @@
                 android:paddingHorizontal="@dimen/home_padding_horizontal"
                 tools:listitem="@layout/item_category"/>
 
-            <!-- Today Promo Section -->
-            <TextView
-                style="@style/TextAppearance.App.Heading2"
-                android:text="Today Promo"
-                android:textColor="@color/app_pink"
+            <!-- ============================================= -->
+            <!--     KHỐI TODAY PROMO - ĐÃ THÊM NÚT "VIEW ALL"     -->
+            <!-- ============================================= -->
+
+            <!-- Dùng ConstraintLayout để đặt tiêu đề và nút "View All" ngang hàng -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/home_section_margin_top"
-                android:layout_marginStart="@dimen/home_padding_horizontal"/>/>
+                android:paddingHorizontal="@dimen/home_padding_horizontal">
+
+                <TextView
+                    android:id="@+id/label_promo"
+                    style="@style/TextAppearance.App.Heading2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Today Promo"
+                    android:textColor="@color/app_pink"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <!-- NÚT "XEM TẤT CẢ" ĐỂ MỞ PRODUCT LIST ACTIVITY -->
+                <TextView
+                    android:id="@+id/btn_view_all_products"
+                    style="@style/TextAppearance.App.Body2.Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="8dp"
+                    android:text="View All"
+                    android:textColor="@color/app_pink"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_promo"
                 android:layout_width="match_parent"
@@ -152,7 +185,10 @@
                 android:clipToPadding="false"
                 android:orientation="horizontal"
                 android:paddingHorizontal="@dimen/home_padding_horizontal"
-                tools:listitem="@layout/item_promo_product"/>
+                tools:listitem="@layout/item_promo_product" />
+
+            <!-- ============================================= -->
+
 
             <!-- Hot Voucher Section -->
             <TextView

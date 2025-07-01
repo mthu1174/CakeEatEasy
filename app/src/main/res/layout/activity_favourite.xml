@@ -9,7 +9,7 @@
     android:background="@color/app_pink_background"
     tools:context=".screens.FavouriteActivity">
 
-    <!-- 1. App Bar tùy chỉnh -->
+    <!-- 1. App Bar tùy chỉnh (Giữ nguyên) -->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -37,15 +37,35 @@
         </com.google.android.material.appbar.MaterialToolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- 2. Danh sách sản phẩm yêu thích -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_favourite_products"
+    <!-- BƯỚC 1: SỬ DỤNG FRAMELAYOUT ĐỂ CHỨA CẢ RECYCLERVIEW VÀ TEXTVIEW -->
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:padding="12dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_favourite"
-        tools:itemCount="5"/>
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_favourite_products"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:padding="12dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_favourite"
+            tools:itemCount="5"/>
+
+        <!-- SỬA LẠI ID Ở ĐÂY CHO KHỚP VỚI JAVA -->
+        <TextView
+            android:id="@+id/txt_favourite_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Danh sách yêu thích của bạn đang trống"
+            android:textSize="16sp"
+            android:textColor="@color/text_light"
+            android:drawablePadding="16dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            tools:visibility="visible"/>
+
+    </FrameLayout>
 
 </LinearLayout>

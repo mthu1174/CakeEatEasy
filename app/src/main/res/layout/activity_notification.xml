@@ -9,36 +9,20 @@
     android:background="@color/white"
     tools:context=".screens.NotificationActivity">
 
-    <!-- 1. App Bar tùy chỉnh -->
+    <!-- Thanh Toolbar (Bỏ comment nếu bạn cần dùng) -->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/notif_app_bar_bg"
-        app:elevation="0dp">
-
-<!--        <com.google.android.material.appbar.MaterialToolbar-->
-<!--            android:id="@+id/toolbar_notification"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="?attr/actionBarSize"-->
-<!--            app:title="Notification"-->
-<!--            app:titleCentered="true"-->
-<!--            app:titleTextColor="@color/notif_app_bar_text"-->
-<!--            app:navigationIcon="@drawable/ic_chevron_left"-->
-<!--            app:navigationIconTint="@color/notif_app_bar_text">-->
-
-<!--            <ImageView-->
-<!--                android:id="@+id/img_cart_appbar"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:src="@drawable/ic_shopping_cart"-->
-<!--                app:tint="@color/notif_app_bar_text"-->
-<!--                android:layout_gravity="end"-->
-<!--                android:layout_marginEnd="16dp"-->
-<!--                android:contentDescription="Cart" />-->
-<!--        </com.google.android.material.appbar.MaterialToolbar>-->
+        android:layout_height="wrap_content">
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="Notification"
+            app:titleCentered="true"
+            android:backgroundTint="@color/app_pink"/>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- 2. Thanh Search -->
+    <!-- Bạn có thể giữ hoặc xóa thanh Search này tùy ý -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -46,43 +30,35 @@
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:background="@color/white">
-
-        <EditText
-            android:id="@+id/edt_search"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/search_bar_background"
-            android:drawableStart="@drawable/ic_search"
-            android:drawablePadding="8dp"
-            android:hint="Search"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="10dp"
-            android:textColorHint="@color/text_light"
-            android:textSize="14sp"
-            android:inputType="text"
-            android:autofillHints="name"/>
-
-        <ImageView
-            android:id="@+id/img_filter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_filter"
-            android:layout_marginStart="16dp"
-            android:contentDescription="Filter"/>
-
+        <!-- ... Nội dung thanh search ... -->
     </LinearLayout>
 
-    <!-- 3. Danh sách thông báo -->
-    <!-- Nền của RecyclerView nên là màu nền chung của màn hình -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_notifications"
+    <!-- SỬA LỖI 2: Dùng FrameLayout để chứa cả RecyclerView và thông báo rỗng -->
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background_canvas"
-        android:clipToPadding="false"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_notification"
-        tools:itemCount="8"/>
+        android:background="@color/background_canvas">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_notifications"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_notification"/>
+
+        <!-- SỬA LỖI 2: Thêm TextView cho trạng thái rỗng -->
+        <TextView
+            android:id="@+id/txt_empty_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Bạn chưa có thông báo nào."
+            android:textColor="@color/text_normal"
+            android:textSize="16sp"
+            android:visibility="gone"
+            tools:visibility="visible"/>
+
+    </FrameLayout>
 
 </LinearLayout>

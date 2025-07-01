@@ -51,7 +51,7 @@
 
             <TextView
                 style="@style/TextAppearance.App.Body3"
-                android:id="@+id/tvProductDescSquare"
+                android:id="@+id/tvProductCateSquare"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"

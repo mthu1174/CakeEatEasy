@@ -47,8 +47,11 @@ public class FilterFragment extends Fragment {
 
     private void setupToolbar() {
         binding.toolbarFilter.setNavigationOnClickListener(v -> {
-            // Dùng NavController để quay lại màn hình trước.
-            NavHostFragment.findNavController(this).navigateUp();
+            // Cách đúng để đóng một fragment được "add" vào
+            // Nó sẽ gỡ fragment này khỏi back stack và quay lại màn hình trước đó.
+            if (getParentFragmentManager() != null) {
+                getParentFragmentManager().popBackStack();
+            }
         });
     }
 

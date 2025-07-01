@@ -24,10 +24,19 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
     private Context context;
     private List<Notification> notificationList;
+    // SỬA LỖI 1: Khai báo biến để lưu listener
+    private OnNotificationClickListener clickListener;
 
-    public NotificationAdapter(Context context, List<Notification> notificationList) {
+    // SỬA LỖI 1 & 3: Thêm interface OnNotificationClickListener
+    public interface OnNotificationClickListener {
+        void onNotificationClick(Notification notification, int position);
+    }
+
+    // SỬA LỖI 1 & 3: Cập nhật constructor để nhận listener
+    public NotificationAdapter(Context context, List<Notification> notificationList, OnNotificationClickListener listener) {
         this.context = context;
         this.notificationList = notificationList;
+        this.clickListener = listener;
     }
 
     @NonNull
@@ -41,21 +50,17 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     public void onBindViewHolder(@NonNull NotificationViewHolder holder, int position) {
         Notification notification = notificationList.get(position);
 
-        // Đặt dữ liệu text
         holder.txtTitle.setText(notification.getTitle());
         holder.txtSubtitle.setText(notification.getSubtitle());
         holder.txtTime.setText(notification.getTime());
         holder.txtDate.setText(notification.getDate());
 
-        // Ẩn/hiện chấm đỏ "chưa đọc"
         holder.viewUnreadDot.setVisibility(notification.isRead() ? View.GONE : View.VISIBLE);
 
-        // ---- Xử lý icon và màu sắc động ----
         int iconRes;
         int iconColorRes;
         int iconBgColorRes;
 
-        // Dựa vào loại thông báo để chọn đúng bộ icon và màu
         switch (notification.getType()) {
             case SUCCESS:
                 iconRes = R.drawable.ic_order_success;
@@ -80,15 +85,12 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
                 break;
         }
 
-        // --- Áp dụng icon và màu sắc vào ImageView ---
-        // 1. Đặt nền tròn và tô màu cho nền
         Drawable backgroundDrawable = ContextCompat.getDrawable(context, R.drawable.icon_circle_background).mutate();
         if (backgroundDrawable instanceof GradientDrawable) {
             ((GradientDrawable) backgroundDrawable).setColor(ContextCompat.getColor(context, iconBgColorRes));
         }
         holder.imgIcon.setBackground(backgroundDrawable);
 
-        // 2. Đặt icon và tô màu cho icon
         holder.imgIcon.setImageResource(iconRes);
         ColorStateList iconColor = ColorStateList.valueOf(ContextCompat.getColor(context, iconColorRes));
         ImageViewCompat.setImageTintList(holder.imgIcon, iconColor);
@@ -99,21 +101,27 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         return notificationList.size();
     }
 
-    public static class NotificationViewHolder extends RecyclerView.ViewHolder {
-        // Khai báo các View với quy ước đặt tên mới
+    // Sửa ViewHolder để xử lý click
+    public class NotificationViewHolder extends RecyclerView.ViewHolder {
         ImageView imgIcon;
         TextView txtTitle, txtSubtitle, txtTime, txtDate;
         View viewUnreadDot;
 
         public NotificationViewHolder(@NonNull View itemView) {
             super(itemView);
-            // Tham chiếu đến các View bằng ID mới
             imgIcon = itemView.findViewById(R.id.img_notif_icon);
             txtTitle = itemView.findViewById(R.id.txt_notif_title);
             txtSubtitle = itemView.findViewById(R.id.txt_notif_subtitle);
             txtTime = itemView.findViewById(R.id.txt_notif_time);
             txtDate = itemView.findViewById(R.id.txt_notif_date);
             viewUnreadDot = itemView.findViewById(R.id.view_unread_dot);
+
+            // SỬA LỖI 1: Gán sự kiện click cho toàn bộ item
+            itemView.setOnClickListener(v -> {
+                if (clickListener != null && getAdapterPosition() != RecyclerView.NO_POSITION) {
+                    clickListener.onNotificationClick(notificationList.get(getAdapterPosition()), getAdapterPosition());
+                }
+            });
         }
     }
 }

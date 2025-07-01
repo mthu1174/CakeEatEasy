@@ -1,169 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:paddingHorizontal="16dp"
-    android:paddingTop="16dp">
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginBottom="16dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp"
+    app:strokeWidth="0dp">
 
-    <!-- Phần tiêu đề: Order ID, Status, Date -->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/txt_order_label"
-            style="@style/TextAppearance.App.Body1.Bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Order"
-            android:textColor="@color/text_dark"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/txt_order_id"
-            style="@style/TextAppearance.App.Body1.Bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:textColor="@color/app_pink"
-            app:layout_constraintStart_toEndOf="@id/txt_order_label"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="#9ds69hs" />
-
-        <!-- Tag trạng thái (chỉ hiển thị ở tab History) -->
-        <TextView
-            android:id="@+id/txt_status_tag"
-            style="@style/TextAppearance.App.Body3.Bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:background="@drawable/status_tag_background_green"
-            android:paddingHorizontal="8dp"
-            android:paddingVertical="2dp"
-            android:textColor="@color/white"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@id/txt_order_id"
-            app:layout_constraintStart_toEndOf="@id/txt_order_id"
-            app:layout_constraintTop_toTopOf="@id/txt_order_id"
-            tools:text="Completed"
-            tools:visibility="visible" />
-
-        <TextView
-            android:id="@+id/txt_order_date"
-            style="@style/TextAppearance.App.Body2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/text_light"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="06/08/2025" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!-- Phần thông tin sản phẩm -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="0dp">
+        <!-- ===== PHẦN 1: HEADER (Mã đơn, Trạng thái, Ngày) ===== -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/txt_order_label"
+                style="@style/TextAppearance.App.Body2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Order"
+                android:textColor="@color/text_normal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_order_id"
+                style="@style/TextAppearance.App.Body2.Bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:textColor="@color/app_pink"
+                app:layout_constraintBaseline_toBaselineOf="@id/txt_order_label"
+                app:layout_constraintStart_toEndOf="@id/txt_order_label"
+                tools:text="#9ds69hs" />
+
+            <TextView
+                android:id="@+id/txt_order_status"
+                style="@style/TextAppearance.App.Body3.Bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="2dp"
+                android:textColor="@color/white"
+                app:layout_constraintBaseline_toBaselineOf="@id/txt_order_id"
+                app:layout_constraintStart_toEndOf="@id/txt_order_id"
+                tools:background="@drawable/status_tag_background_green"
+                tools:text="Completed" />
+
+            <TextView
+                android:id="@+id/txt_order_date"
+                style="@style/TextAppearance.App.Body3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_light"
+                app:layout_constraintBaseline_toBaselineOf="@id/txt_order_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="06/08/2025" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/app_pink_border" />
+
+        <!-- ===== PHẦN 2: THÔNG TIN SẢN PHẨM (Ảnh, Tên, Giá) ===== -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_margin="16dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/img_order_product"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:scaleType="centerCrop"
+                android:layout_margin="8dp"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.App.CardImageCorners"
+                tools:src="@drawable/placeholder_cake_promo" />
+
+            <TextView
+                android:id="@+id/txt_order_product_name"
+                style="@style/TextAppearance.App.Body2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/text_dark"
+                tools:text="Jolie" />
+
+            <TextView
+                android:id="@+id/txt_order_total"
+                style="@style/TextAppearance.App.Body2.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="8dp"
+                android:textColor="@color/text_dark"
+                tools:text="1.125.000 đ" />
 
             <ImageView
-                android:id="@+id/img_product"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                tools:src="@drawable/placeholder_cake_promo" />
-        </com.google.android.material.card.MaterialCardView>
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_chevron_right"
+                app:tint="@color/text_light" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/txt_product_name"
-            style="@style/TextAppearance.App.Body1"
-            android:layout_width="0dp"
+
+        <!-- ===== PHẦN 3: CÁC NÚT BẤM (Rate, Re-Order) ===== -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="12dp"
-            android:layout_weight="1"
-            android:textColor="@color/text_normal"
-            tools:text="Jolie" />
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp"
+            android:paddingBottom="16dp">
 
-        <TextView
-            android:id="@+id/txt_order_price"
-            style="@style/TextAppearance.App.Heading3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/text_dark"
-            tools:text="1.125.000 đ" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_review"
+                style="@style/Widget.App.Button.Outlined"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:text="Rate" />
 
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="8dp"
-            android:src="@drawable/ic_chevron_right"
-            app:tint="@color/text_light" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_reorder"
+                style="@style/Widget.App.Button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:text="Re-Order" />
+        </LinearLayout>
+
     </LinearLayout>
-
-    <!-- Bộ nút cho tab "Ongoing" -->
-    <LinearLayout
-        android:id="@+id/layout_buttons_ongoing"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_track_order"
-            style="@style/Widget.App.Button"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_marginEnd="8dp"
-            android:layout_weight="1"
-            android:text="Track Order" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_cancel"
-            style="@style/Widget.App.Button.Outlined"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="8dp"
-            android:layout_weight="1"
-            android:text="Cancel" />
-    </LinearLayout>
-
-    <!-- Bộ nút cho tab "History" -->
-    <LinearLayout
-        android:id="@+id/layout_buttons_history"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal"
-        android:visibility="gone"
-        tools:visibility="visible">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_rate"
-            style="@style/Widget.App.Button.Outlined"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_marginEnd="8dp"
-            android:layout_weight="1"
-            android:text="Rate" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_reorder"
-            style="@style/Widget.App.Button"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="8dp"
-            android:layout_weight="1"
-            android:text="Re-Order" />
-    </LinearLayout>
-</LinearLayout>
+</com.google.android.material.card.MaterialCardView>

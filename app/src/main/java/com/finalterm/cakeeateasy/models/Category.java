@@ -2,63 +2,48 @@ package com.finalterm.cakeeateasy.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
 import androidx.annotation.NonNull;
 
-import java.util.Objects;
-import java.util.UUID;
-
-/**
- * Model class for a Category.
- * Đã được nâng cấp để hỗ trợ Parcelable (truyền dữ liệu giữa các màn hình),
- * có một ID duy nhất và các phương thức equals/hashCode/toString.
- */
 public class Category implements Parcelable {
 
-    private String id; // ID duy nhất cho mỗi category
+    private int categoryId;
     private String name;
-    private int imageResId; // Đổi tên để rõ ràng hơn, đây là ID của resource
+    private String image; // URL hoặc đường dẫn file ảnh
 
-    // Constructor để tạo đối tượng mới với ID ngẫu nhiên
-    public Category(String name, int imageResId) {
-        this.id = UUID.randomUUID().toString(); // Tự động tạo một ID duy nhất
+    /**
+     * Constructor dùng để tạo đối tượng mới (trước khi insert vào DB, vì ID sẽ tự tăng).
+     */
+    public Category(String name, String image) {
         this.name = name;
-        this.imageResId = imageResId;
+        this.image = image;
     }
 
-    // Constructor để tạo đối tượng với ID cụ thể (hữu ích khi lấy từ DB/API)
-    public Category(String id, String name, int imageResId) {
-        this.id = id;
+    /**
+     * Constructor dùng để đọc đối tượng từ Database (đã có ID).
+     */
+    public Category(int categoryId, String name, String image) {
+        this.categoryId = categoryId;
         this.name = name;
-        this.imageResId = imageResId;
+        this.image = image;
     }
 
-    // Getters
-    public String getId() {
-        return id;
-    }
+    // --- Getters ---
+    public int getCategoryId() { return categoryId; }
+    public String getName() { return name; }
+    public String getImage() { return image; }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getImageResId() {
-        return imageResId;
-    }
-
-    // --- Triển khai Parcelable để truyền đối tượng qua Intent ---
-
+    // --- Parcelable Implementation ---
     protected Category(Parcel in) {
-        id = in.readString();
+        categoryId = in.readInt();
         name = in.readString();
-        imageResId = in.readInt();
+        image = in.readString();
     }
 
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(id);
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeInt(categoryId);
         dest.writeString(name);
-        dest.writeInt(imageResId);
+        dest.writeString(image);
     }
 
     @Override
@@ -77,28 +62,4 @@ public class Category implements Parcelable {
             return new Category[size];
         }
     };
-
-    // --- Các phương thức tiêu chuẩn cho model object ---
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Category category = (Category) o;
-        return Objects.equals(id, category.id); // So sánh dựa trên ID duy nhất
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id); // Dựa trên ID duy nhất
-    }
-
-    @NonNull
-    @Override
-    public String toString() {
-        return "Category{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                '}';
-    }
 }

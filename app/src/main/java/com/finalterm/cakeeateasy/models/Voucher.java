@@ -3,11 +3,14 @@ package com.finalterm.cakeeateasy.models;
 public class Voucher {
     private String title;
     private String description;
-    private int titleAndIconColorRes; // Màu cho chữ và icon (ví dụ: R.color.voucher_orange)
-    private int iconBackgroundColorRes; // Màu cho nền tròn (ví dụ: R.color.voucher_icon_bg_orange)
+    private int titleAndIconColorRes;
+    private int iconBackgroundColorRes;
     private int iconRes;
     private String voucherCode;
     private int discountAmount;
+
+    // THÊM: Thuộc tính để xác định voucher có dùng được hay không
+    private boolean isAvailable = true;
 
     public Voucher(String title, String description, int titleAndIconColorRes, int iconBackgroundColorRes, int iconRes, String voucherCode, int discountAmount) {
         this.title = title;
@@ -19,7 +22,7 @@ public class Voucher {
         this.discountAmount = discountAmount;
     }
 
-    // Thêm các hàm get...() ở đây
+    // Getters
     public String getTitle() { return title; }
     public String getDescription() { return description; }
     public int getTitleAndIconColorRes() { return titleAndIconColorRes; }
@@ -27,4 +30,13 @@ public class Voucher {
     public int getIconRes() { return iconRes; }
     public String getVoucherCode() { return voucherCode; }
     public int getDiscountAmount() { return discountAmount; }
+
+    // THÊM: Getter và Setter cho trạng thái
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public void setAvailable(boolean available) {
+        isAvailable = available;
+    }
 }
