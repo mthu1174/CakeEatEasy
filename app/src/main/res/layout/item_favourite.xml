@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="2dp"
+    app:strokeWidth="0dp"
+    app:cardBackgroundColor="@color/white">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"> <!-- Changed to wrap_content -->
+
+<!-- Ảnh sản phẩm bo góc (ID đã đổi) -->
+<com.google.android.material.imageview.ShapeableImageView
+    android:id="@+id/img_favourite_product"
+    android:layout_width="100dp"
+    android:layout_height="100dp"
+    android:scaleType="centerCrop"
+    android:layout_margin="12dp"
+    android:src="@drawable/placeholder_cake_promo"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:shapeAppearanceOverlay="@style/ShapeAppearance.App.CardImageCorners" />
+
+<!-- Khu vực Text và Nút bấm (ID các TextView đã đổi) -->
+<LinearLayout
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:orientation="vertical"
+    android:padding="12dp"
+    app:layout_constraintStart_toEndOf="@id/img_favourite_product"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent">
+
+    <TextView
+        style="@style/TextAppearance.App.Body2.Bold"
+        android:id="@+id/txt_favourite_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/app_pink"
+        tools:text="Orchid Divine" />
+
+    <TextView
+        style="@style/TextAppearance.App.Body3"
+        android:id="@+id/txt_favourite_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/text_normal"
+        tools:text="Vani and Strawberry" />
+
+    <!-- Spacer để đẩy phần giá và nút xuống dưới (Giữ nguyên) -->
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- Nhóm giá (ID các TextView đã đổi) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical">
+        <TextView
+            style="@style/TextAppearance.App.Body2.Bold"
+            android:id="@+id/txt_favourite_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_dark"
+            tools:text="500.000 đ" />
+        <TextView
+            style="@style/TextAppearance.App.Body3.Bold"
+            android:id="@+id/txt_favourite_discount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/discount_tag_background"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="2dp"
+            android:textColor="@color/status_error_main"
+            android:textSize="10sp"
+            tools:text="10% off" />
+    </LinearLayout>
+
+    <TextView
+        style="@style/TextAppearance.App.Body3"
+        android:id="@+id/txt_favourite_old_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_normal"
+        tools:text="550.000 đ" />
+
+</LinearLayout>
+
+<!-- Nhóm nút bấm được đặt ở góc dưới bên phải (Giữ nguyên) -->
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="12dp"
+    android:orientation="horizontal"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent">
+    <ImageView
+        android:id="@+id/btn_favourite_add_to_cart"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:background="@drawable/icon_circle_background"
+        android:backgroundTint="@color/app_pink_background"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="6dp"
+        android:src="@drawable/ic_shopping_cart" />
+
+    <!-- Nút này bây giờ không cần thiết trên màn hình yêu thích -->
+    <!-- nhưng được giữ lại theo yêu cầu -->
+    <ImageView
+        android:id="@+id/btn_favourite_placeholder"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/icon_circle_background"
+        android:backgroundTint="@color/app_pink_background"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="6dp"
+        android:src="@drawable/ic_favorite_filled"
+        android:visibility="gone"/> <!-- Tạm thời ẩn đi -->
+</LinearLayout>
+
+<!-- NÚT XÓA ĐÃ ĐƯỢC THÊM VÀO GÓC TRÊN BÊN PHẢI -->
+<ImageView
+    android:id="@+id/btn_favourite_remove"
+    android:layout_width="28dp"
+    android:layout_height="28dp"
+    android:layout_margin="8dp"
+    android:padding="4dp"
+    android:src="@drawable/ic_cancel"
+    app:tint="@color/text_normal"
+    android:background="?attr/selectableItemBackgroundBorderless"
+    android:clickable="true"
+    android:focusable="true"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    android:contentDescription="Xóa khỏi yêu thích"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>

@@ -80,23 +80,22 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
+                style="@style/TextAppearance.App.Body3.Medium"
                 android:id="@+id/tv_coupon_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="2"
-                android:textColor="@color/coupon_pink_text"
-                android:textSize="14sp"
-                android:textStyle="bold"
+                android:textColor="@color/app_pink"
                 tools:text="Save 10% on orders over 800k" />
 
             <TextView
+                style="@style/TextAppearance.App.InputPlaceholder"
                 android:id="@+id/tv_coupon_validity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:textColor="@color/coupon_grey_text"
-                android:textSize="12sp"
+                android:textColor="@color/text_muted"
                 tools:text="Valid until 01/02/2026" />
         </LinearLayout>
 

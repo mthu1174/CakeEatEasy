@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Animation để di chuyển một view từ dưới cùng màn hình đi lên.
+    Dùng để hiển thị Fragment.
+-->
+<translate xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fromYDelta="100%p"
+    android:toYDelta="0"
+    android:duration="300"
+    android:interpolator="@android:anim/decelerate_interpolator"/>

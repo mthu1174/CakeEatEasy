@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FFF5F6"
-    tools:context="screens.VoucherActivity">
+    android:background="@color/app_pink_background"
+    tools:context=".screens.VoucherActivity"> <!-- Sửa lại context cho đúng -->
 
     <!-- Tạm thời bỏ qua App Bar -->
 
@@ -47,7 +47,7 @@
                     android:background="@drawable/voucher_apply_button_background"
                     android:minWidth="0dp"
                     android:paddingHorizontal="20dp"
-                    android:text="Apply"
+                    android.text="Apply"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textStyle="bold" />
@@ -55,6 +55,7 @@
 
             <!-- 2. Danh sách Voucher có thể sử dụng -->
             <TextView
+                style="@style/TextAppearance.App.Heading2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="36dp"
@@ -72,8 +73,22 @@
                 tools:listitem="@layout/component_voucher"
                 tools:itemCount="6"/>
 
+            <!-- === THÊM TEXTVIEW NÀY ĐỂ THÔNG BÁO KHI LIST AVAILABLE RỖNG === -->
+            <TextView
+                android:id="@+id/tv_available_empty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Không có voucher nào có thể sử dụng."
+                android:gravity="center"
+                android:padding="16dp"
+                android:textColor="@color/text_light"
+                android:textSize="16sp"
+                android:visibility="gone" /> <!-- Mặc định ẩn đi -->
+
+
             <!-- 3. Danh sách Voucher không thể sử dụng -->
             <TextView
+                style="@style/TextAppearance.App.Heading2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="36dp"
@@ -90,6 +105,18 @@
                 android:nestedScrollingEnabled="false"
                 tools:listitem="@layout/component_voucher"
                 tools:itemCount="7"/>
+
+            <!-- === THÊM TEXTVIEW NÀY ĐỂ THÔNG BÁO KHI LIST UNAVAILABLE RỖNG === -->
+            <TextView
+                android:id="@+id/tv_unavailable_empty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tất cả voucher của bạn đều hợp lệ."
+                android:gravity="center"
+                android:padding="16dp"
+                android:textColor="@color/text_light"
+                android:textSize="16sp"
+                android:visibility="gone" /> <!-- Mặc định ẩn đi -->
 
         </LinearLayout>
     </ScrollView>

@@ -22,8 +22,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         tools:src="@drawable/ic_discount"
         tools:background="@drawable/icon_circle_background"
-        tools:backgroundTint="@color/notif_status_promo_bg"
-        tools:tint="@color/notif_status_promo" />
+        tools:backgroundTint="@color/status_warning_bg"
+        tools:tint="@color/status_warning_main" />
 
     <!--
         LinearLayout này nhóm toàn bộ phần text lại với nhau.
@@ -40,21 +40,22 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            style="@style/TextAppearance.App.Body2.Bold"
             android:id="@+id/txt_notif_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/notif_title_text"
+            android:textColor="@color/text_dark"
             android:textSize="16sp"
             android:textStyle="bold"
             tools:text="Get 5% Discount Code" />
 
         <TextView
+            style="@style/TextAppearance.App.Body3"
             android:id="@+id/txt_notif_subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:textColor="@color/notif_subtitle_text"
-            android:textSize="14sp"
+            android:textColor="@color/text_dark"
             android:maxLines="2"
             android:ellipsize="end"
             tools:text="Discount code for new users" />
@@ -64,14 +65,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:gravity="end"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            style="@style/TextAppearance.App.Body3">
 
             <TextView
                 android:id="@+id/txt_notif_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/notif_time_text"
-                android:textSize="12sp"
+                android:textColor="@color/text_normal"
                 tools:text="11:10" />
 
             <TextView
@@ -79,8 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:textColor="@color/notif_time_text"
-                android:textSize="12sp"
+                android:textColor="@color/text_normal"
                 tools:text="10/05/2024" />
         </LinearLayout>
 

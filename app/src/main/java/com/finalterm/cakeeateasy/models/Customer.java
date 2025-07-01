@@ -1,85 +1,110 @@
 package com.finalterm.cakeeateasy.models;
 
-public class Customer {
-    private int customerID;
-    private String customerUsername;
-    private String customerPassword;
-    private String customerEmail;
-    private String customerPhoneNumber;
-    private String customerDOB;
+import android.os.Parcel;
+import android.os.Parcelable;
+import androidx.annotation.NonNull;
 
-    // Default constructor
+public class Customer implements Parcelable {
+
+    private int customerId;
+    private String name;
+    private String email;
+    private String password;
+    private String phone;
+    private String address;
+    private String dob;
+    private  String username;// Date of Birth
+
+    /**
+     * Constructor mặc định.
+     */
     public Customer() {
     }
 
-    // Constructor with all parameters
-    public Customer(String customerUsername, String customerPassword, String customerEmail, 
-                   String customerPhoneNumber, String customerDOB) {
-        this.customerUsername = customerUsername;
-        this.customerPassword = customerPassword;
-        this.customerEmail = customerEmail;
-        this.customerPhoneNumber = customerPhoneNumber;
-        this.customerDOB = customerDOB;
+    /**
+     * SỬA LỖI: Constructor dùng khi đăng ký.
+     * Đã được sửa lại để nhận vào 6 tham số String, khớp với lời gọi từ SignUpActivity.
+     */
+    public Customer(String name, String username, String email, String password, String phone, String dob, String address) {
+        this.name = name;
+        this.username = username; // Thêm username
+        this.email = email;
+        this.password = password;
+        this.phone = phone;
+        this.dob = dob;
+        this.address = address;
     }
 
-    // Getters and Setters
-    public int getCustomerID() {
-        return customerID;
+    /**
+     * Constructor đầy đủ nhất, dùng để đọc từ Database.
+     */
+    public Customer(int customerId, String name, String email, String password, String phone, String address, String dob) {
+        this.customerId = customerId;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.phone = phone;
+        this.address = address;
+        this.dob = dob;
     }
 
-    public void setCustomerID(int customerID) {
-        this.customerID = customerID;
-    }
+    // --- Getters and Setters ---
+    public int getCustomerId() { return customerId; }
+    public void setCustomerId(int customerId) { this.customerId = customerId; }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
+    public String getPhone() { return phone; }
+    public void setPhone(String phone) { this.phone = phone; }
+    public String getAddress() { return address; }
+    public void setAddress(String address) { this.address = address; }
+    public String getDob() { return dob; }
+    public void setDob(String dob) { this.dob = dob; }
+    public String getUsername() { return username; }
+    public void setUsername(String username) { this.username = username; }
 
-    public String getCustomerUsername() {
-        return customerUsername;
-    }
 
-    public void setCustomerUsername(String customerUsername) {
-        this.customerUsername = customerUsername;
-    }
-
-    public String getCustomerPassword() {
-        return customerPassword;
-    }
-
-    public void setCustomerPassword(String customerPassword) {
-        this.customerPassword = customerPassword;
-    }
-
-    public String getCustomerEmail() {
-        return customerEmail;
-    }
-
-    public void setCustomerEmail(String customerEmail) {
-        this.customerEmail = customerEmail;
-    }
-
-    public String getCustomerPhoneNumber() {
-        return customerPhoneNumber;
-    }
-
-    public void setCustomerPhoneNumber(String customerPhoneNumber) {
-        this.customerPhoneNumber = customerPhoneNumber;
-    }
-
-    public String getCustomerDOB() {
-        return customerDOB;
-    }
-
-    public void setCustomerDOB(String customerDOB) {
-        this.customerDOB = customerDOB;
+    // --- Parcelable Implementation ---
+    protected Customer(Parcel in) {
+        customerId = in.readInt();
+        name = in.readString();
+        email = in.readString();
+        password = in.readString();
+        phone = in.readString();
+        address = in.readString();
+        dob = in.readString();
+        username = in.readString();
     }
 
     @Override
-    public String toString() {
-        return "Customer{" +
-                "customerID=" + customerID +
-                ", customerUsername='" + customerUsername + '\'' +
-                ", customerPassword='" + customerPassword + '\'' +
-                ", customerEmail='" + customerEmail + '\'' +
-                ", customerPhoneNumber='" + customerPhoneNumber + '\'' +
-                ", customerDOB='" + customerDOB + '\'' +
-                '}';
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeInt(customerId);
+        dest.writeString(name);
+        dest.writeString(email);
+        dest.writeString(password);
+        dest.writeString(phone);
+        dest.writeString(address);
+        dest.writeString(dob);
+        dest.writeString(username);
     }
-} 
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Customer> CREATOR = new Creator<Customer>() {
+        @Override
+        public Customer createFromParcel(Parcel in) {
+            return new Customer(in);
+        }
+
+        @Override
+        public Customer[] newArray(int size) {
+            return new Customer[size];
+        }
+    };
+}

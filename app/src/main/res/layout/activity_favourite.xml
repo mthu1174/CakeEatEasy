@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/app_pink_background"
+    tools:context=".screens.FavouriteActivity">
+
+    <!-- 1. App Bar tùy chỉnh (Giữ nguyên) -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/app_pink"
+        app:elevation="0dp">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="Favourite"
+            app:titleCentered="true"
+            app:titleTextColor="@color/product_list_app_bar_text"
+            app:navigationIcon="@drawable/ic_chevron_left"
+            app:navigationIconTint="@color/product_list_app_bar_text">
+
+            <ImageView
+                android:id="@+id/img_cart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_shopping_cart"
+                app:tint="@color/product_list_app_bar_text"
+                android:layout_gravity="end"
+                android:layout_marginEnd="16dp"/>
+        </com.google.android.material.appbar.MaterialToolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- BƯỚC 1: SỬ DỤNG FRAMELAYOUT ĐỂ CHỨA CẢ RECYCLERVIEW VÀ TEXTVIEW -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_favourite_products"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:padding="12dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_favourite"
+            tools:itemCount="5"/>
+
+        <!-- SỬA LẠI ID Ở ĐÂY CHO KHỚP VỚI JAVA -->
+        <TextView
+            android:id="@+id/txt_favourite_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Danh sách yêu thích của bạn đang trống"
+            android:textSize="16sp"
+            android:textColor="@color/text_light"
+            android:drawablePadding="16dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            tools:visibility="visible"/>
+
+    </FrameLayout>
+
+</LinearLayout>

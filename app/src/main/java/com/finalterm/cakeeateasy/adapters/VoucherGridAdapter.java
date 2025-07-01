@@ -25,10 +25,17 @@ public class VoucherGridAdapter extends RecyclerView.Adapter<VoucherGridAdapter.
 
     private Context context;
     private List<Voucher> voucherList;
+    private OnVoucherClickListener listener;
 
-    public VoucherGridAdapter(Context context, List<Voucher> voucherList) {
+    public interface OnVoucherClickListener {
+        void onVoucherClick(Voucher voucher);
+    }
+
+    // SỬA LẠI CONSTRUCTOR ĐỂ NHẬN LISTENER
+    public VoucherGridAdapter(Context context, List<Voucher> voucherList, OnVoucherClickListener listener) {
         this.context = context;
         this.voucherList = voucherList;
+        this.listener = listener;
     }
 
     @NonNull
@@ -42,37 +49,38 @@ public class VoucherGridAdapter extends RecyclerView.Adapter<VoucherGridAdapter.
     public void onBindViewHolder(@NonNull VoucherViewHolder holder, int position) {
         Voucher voucher = voucherList.get(position);
 
-        // --- Set dữ liệu cho text ---
+        // Giả sử model Voucher có các hàm get này
         holder.tvTitle.setText(voucher.getTitle());
         holder.tvDesc.setText(voucher.getDescription());
         holder.tvTitle.setTextColor(ContextCompat.getColor(context, voucher.getTitleAndIconColorRes()));
 
-        // --- Set dữ liệu cho ImageView ---
-
-        // 1. Lấy drawable nền tròn gốc
-        Drawable backgroundDrawable = ContextCompat.getDrawable(context, R.drawable.icon_circle_background).mutate();
-
-        // 2. Ép kiểu nó về GradientDrawable để có thể đổi màu
-        if (backgroundDrawable instanceof GradientDrawable) {
-            GradientDrawable gradientDrawable = (GradientDrawable) backgroundDrawable;
-            // 3. Đặt màu mới cho nó
-            gradientDrawable.setColor(ContextCompat.getColor(context, voucher.getIconBackgroundColorRes()));
+        // --- Logic đổi màu background và icon ---
+        Drawable background = ContextCompat.getDrawable(context, R.drawable.icon_circle_background);
+        if (background != null) {
+            // Dùng mutate() để thay đổi không ảnh hưởng đến các drawable khác
+            Drawable mutatedBackground = background.mutate();
+            if (mutatedBackground instanceof GradientDrawable) {
+                GradientDrawable gradientDrawable = (GradientDrawable) mutatedBackground;
+                gradientDrawable.setColor(ContextCompat.getColor(context, voucher.getIconBackgroundColorRes()));
+                holder.ivIcon.setBackground(gradientDrawable);
+            }
         }
 
-        // 4. Gán drawable đã được tô màu làm background cho ImageView
-        holder.ivIcon.setBackground(backgroundDrawable);
-
-        // 5. Đặt hình ảnh và tô màu cho icon (phần này giữ nguyên)
         holder.ivIcon.setImageResource(voucher.getIconRes());
         ColorStateList iconColor = ColorStateList.valueOf(ContextCompat.getColor(context, voucher.getTitleAndIconColorRes()));
         ImageViewCompat.setImageTintList(holder.ivIcon, iconColor);
+
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onVoucherClick(voucher);
+            }
+        });
     }
     @Override
     public int getItemCount() {
         return voucherList.size();
     }
 
-    // ViewHolder không thay đổi
     public static class VoucherViewHolder extends RecyclerView.ViewHolder {
         TextView tvTitle, tvDesc;
         ImageView ivIcon;

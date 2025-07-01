@@ -13,5 +13,16 @@
     <dimen name="home_padding_horizontal">16dp</dimen>
     <dimen name="home_section_margin_top">24dp</dimen>
     <dimen name="home_card_corner_radius">16dp</dimen>
+    <!-- Khoảng cách lề chung -->
+    <dimen name="spacing_medium">16dp</dimen>
+    <dimen name="spacing_large">24dp</dimen>
+
+    <!-- Kích thước cho ViewPager2 -->
+    <dimen name="pageMargin">20dp</dimen>
+    <dimen name="offset">30dp</dimen>
+
+    <!--Product-->
+    <dimen name="product_card_gap">4dp</dimen>
+
 
 </resources>

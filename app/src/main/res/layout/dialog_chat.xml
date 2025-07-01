@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/app_pink_background">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar_chat"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/home_pink"
+        app:navigationIcon="@drawable/ic_chevron_left"
+        app:navigationIconTint="@color/white"
+        app:title="Message"
+        app:titleCentered="true"
+        app:titleTextColor="@color/white" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_chat_messages"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="8dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="12dp"
+        android:background="@color/white">
+        <ImageView
+            android:id="@+id/btn_add_media"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_add"
+            app:tint="@color/app_pink" />
+        <EditText
+            style="@style/TextAppearance.App.InputPlaceholder"
+            android:id="@+id/edt_chat_message"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/chat_compose_background"
+            android:hint="Type a message ..."
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="10dp"
+            android:maxLines="5"/>
+        <ImageView
+            android:id="@+id/btn_send_message"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:padding="4dp"
+            android:background="@drawable/icon_circle_background"
+            android:backgroundTint="@color/app_pink"
+            android:src="@drawable/ic_send"
+            app:tint="@color/white" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Định nghĩa các thuộc tính cho ProfileOptionView -->
+    <declare-styleable name="ProfileOptionView">
+        <!-- Thuộc tính cho icon, format là "reference" vì ta trỏ tới một @drawable -->
+        <attr name="optionIcon" format="reference" />
+        <!-- Thuộc tính cho text, format là "string" -->
+        <attr name="optionText" format="string" />
+    </declare-styleable>
+</resources>

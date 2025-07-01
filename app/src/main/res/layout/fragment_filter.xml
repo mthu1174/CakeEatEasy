@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".screens.dialogs.FilterFragment">
+
+    <!-- Thanh Toolbar -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar_filter"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/app_pink"
+        app:navigationIcon="@drawable/ic_chevron_left"
+        app:navigationIconTint="@color/white"
+        app:title="Filter"
+        app:titleCentered="true"
+        app:titleTextAppearance="@style/TextAppearance.App.Heading3"
+        app:titleTextColor="@color/white" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Phần Price Range -->
+            <TextView
+                style="@style/TextAppearance.App.Heading3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Price Range"
+                android:textColor="@color/app_pink" />
+
+            <!-- Đã thay thế bằng ConstraintLayout để căn chỉnh mốc giá chính xác -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+
+                <com.google.android.material.slider.RangeSlider
+                    android:id="@+id/slider_price"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:stepSize="10"
+                    android:valueFrom="0.0"
+                    android:valueTo="1000.0"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:thumbColor="@color/app_pink"
+                    app:trackColorActive="@color/app_pink"
+                    app:trackColorInactive="@color/app_pink_border" />
+
+                <!-- Các mốc giá được căn chỉnh bằng bias -->
+                <TextView
+                    style="@style/Widget.App.PriceMilestone"
+                    android:text="$100"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintHorizontal_bias="0.1"
+                    app:layout_constraintTop_toBottomOf="@id/slider_price"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.App.PriceMilestone"
+                    android:text="$300"
+                    app:layout_constraintHorizontal_bias="0.3"
+                    app:layout_constraintTop_toBottomOf="@id/slider_price"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.App.PriceMilestone"
+                    android:text="$600"
+                    app:layout_constraintHorizontal_bias="0.6"
+                    app:layout_constraintTop_toBottomOf="@id/slider_price"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.App.PriceMilestone"
+                    android:text="$900"
+                    app:layout_constraintHorizontal_bias="0.9"
+                    app:layout_constraintTop_toBottomOf="@id/slider_price"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Phần Category -->
+            <TextView
+                style="@style/TextAppearance.App.Heading3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Category"
+                android:textColor="@color/app_pink" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_group_category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:chipSpacingHorizontal="8dp"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.App.FilterChip"
+                    android:text="Wedding" />
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.App.FilterChip"
+                    android:text="Birthday"/>
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.App.FilterChip"
+                    android:checked="true"
+                    android:text="Vanilla" />
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.App.FilterChip"
+                    android:text="Fruit"/>
+            </com.google.android.material.chip.ChipGroup>
+
+            <!-- Phần Size -->
+            <TextView
+                style="@style/TextAppearance.App.Heading3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Size"
+                android:textColor="@color/app_pink" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_group_size"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:chipSpacingHorizontal="8dp"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.App.FilterChip"
+                    android:text="Mini"/>
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.App.FilterChip"
+                    android:text="Small"/>
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.App.FilterChip"
+                    android:text="Medium"/>
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.App.FilterChip"
+                    android:checked="true"
+                    android:text="Large" />
+            </com.google.android.material.chip.ChipGroup>
+
+            <!-- Nút Save -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_save"
+                style="@style/TextAppearance.App.Body1.Bold"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/button_background_pink"
+                android:text="Save"
+                android:textAllCaps="false"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

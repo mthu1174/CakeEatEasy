@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
 
     <application
         android:allowBackup="true"
@@ -13,20 +17,55 @@
         android:theme="@style/Theme.CakeEatEasy"
         tools:targetApi="31">
         <activity
-            android:name=".screens.ForgotPasswordActivity"
-            android:exported="false" />
-        <activity
             android:name=".screens.VoucherActivity"
             android:exported="false" />
         <activity
             android:name=".screens.SignUpActivity"
             android:exported="false" />
         <activity
+            android:name=".screens.FavouriteActivity"
+            android:exported="false" />
+        <activity
             android:name=".screens.NotificationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.MainActivity"
             android:exported="false" />
         <activity
             android:name=".screens.BaseActivity"
             android:exported="false" />
+        <activity
+            android:name=".screens.EditProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.CartActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.OrderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.CategoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.ReviewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.ProductDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.ProductListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.CheckoutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.SuccessCheckoutActivity"
+            android:exported="false" />
+
+
         <activity
             android:name=".screens.LoginActivity"
             android:exported="true">
@@ -36,9 +75,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".screens.MainActivity"
-            android:exported="true" />
     </application>
 
 </manifest>

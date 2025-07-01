@@ -1,11 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+
+    <!--
+    ================================================================================
+    1. THEME CHÍNH CỦA ỨNG DỤNG (DÙNG CHO CẢ LIGHT & DARK MODE)
+    ================================================================================
+    Đây là nơi quan trọng nhất. Chúng ta kết nối (link) các style Typography
+    tùy chỉnh của bạn vào các "slot" của Material 3.
+    -->
     <style name="Base.Theme.CakeEatEasy" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- A. KẾT NỐI HỆ THỐNG TYPOGRAPHY -->
+        <!-- Heading -->
+        <item name="textAppearanceHeadlineLarge">@style/TextAppearance.App.Heading1</item>
+        <item name="textAppearanceHeadlineMedium">@style/TextAppearance.App.Heading2</item>
+        <item name="textAppearanceHeadlineSmall">@style/TextAppearance.App.Heading3</item>
+        <!-- Title -->
+        <item name="textAppearanceTitleLarge">@style/TextAppearance.App.Heading4</item>
+        <!-- Body -->
+        <item name="textAppearanceBodyLarge">@style/TextAppearance.App.Body1</item>
+        <item name="textAppearanceBodyMedium">@style/TextAppearance.App.Body2</item>
+        <item name="textAppearanceBodySmall">@style/TextAppearance.App.Body3</item>
+        <!-- Label & Input -->
+        <item name="textAppearanceLabelSmall">@style/TextAppearance.App.InputLabel</item>
+
+        <!-- B. TÙY CHỈNH MÀU SẮC CHỦ ĐẠO (Tùy chọn) -->
+        <!--
+        <item name="colorPrimary">@color/app_pink</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/app_pink_background</item>
+        <item name="colorOnPrimaryContainer">@color/app_pink</item>
+        -->
     </style>
 
+    <!-- Kế thừa từ Base theme để dễ quản lý -->
     <style name="Theme.CakeEatEasy" parent="Base.Theme.CakeEatEasy" />
+
+
+    <!--
+    ================================================================================
+    2. HỆ THỐNG TYPOGRAPHY (FONT CHỮ) - ĐÃ THÊM MÀU CHỮ
+    ================================================================================
+    Đây là toàn bộ các style chữ của bạn, đã được thêm `android:textColor`
+    để đảm bảo chúng luôn hiển thị đúng màu.
+    -->
+
+    <!-- Heading (Poppins)  -->
+    <style name="TextAppearance.App.Heading1" parent="TextAppearance.Material3.HeadlineLarge">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="fontFamily">@font/semibold</item>
+        <item name="android:fontFamily">@font/semibold</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/text_dark</item>
+    </style>
+    <style name="TextAppearance.App.Heading2" parent="TextAppearance.Material3.HeadlineMedium">
+        <item name="fontFamily">@font/semibold</item>
+        <item name="android:fontFamily">@font/semibold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/text_dark</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="TextAppearance.App.Heading3" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="fontFamily">@font/medium</item>
+        <item name="android:fontFamily">@font/medium</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/text_dark</item>
+    </style>
+    <style name="TextAppearance.App.Heading4" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="fontFamily">@font/medium</item>
+        <item name="android:fontFamily">@font/medium</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/text_normal</item>
+    </style>
+
+    <!-- Body (Poppins) -->
+    <style name="TextAppearance.App.Body1" parent="TextAppearance.Material3.BodyLarge">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="fontFamily">@font/regular</item>
+        <item name="android:fontFamily">@font/regular</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/text_normal</item>
+    </style>
+    <style name="TextAppearance.App.Body1.Medium">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="fontFamily">@font/medium</item>
+        <item name="android:fontFamily">@font/medium</item>
+    </style>
+    <style name="TextAppearance.App.Body1.Bold">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="fontFamily">@font/semibold</item>
+        <item name="android:fontFamily">@font/semibold</item>
+        <item name="android:textColor">@color/text_dark</item>
+    </style>
+
+    <style name="TextAppearance.App.Body2" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="fontFamily">@font/regular</item>
+        <item name="android:fontFamily">@font/regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/text_normal</item>
+    </style>
+    <style name="TextAppearance.App.Body2.Medium">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="fontFamily">@font/medium</item>
+        <item name="android:fontFamily">@font/medium</item>
+    </style>
+    <style name="TextAppearance.App.Body2.Bold">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="fontFamily">@font/semibold</item>
+        <item name="android:fontFamily">@font/semibold</item>
+        <item name="android:textColor">@color/text_dark</item>
+    </style>
+
+    <style name="TextAppearance.App.Body3" parent="TextAppearance.Material3.BodySmall">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="fontFamily">@font/regular</item>
+        <item name="android:fontFamily">@font/regular</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/text_light</item>
+    </style>
+    <style name="TextAppearance.App.Body3.Medium">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="fontFamily">@font/medium</item>
+        <item name="android:fontFamily">@font/medium</item>
+    </style>
+    <style name="TextAppearance.App.Body3.Bold">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="fontFamily">@font/semibold</item>
+        <item name="android:fontFamily">@font/semibold</item>
+        <item name="android:textColor">@color/text_normal</item>
+    </style>
+
+    <!-- Input -->
+    <style name="TextAppearance.App.InputLabel" parent="TextAppearance.Material3.LabelSmall">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="fontFamily">@font/medium</item>
+        <item name="android:fontFamily">@font/medium</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/text_light</item> <!-- << Sửa lỗi mất chữ -->
+    </style>
+    <style name="TextAppearance.App.InputPlaceholder" parent="TextAppearance.Material3.BodySmall">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="fontFamily">@font/medium</item>
+        <item name="android:fontFamily">@font/medium</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/text_muted</item>
+    </style>
+
+
+    <!--
+    ================================================================================
+    3. CÁC STYLE CHO COMPONENT CỤ THỂ
+    ================================================================================
+    Các style này vẫn giữ nguyên như cũ
+    -->
+
+    <!-- Shape -->
     <style name="ShapeAppearance.App.Circle" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
@@ -14,34 +180,44 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">20%</item>
     </style>
+    <style name="ShapeAppearance.App.CardImageCorners" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">12dp</item>
+        <item name="cornerSizeTopLeft">12dp</item>
+        <item name="cornerSizeBottomRight">12dp</item>
+        <item name="cornerSizeBottomLeft">12dp</item>
+    </style>
+
     <!-- STYLE CHO TAB LAYOUT -->
     <style name="App.Custom.TabLayout" parent="Widget.Material3.TabLayout">
-        <!-- Bỏ đi màu gợn sóng khi nhấn (ripple) -->
         <item name="tabRippleColor">@android:color/transparent</item>
-
-        <!-- Màu của thanh trượt indicator -->
         <item name="tabIndicatorColor">@color/tab_pink</item>
-        <!-- Chiều cao của thanh trượt indicator -->
         <item name="tabIndicatorHeight">3dp</item>
         <item name="tabIndicatorFullWidth">true</item>
-
-
-        <!-- Màu chữ của tab, sử dụng selector chúng ta vừa tạo -->
         <item name="tabTextColor">@color/tab_text_color_selector</item>
-
-        <!-- Để tùy chỉnh font chữ, text size, textAllCaps trong M3,
-             chúng ta cần định nghĩa một "textAppearance" riêng -->
         <item name="tabTextAppearance">@style/App.Custom.TabText</item>
-    </style>
 
-    <!-- Style riêng cho Text của Tab trong M3 -->
+    </style>
     <style name="App.Custom.TabText" parent="TextAppearance.Material3.BodyLarge">
-        <item name="android:fontFamily">sans-serif-medium</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:textAllCaps">false</item> <!-- << TẮT VIẾT HOA Ở ĐÂY -->
+        <item name="android:fontFamily">@font/semibold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">false</item>
     </style>
 
-    <!--Style cho Homepage-->
+    <!-- RatingBar -->
+    <style name="RatingBarTheme" parent="Theme.AppCompat">
+        <item name="colorControlActivated">#FFC107</item>
+        <item name="colorControlNormal">#a1a1a1</item>
+    </style>
+
+    <!-- Dialog -->
+    <style name="AppTheme.FullScreenDialog" parent="Theme.Material3.Light.Dialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowBackground">@color/product_list_bg</item>
+        <item name="android:statusBarColor">@color/product_list_app_bar_bg</item>
+    </style>
+
+    <!-- Các style widget tùy chỉnh -->
     <style name="HomeSectionTitle" parent="Widget.AppCompat.TextView">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -51,12 +227,95 @@
         <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
     </style>
-    <style name="ShapeAppearance.App.CardImageCorners" parent="">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSizeTopRight">12dp</item>
-        <item name="cornerSizeTopLeft">12dp</item>
-        <item name="cornerSizeBottomRight">12dp</item>
-        <item name="cornerSizeBottomLeft">12dp</item>
+    <style name="ProfileSectionTitle" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:textColor">@color/home_text_secondary</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="EditProfileLabel" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:textAppearance">?attr/textAppearanceLabelSmall</item> <!-- Dùng theme attribute -->
+    </style>
+    <style name="EditProfileEditText" parent="Widget.AppCompat.EditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/edit_text_background</item>
+        <item name="android:padding">14dp</item>
+        <item name="android:drawablePadding">8dp</item>
+        <item name="android:textAppearance">?attr/textAppearanceBodySmall</item> <!-- Dùng theme attribute -->
+        <item name="android:textColor">@color/text_normal</item>
+    </style>
+
+    <style name="Widget.App.DotIndicator" parent="Widget.Material3.TabLayout">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+
+        <!-- 1. Dùng InsetDrawable để tạo khoảng cách -->
+        <item name="tabBackground">@drawable/tab_indicator_inset</item>
+
+        <!-- 2. Chuyển sang chế độ scrollable để tab không bị kéo giãn -->
+        <item name="tabMode">scrollable</item>
+
+        <!-- 3. Dọn dẹp các thuộc tính không cần thiết -->
+        <item name="tabIndicatorHeight">0dp</item>
+        <item name="tabRippleColor">@null</item>
+    </style>
+
+
+    <!-- ========================================================================= -->
+    <!-- 4. STYLE BỔ SUNG CHO MÀN HÌNH FILTER                                     -->
+    <!-- ========================================================================= -->
+
+    <!-- Style cho các Chip trong màn hình Filter -->
+    <style name="Widget.App.FilterChip" parent="Widget.MaterialComponents.Chip.Filter">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <!-- Bỏ icon dấu tick khi được chọn -->
+        <item name="checkedIconVisible">true</item>
+        <!-- Bỏ viền của chip -->
+        <item name="chipStrokeWidth">0dp</item>
+        <!-- Bo tròn góc -->
+        <item name="chipCornerRadius">8dp</item>
+        <!-- Canh lề và font chữ (tùy chỉnh nếu cần) -->
+        <item name="chipMinHeight">40dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.App.Body2.Medium</item>
+        <item name="chipBackgroundColor">@drawable/chip_background_selector</item>
+        <item name="android:textColor">@drawable/chip_text_color_selector</item>
+    </style>
+
+    <!-- Style cho các mốc giá dưới thanh trượt -->
+    <style name="Widget.App.PriceMilestone" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <!-- Dùng màu text_light cho đỡ rối mắt -->
+        <item name="android:textColor">@color/text_light</item>
+        <item name="android:textAppearance">@style/TextAppearance.App.Body3</item>
+    </style>
+
+    <!-- Style cơ bản cho các nút -->
+    <style name="Widget.App.Button.Base" parent="Widget.AppCompat.Button">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textAppearance">@style/TextAppearance.App.Body1.Bold</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!-- Style cho nút chính (nền hồng, chữ trắng) -->
+    <style name="Widget.App.Button" parent="Widget.App.Button.Base">
+        <item name="android:background">@drawable/button_background_pink</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/semibold</item>
+        <item name="android:textSize">14dp</item>
+    </style>
+
+    <!-- Style cho nút viền (nền nhạt, chữ hồng) -->
+    <style name="Widget.App.Button.Outlined" parent="Widget.App.Button.Base">
+        <item name="android:background">@drawable/button_outlined_background</item>
+        <item name="android:textColor">@color/app_pink</item>
     </style>
 
 </resources>

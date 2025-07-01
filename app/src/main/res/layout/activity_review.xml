@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_canvas"
+    tools:context=".screens.ReviewActivity">
+
+    <!-- 1. App Bar -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/product_list_app_bar_bg"
+        app:elevation="0dp">
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="Review"
+            app:titleCentered="true"
+            app:titleTextColor="@color/product_list_app_bar_text"
+            app:navigationIcon="@drawable/ic_chevron_left"
+            app:navigationIconTint="@color/product_list_app_bar_text"/>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- 2. Thông tin sản phẩm -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="0dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:gravity="center_vertical">
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/img_product_review"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:src="@drawable/placeholder_cake_promo"
+                        android:scaleType="centerCrop"
+                        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Large"/>
+                    <TextView
+                        android:id="@+id/txt_product_name_review"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="Jolie"
+                        android:textColor="@color/app_pink"
+                        android:textSize="18sp"
+                        style="@style/TextAppearance.App.Body2.Bold"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#EEEEEE"
+                android:layout_marginVertical="24dp"/>
+
+            <!-- 3. Đánh giá sao -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rating"
+                android:textColor="@color/text_normal"
+                android:textStyle="bold"
+                style="@style/TextAppearance.App.Body3.Medium"/>
+
+            <!-- SỬ DỤNG RATINGBAR GỐC CỦA ANDROID -->
+            <RatingBar
+                android:id="@+id/rating_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:numStars="5"
+                android:stepSize="1.0"
+                android:rating="4"
+                android:theme="@style/RatingBarTheme" />
+
+
+            <!-- 4. Thêm ảnh/video -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Add image/video about product"
+                android:textColor="@color/text_normal"
+                android:textStyle="bold"
+                style="@style/TextAppearance.App.Body3.Medium"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+                <include layout="@layout/item_upload_button" android:id="@+id/btn_upload_image"/>
+                <include layout="@layout/item_upload_button" android:id="@+id/btn_upload_video"/>
+            </LinearLayout>
+
+
+            <!-- ======================================================= -->
+            <!-- THÊM KHỐI PREVIEW NÀY VÀO ĐÂY -->
+            <!-- ======================================================= -->
+            <FrameLayout
+                android:id="@+id/layout_media_preview"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="12dp"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <!-- ImageView để hiển thị ảnh hoặc thumbnail video -->
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/img_preview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Large"
+                    tools:src="@drawable/placeholder_cake_promo"/>
+
+                <!-- Nút X để xóa lựa chọn -->
+                <ImageView
+                    android:id="@+id/btn_clear_media"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="top|end"
+                    android:padding="4dp"
+                    android:background="@drawable/icon_circle_background"
+                    android:src="@drawable/ic_cancel"
+                    app:tint="@color/white"/>
+            </FrameLayout>
+            <!-- ======================================================= -->
+
+
+            <!-- 5. Ô nhập review -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Review"
+                android:textColor="@color/text_normal"
+                android:textStyle="bold"
+                style="@style/TextAppearance.App.Body3.Medium"/>
+            <EditText
+                android:id="@+id/edt_review_text"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/review_edittext_background"
+                android:gravity="top|start"
+                android:hint="We'd love to hear your thoughts!"
+                android:padding="16dp"
+                android:inputType="textMultiLine"
+                android:autofillHints="none"
+                style="@style/TextAppearance.App.InputPlaceholder"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- 6. Nút gửi -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_send_review"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@color/product_list_app_bar_bg"
+        android:text="Send Review"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:paddingTop="4dp"
+        android:fontFamily="@font/semibold"/>
+</LinearLayout>

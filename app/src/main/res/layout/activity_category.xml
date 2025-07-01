@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_pink_background"
+    android:orientation="vertical"
+    tools:context=".screens.CategoryActivity">
+
+    <!-- 1. Toolbar -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar_category"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/app_pink"
+        app:navigationIcon="@drawable/ic_chevron_left"
+        app:navigationIconTint="@color/white"
+        app:titleTextColor="@color/white"
+        app:titleTextAppearance="@style/TextAppearance.App.Heading3"
+        app:titleCentered="true"
+        tools:title="Vanilla">
+
+        <!-- Icon giỏ hàng ở cuối Toolbar -->
+        <ImageView
+            android:id="@+id/icon_cart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_shopping_cart"
+            app:tint="@color/white"
+            android:layout_gravity="end"
+            android:layout_marginEnd="16dp"/>
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <!-- 2. RecyclerView để hiển thị sản phẩm -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_products"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:padding="8dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"
+        tools:listitem="@layout/item_product_grid" />
+
+</LinearLayout>

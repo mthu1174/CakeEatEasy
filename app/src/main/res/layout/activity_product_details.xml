@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".screens.ProductDetailsActivity">
+
+    <!-- Header Bar (ID đã được đổi) -->
+    <LinearLayout
+        android:id="@+id/header_bar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:background="@color/cakeiteasy_pink"
+        android:gravity="center_vertical"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:elevation="4dp">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_back_2"
+            android:contentDescription="Back" />
+
+        <!-- Sửa EditText thành TextView cho đúng chức năng -->
+        <TextView
+            android:id="@+id/txt_product_name_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:gravity="center"
+            style="@style/TextAppearance.App.Body2"
+            android:singleLine="true"
+            tools:text="Product Title" />
+
+        <FrameLayout
+            android:id="@+id/cart_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/btn_cart"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_cart_2"
+                android:contentDescription="Cart"
+                app:tint="@color/white" />
+            <TextView
+                android:id="@+id/cart_badge"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_gravity="end|top"
+                android:background="@drawable/badge_background"
+                android:textColor="@android:color/white"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:visibility="gone"
+                android:text="0"/>
+        </FrameLayout>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Phần ảnh sản phẩm (Giữ nguyên cấu trúc) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:layout_marginBottom="1dp">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="240dp"
+                    android:layout_marginBottom="12dp">
+                    <ImageView
+                        android:id="@+id/img_product_main"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/placeholder_cake_promo" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:layout_marginBottom="8dp">
+                        <!-- ... Carousel Dots ... -->
+                    </LinearLayout>
+                </FrameLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="16dp">
+                    <!-- ... Thumbnails ... -->
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Product Info (Sửa EditText thành TextView và đặt lại ID) -->
+            <TextView
+                android:id="@+id/txt_product_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/semibold"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                tools:text="Category"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <TextView
+                    android:id="@+id/txt_product_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="20dp"
+                    android:textColor="@color/cakeiteasy_pink"
+                    android:textSize="22sp"
+                    android:fontFamily="@font/bold"
+                    tools:text="Product Name"/>
+                <ImageView
+                    android:id="@+id/btn_favorite"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_fav"
+                    android:layout_marginEnd="20dp"
+                    android:contentDescription="Favorite" />
+            </LinearLayout>
+
+            <!-- Price & Discount -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="8dp">
+                <TextView
+                    android:id="@+id/txt_product_current_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#222222"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/bold"
+                    tools:text="500.000 đ"/>
+                <TextView
+                    android:id="@+id/txt_product_old_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:fontFamily="@font/regular"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    tools:text="700.000 đ"/>
+                <TextView
+                    android:id="@+id/txt_discount_percent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#DD5369"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/semibold"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="2dp"
+                    android:layout_marginStart="20dp"
+                    android:background="#FBEAEC"
+                    tools:text="20% OFF"/>
+            </LinearLayout>
+
+            <!-- Quantity Selector -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="20dp"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="16dp">
+                <ImageView
+                    android:id="@+id/btn_decrease"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_decrease_quantity_1"/>
+                <TextView
+                    android:id="@+id/txt_quantity_picker"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    android:textColor="@color/cakeiteasy_pink"
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    android:fontFamily="@font/semibold"/>
+                <ImageView
+                    android:id="@+id/btn_increase"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_increase_quantity_1"/>
+            </LinearLayout>
+
+            <!-- Action Buttons -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp"
+                android:paddingHorizontal="16dp">
+                <Button
+                    android:id="@+id/btn_add_cart"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:backgroundTint="#FBEAEC"
+                    android:fontFamily="@font/bold"
+                    android:text="Add to cart"
+                    android:textColor="#DD5369"
+                    android:textSize="12dp" />
+                <Button
+                    android:id="@+id/btn_buy_now"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:backgroundTint="#DD5369"
+                    android:fontFamily="@font/bold"
+                    android:text="Buy now"
+                    android:textColor="#FBEAEC"
+                    android:textSize="12dp" />
+                <ImageView
+                    android:id="@+id/img_chat_with_shop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:src="@drawable/ic_chat_with_shop" />
+            </LinearLayout>
+
+            <!-- Detailed Info -->
+            <EditText
+                android:id="@+id/edt_product_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/semibold"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:background="@android:color/transparent"
+                android:inputType="text"
+                android:singleLine="true"
+                android:focusable="false"
+                android:cursorVisible="false" />
+
+            <TextView
+                android:id="@+id/txt_product_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/regular"
+                android:textColor="#888888"
+                android:textSize="15sp"
+                tools:text="Product Description"/>
+
+            <!-- ===== KHỐI REVIEW ĐÃ ĐƯỢC THAY THẾ HOÀN TOÀN ===== -->
+            <TextView
+                android:id="@+id/txt_review_title_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/bold"
+                android:text="Review"
+                android:textColor="@color/cakeiteasy_pink"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_product_reviews"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:nestedScrollingEnabled="false"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="2"
+                tools:listitem="@layout/item_review" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
